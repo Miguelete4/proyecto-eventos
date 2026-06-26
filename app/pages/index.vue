@@ -16,25 +16,7 @@ const consultarEventos = () => {
 
         <!-- navbar -->
         <header class="bg-white shadow">
-            <div class="container mx-auto flex items-center justify-between px-6 py-4">
 
-                <h1 class="text-2xl font-bold text-blue-600">
-                    Smart Events
-                </h1>
-
-                <div class="flex items-center gap-6">
-
-                    <UButton variant="ghost" @click="mostrarModal = true">
-                        Mis eventos
-                    </UButton>
-
-                    <UButton color="primary">
-                        Iniciar sesión
-                    </UButton>
-
-                </div>
-
-            </div>
         </header>
 
         <!-- Hero -->
