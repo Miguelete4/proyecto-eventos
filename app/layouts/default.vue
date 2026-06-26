@@ -10,12 +10,16 @@
 
             <nav class="sticky top-0 bg-white ">
                 <div class="">
-                    <a class="text-gray-800 hover:text-blue-500" href="/">Inicio</a>
-                    <a class="text-gray-800 hover:text-blue-500" href="/eventos">Eventos</a>
+
+                    <!-- Esto interferia con lo de la pagina de inicio en el navbar, perdon dejarlo comentado xd
+                     igual despues modificamos esto ya con lo que mas se repita -->
+
+                    <!-- <a class="text-gray-800 hover:text-blue-500" href="/">Inicio</a> -->
+                    <!-- <a class="text-gray-800 hover:text-blue-500" href="/eventos">Eventos</a> -->
 
                 </div>
 
-                <div class="">Inciar sesion</div>
+                <!-- <div class="">Inciar sesion</div> -->
             </nav>
 
         </header>
