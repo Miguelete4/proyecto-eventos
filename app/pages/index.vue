@@ -11,7 +11,6 @@ const consultarEventos = () => {
 }
 </script>
 
-
 <template>
     <div class="min-h-screen bg-gray-100">
 
@@ -138,17 +137,6 @@ const consultarEventos = () => {
             </div>
 
         </section>
-
-        <!-- Footer -->
-        <footer class="bg-white border-t py-6 mt-10">
-
-            <div class="container mx-auto text-center text-gray-500">
-
-                © 2026 Sistema de Eventos
-
-            </div>
-
-        </footer>
 
         <!-- Modal para mostrar eventos registrados -->
         <UModal v-model:open="mostrarModal">
