@@ -16,108 +16,232 @@ const consultarEventos = () => {
 
         <!-- navbar -->
         <header class="bg-white shadow">
+            <nav class="sticky top-0 bg-white mx-auto grid md:grid-cols-3 items-center justify-center">
 
+                <!-- Logo de la pagina -->
+                <div class="text-4xl font-extrabold text-blue-600 p-4 mx-4">
+                    Smart Events
+                </div>
+
+                <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
+                 pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
+                <div class="flex items-center justify-center text-center gap-5 mx-4">
+
+                    <a class="text-gray-800 hover:text-blue-600 transition-colors text-xl" href="/">
+                        Inscripciones
+                    </a>
+
+                </div>
+
+                <div class="flex justify-center md:justify-end p-4">
+                    <UButton
+                        class="rounded-2xl bg-blue-600 text-white font-sans hover:bg-blue-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        @click.prevent="">
+                        Iniciar sesión
+                    </UButton>
+                </div>
+
+            </nav>
         </header>
 
-        <!-- Hero -->
-        <section class=" container mx-auto py-12 text-center">
+        <!-- Parte de la informacion de la pagina -->
+        <div class="flex flex-col items-center w-full h-96 bg-linear-to-br from-blue-600 to-indigo-700 text-white">
 
-            <h2 class="text-4xl font-bold text-black mb-4">
-                Descubre nuestros eventos
-            </h2>
+            <div class="flex text-center flex-col py-20 px-4 gap-4">
 
-            <p class="text-gray-600 max-w-2xl mx-auto">
-                Encuentra eventos disponibles e inscríbete fácilmente.
-            </p>
+                <h2 class="text-5xl font-bold text-black mb-4">
+                    El lugar donde están los mejores eventos
+                </h2>
 
-        </section>
-
-        <!-- Eventos -->
-        <section class="container mx-auto pb-12">
-
-            <h3 class="text-2xl font-semibold text-black mb-6">
-                Eventos disponibles
-            </h3>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
-                <!-- Card -->
-                <UCard class="bg-gray-800 text-white">
-
-                    <img src="https://picsum.photos/500/250" class="rounded-lg mb-4 w-full h-48 object-cover" />
-
-                    <h4 class="text-xl font-bold">
-                        Festival de Música
-                    </h4>
-
-                    <div class="mt-3 space-y-1 text-white">
-
-                        <p>15 Octubre 2026</p>
-                        <p>18:00</p>
-                        <p>Valparaíso</p>
-                        <p>$15.000</p>
-                        <p>32 inscritos</p>
-
-                    </div>
-
-                    <UButton block class="mt-5">
-                        Inscribirse
-                    </UButton>
-
-                </UCard>
-
-                <!-- Duplica esta card cuando tengas datos -->
-
-                <UCard class="bg-gray-800 text-white">
-
-                    <img src="https://picsum.photos/501/250" class="rounded-lg mb-4 w-full h-48 object-cover" />
-
-                    <h4 class="text-xl font-bold">
-                        Feria Tecnológica
-                    </h4>
-
-                    <div class="mt-3 space-y-1 text-white">
-
-                        <p>28 Octubre 2026</p>
-                        <p>10:00</p>
-                        <p>Santiago</p>
-                        <p>Gratis</p>
-                        <p>20 inscritos</p>
-
-                    </div>
-
-                    <UButton block class="mt-5">
-                        Inscribirse
-                    </UButton>
-
-                </UCard>
-
-                <UCard class="bg-gray-800 text-white">
-
-                    <img src="https://picsum.photos/502/250" class="rounded-lg mb-4 w-full h-48 object-cover" />
-
-                    <h4 class="text-xl font-bold">
-                        Torneo Gamer
-                    </h4>
-
-                    <div class="mt-3 space-y-1 text-white">
-
-                        <p>5 Noviembre 2026</p>
-                        <p>14:00</p>
-                        <p>Viña del Mar</p>
-                        <p>$8.000</p>
-                        <p>57 inscritos</p>
-
-                    </div>
-
-                    <UButton block class="mt-5">
-                        Inscribirse
-                    </UButton>
-
-                </UCard>
-
+                <div class="flex flex-col text-center ">
+                    <p class="text-black-500 max-w-2xl mx-auto">
+                        Así de simple: elige lo que quieres hacer hoy, inscríbete con un par de clics y vive la
+                        experiencia.
+                    </p>
+                </div>
             </div>
 
+        </div>
+
+        <section class="py-12 bg-gray-400">
+            <div class="max-w-6xl mx-auto px-4">
+
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                    Eventos disponibles
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+                    <div
+                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
+
+                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
+                            alt="Festival de Música" />
+
+                        <div class="p-4 text-left">
+
+                            <h4 class="text-lg font-bold text-gray-900 truncate">
+                                Festival de Música
+                            </h4>
+
+                            <div
+                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                <p class="flex items-center gap-1">
+                                    <span>📅</span> 15 Oct 2026
+                                </p>
+                                <p class="flex items-center gap-1">
+                                    <span>🕒</span> 18:00 hrs
+                                </p>
+                                <p class="flex items-center gap-1 col-span-2 truncate">
+                                    <span>📍</span> Valparaíso
+                                </p>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
+                                <span class="text-emerald-600 text-base font-bold">
+                                    $15.000
+                                </span>
+                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
+                                    👥 32 inscritos
+                                </span>
+                            </div>
+
+                            <UButton block
+                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                Inscribirse
+                            </UButton>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
+
+                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
+                            alt="Festival de Música" />
+
+                        <div class="p-4 text-left">
+
+                            <h4 class="text-lg font-bold text-gray-900 truncate">
+                                Festival de Música
+                            </h4>
+
+                            <div
+                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                <p class="flex items-center gap-1">
+                                    <span>📅</span> 15 Oct 2026
+                                </p>
+                                <p class="flex items-center gap-1">
+                                    <span>🕒</span> 18:00 hrs
+                                </p>
+                                <p class="flex items-center gap-1 col-span-2 truncate">
+                                    <span>📍</span> Valparaíso
+                                </p>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
+                                <span class="text-emerald-600 text-base font-bold">
+                                    $15.000
+                                </span>
+                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
+                                    👥 32 inscritos
+                                </span>
+                            </div>
+
+                            <UButton block
+                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                Inscribirse
+                            </UButton>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
+
+                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
+                            alt="Festival de Música" />
+
+                        <div class="p-4 text-left">
+
+                            <h4 class="text-lg font-bold text-gray-900 truncate">
+                                Festival de Música
+                            </h4>
+
+                            <div
+                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                <p class="flex items-center gap-1">
+                                    <span>📅</span> 15 Oct 2026
+                                </p>
+                                <p class="flex items-center gap-1">
+                                    <span>🕒</span> 18:00 hrs
+                                </p>
+                                <p class="flex items-center gap-1 col-span-2 truncate">
+                                    <span>📍</span> Valparaíso
+                                </p>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
+                                <span class="text-emerald-600 text-base font-bold">
+                                    $15.000
+                                </span>
+                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
+                                    👥 32 inscritos
+                                </span>
+                            </div>
+
+                            <UButton block
+                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                Inscribirse
+                            </UButton>
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
+
+                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
+                            alt="Festival de Música" />
+
+                        <div class="p-4 text-left">
+
+                            <h4 class="text-lg font-bold text-gray-900 truncate">
+                                Festival de Música
+                            </h4>
+
+                            <div
+                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                <p class="flex items-center gap-1">
+                                    <span>📅</span> 15 Oct 2026
+                                </p>
+                                <p class="flex items-center gap-1">
+                                    <span>🕒</span> 18:00 hrs
+                                </p>
+                                <p class="flex items-center gap-1 col-span-2 truncate">
+                                    <span>📍</span> Valparaíso
+                                </p>
+                            </div>
+
+                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
+                                <span class="text-emerald-600 text-base font-bold">
+                                    $15.000
+                                </span>
+                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
+                                    👥 32 inscritos
+                                </span>
+                            </div>
+
+                            <UButton block
+                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                Inscribirse
+                            </UButton>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         </section>
 
         <!-- Modal para mostrar eventos registrados -->
