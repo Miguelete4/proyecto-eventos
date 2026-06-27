@@ -16,6 +16,8 @@ const cerrarSesion = async () => {
 </script>
 
 <template>
+
+
     <div class="min-h-screen bg-gray-950 text-white flex flex-col justify-between">
 
         <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
@@ -25,40 +27,163 @@ const cerrarSesion = async () => {
                     SMARTS EVENTS
                 </h1>
 
-                <div class="flex flex-wrap items-center gap-4">
-                    <UButton gray variant="ghost" class="hover:bg-gray-800">
+                <div class="flex items-center gap-8">
+
+                    <UButton gray variant="ghost">
                         Administrar staff
                     </UButton>
 
-                    <UButton gray variant="ghost" class="hover:bg-gray-800">
-                        Administrar eventos
-                    </UButton>
-
-                    <span class="hidden sm:inline text-gray-700">|</span>
-
                     <div class="flex items-center gap-3">
-                        <span
-                            class="text-sm font-medium text-gray-300 bg-gray-800/50 px-3 py-1.5 rounded-lg border border-gray-800">
-                            👤 {{ adminNombre }} {{ adminApellido }}
+
+                        <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
+                            {{ adminNombre }} {{ adminApellido }}
                         </span>
-                        <UButton red variant="soft" size="sm" @click="cerrarSesion">
+
+                        <UButton color="error" variant="soft" @click="cerrarSesion">
                             Cerrar sesión
                         </UButton>
+
                     </div>
+
                 </div>
 
             </div>
         </header>
 
-        <main class="flex-1 container mx-auto px-4 py-12 flex flex-col items-center">
+        <main class="flex-1 container mx-auto px-6 py-10">
 
-            <h2 class="text-3xl font-bold tracking-tight text-center text-white mb-12">
-                Bienvenido <span class="text-primary-400">"{{ adminNombre }} {{ adminApellido }}"</span>
-            </h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-            <div
-                class="w-full max-w-5xl text-center text-gray-500 py-20 border-2 border-dashed border-gray-800 rounded-2xl">
-                Espacio disponible para la gestión independiente de Staff o Eventos.
+                <!-- LISTA DE EVENTOS -->
+                <div class="lg:col-span-2">
+
+                    <h2 class="text-3xl font-bold mb-2">
+                        Eventos disponibles
+                    </h2>
+
+                    <p class="text-gray-400 mb-6">
+                        Ordenar por:
+                    </p>
+
+                    <USelect class="w-64 mb-8" :items="[
+                        'Nombre (A-Z)',
+                        'Nombre (Z-A)',
+                        'Fecha',
+                        'Valor'
+                    ]" />
+
+                    <div class="grid md:grid-cols-2 gap-6">
+
+                        <!-- Card -->
+
+                        <UCard class="bg-gray-900 border border-gray-800">
+
+                            <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
+
+                            <h3 class="text-xl font-bold mb-3">
+                                Festival de Música
+                            </h3>
+
+                            <div class="space-y-2 text-gray-300">
+
+                                <p>15/10/2026</p>
+
+                                <p>Valparaíso</p>
+
+                                <p>$15.000</p>
+
+                                <p>40 inscritos</p>
+
+                            </div>
+
+                            <div class="flex gap-3 mt-6">
+
+                                <UButton color="error" block>
+                                    Eliminar
+                                </UButton>
+
+                            </div>
+
+                        </UCard>
+
+                        <!-- Duplicar cuando existan más eventos -->
+
+                        <UCard class="bg-gray-900 border border-gray-800">
+
+                            <img src="https://picsum.photos/601/250" class="rounded-lg h-44 w-full object-cover mb-4">
+
+                            <h3 class="text-xl font-bold mb-3">
+                                Feria Tecnológica
+                            </h3>
+
+                            <div class="space-y-2 text-gray-300">
+
+                                <p>22/11/2026</p>
+
+                                <p>Santiago</p>
+
+                                <p>Gratis</p>
+
+                                <p>120 inscritos</p>
+
+                            </div>
+
+                            <div class="mt-6">
+
+                                <UButton color="error" block>
+                                    Eliminar
+                                </UButton>
+
+                            </div>
+
+                        </UCard>
+
+                    </div>
+
+                </div>
+
+                <!-- ========================= -->
+                <!-- PANEL DERECHO -->
+                <!-- ========================= -->
+
+                <UCard class="bg-gray-900 border border-gray-800 h-fit">
+
+                    <h2 class="text-2xl font-bold mb-6">
+                        Agregar evento
+                    </h2>
+
+                    <div class="space-y-5">
+
+                        <UInput placeholder="Título" />
+
+                        <UInput type="date" />
+
+                        <UInput placeholder="Lugar" />
+
+                        <UInput placeholder="Valor" />
+
+                        <UInput type="file" />
+
+                        <UButton color="primary" block>
+                            Agregar evento
+                        </UButton>
+
+                        <UDivider class="my-3" />
+
+                        <h3 class="text-xl font-semibold">
+                            Eliminar evento
+                        </h3>
+
+                        <UInput placeholder="ID del evento" />
+
+                        <UButton color="error" block>
+                            Eliminar
+                        </UButton>
+
+                    </div>
+
+                </UCard>
+
             </div>
 
         </main>

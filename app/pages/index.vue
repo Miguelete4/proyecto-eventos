@@ -52,11 +52,11 @@ const consultarEventos = () => {
 
                     <div class="mt-3 space-y-1 text-white">
 
-                        <p>📅 15 Octubre 2026</p>
-                        <p>🕒 18:00</p>
-                        <p>📍 Valparaíso</p>
-                        <p>💲 $15.000</p>
-                        <p>👥 32 inscritos</p>
+                        <p>15 Octubre 2026</p>
+                        <p>18:00</p>
+                        <p>Valparaíso</p>
+                        <p>$15.000</p>
+                        <p>32 inscritos</p>
 
                     </div>
 
@@ -78,11 +78,11 @@ const consultarEventos = () => {
 
                     <div class="mt-3 space-y-1 text-white">
 
-                        <p>📅 28 Octubre 2026</p>
-                        <p>🕒 10:00</p>
-                        <p>📍 Santiago</p>
-                        <p>💲 Gratis</p>
-                        <p>👥 120 inscritos</p>
+                        <p>28 Octubre 2026</p>
+                        <p>10:00</p>
+                        <p>Santiago</p>
+                        <p>Gratis</p>
+                        <p>20 inscritos</p>
 
                     </div>
 
@@ -145,11 +145,11 @@ const consultarEventos = () => {
 
                         <ul class="space-y-2">
 
-                            <li>🎵 Festival de Música</li>
+                            <li>Festival de Música</li>
 
-                            <li>💻 Feria Tecnológica</li>
+                            <li>Feria Tecnológica</li>
 
-                            <li>🎮 Torneo Gamer</li>
+                            <li>Torneo Gamer</li>
 
                         </ul>
 
