@@ -27,10 +27,6 @@ const consultarEventos = () => {
                  pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
                 <div class="flex items-center justify-center text-center gap-5 mx-4">
 
-                    <a class="text-purple-600 hover:text-blue-600 transition-colors text-xl" href="/">
-                        Inscripciones
-                    </a>
-
                     <!-- Pagina para el staff al inicar sesion -->
                     <a class="text-purple-600 hover:text-blue-600 transition-colors"
                         href="/administracion">Administración</a>
@@ -70,9 +66,17 @@ const consultarEventos = () => {
         <section class="py-12 bg-gray-900">
             <div class="max-w-6xl mx-auto px-4">
 
-                <h3 class="text-2xl font-bold text-purple-600 mb-6">
-                    Eventos disponibles
-                </h3>
+                <div class="flex justify-between items-center mb-12">
+                    <h3 class="text-2xl font-bold text-purple-600">
+                        Eventos disponibles
+                    </h3>
+
+                    <button type="button"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        onclick="window.location.href='/';">
+                        Ver mis Inscripciones
+                    </button>
+                </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
