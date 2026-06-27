@@ -6,19 +6,21 @@
 
 <template>
     <div class="flex flex-col min-h-screen mt-auto">
-        <header class="top-0 bg-white shadow-md">
+        <!-- <header class="top-0 bg-white shadow-md">
 
             <nav class="sticky top-0 bg-white mx-auto flex items-center justify-between">
 
-                <!-- Logo de la pagina -->
+                 Logo de la pagina 
                 <div class="text-4xl font-extrabold text-blue-600 p-4 mx-4">Smart Events</div>
 
-                <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
-                 pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
+                 Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
+                 pasar las paginas que usabamos en clase, el NavegationLink:[]... 
                 <div class="flex items-center justify-center gap-5 mx-4">
 
+                     Lo voy a dejar aca, pero lo ponemos en index 
                     <a class="text-gray-800 hover:text-blue-600 transition-colors" href="/">Inscripciones</a>
-                    <!-- Pagina para el staff al inicar sesion -->
+
+                     Pagina para el staff al inicar sesion 
                     <a class="text-gray-800 hover:text-blue-600 transition-colors"
                         href="/administracion">Administración</a>
 
@@ -26,23 +28,17 @@
 
                 </div>
 
-                <!-- Botón de inicio de sesión con modal hacia administracion -->
+                 Botón de inicio de sesión con modal hacia administracion 
                 <UButton
                     class="border rounded-2xl bg-blue-600 text-white font-sans hover:bg-blue-700 shadow-md px-5 py-2.5 transition-colors"
                     @click.prevent="">
-
-                    <form class="">
-                        <input type="text" placeholder="Usuario"
-                            class="border rounded-2xl px-4 py-2.5 mr-2 focus:outline-none focus:ring-2 focus:ring-blue-600">
-                    </form>
-
                     Inciar sesion
                 </UButton>
 
             </nav>
 
         </header>
-
+    -->
         <main>
             <slot />
         </main>
