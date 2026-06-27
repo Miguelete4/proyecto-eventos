@@ -13,6 +13,11 @@ const adminApellido = ref("Pérez")
 const cerrarSesion = async () => {
     await navigateTo('/')
 }
+
+const staff = async () => {
+    await navigateTo('/gestionStaff')
+}
+
 </script>
 
 <template>
@@ -29,8 +34,8 @@ const cerrarSesion = async () => {
 
                 <div class="flex items-center gap-8">
 
-                    <UButton gray variant="ghost">
-                        Administrar staff
+                    <UButton color="primary" variant="soft" @click="staff">
+                        Administrar Staff
                     </UButton>
 
                     <div class="flex items-center gap-3">
