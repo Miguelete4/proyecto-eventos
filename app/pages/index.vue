@@ -94,15 +94,12 @@ const consultarEventos = () => {
 
                             <div
                                 class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
-                                <p class="flex items-center gap-1">
-                                    <span>📅</span> 15 Oct 2026
-                                </p>
-                                <p class="flex items-center gap-1">
-                                    <span>🕒</span> 18:00 hrs
-                                </p>
-                                <p class="flex items-center gap-1 col-span-2 truncate">
-                                    <span>📍</span> Valparaíso
-                                </p>
+
+                                <p class="flex items-center gap-1">📅 15 Oct 2026</p>
+                                <p class="flex items-center gap-1">🕒 10:00</p>
+                                <p class="flex items-center gap-1">📍 Valparaíso</p>
+                                <p class="flex items-center gap-1">💲 Gratis</p>
+
                             </div>
 
                             <div class="flex justify-between items-center mt-3 text-sm font-medium">
@@ -136,24 +133,23 @@ const consultarEventos = () => {
 
                             <div
                                 class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
-                                <p class="flex items-center gap-1">
-                                    <span>📅</span> 15 Oct 2026
-                                </p>
-                                <p class="flex items-center gap-1">
-                                    <span>🕒</span> 18:00 hrs
-                                </p>
-                                <p class="flex items-center gap-1 col-span-2 truncate">
-                                    <span>📍</span> Valparaíso
-                                </p>
+
+                                <p class="flex items-center gap-1">📅 28 Octubre 2026</p>
+                                <p class="flex items-center gap-1">🕒 10:00</p>
+                                <p class="flex items-center gap-1">📍 Santiago</p>
+                                <p class="flex items-center gap-1">💲 Gratis</p>
+
                             </div>
 
                             <div class="flex justify-between items-center mt-3 text-sm font-medium">
                                 <span class="text-emerald-600 text-base font-bold">
                                     $15.000
                                 </span>
-                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    👥 32 inscritos
+
+                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">👥 120
+                                    inscritos
                                 </span>
+
                             </div>
 
                             <UButton block
