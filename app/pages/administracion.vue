@@ -17,7 +17,6 @@ const cerrarSesion = async () => {
 
 <template>
 
-
     <div class="min-h-screen bg-gray-950 text-white flex flex-col justify-between">
 
         <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
