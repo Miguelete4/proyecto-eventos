@@ -63,14 +63,15 @@ const cerrarSesion = async () => {
 
                     <p class="text-gray-400 mb-6">
                         Ordenar por:
+                        <USelect class="w-40 mb-2 p-1" :items="[
+                            'Nombre (A-Z)',
+                            'Nombre (Z-A)',
+                            'Fecha',
+                            'Valor'
+                        ]" />
                     </p>
 
-                    <USelect class="w-64 mb-8" :items="[
-                        'Nombre (A-Z)',
-                        'Nombre (Z-A)',
-                        'Fecha',
-                        'Valor'
-                    ]" />
+
 
                     <div class="grid md:grid-cols-2 gap-6">
 
@@ -93,14 +94,6 @@ const cerrarSesion = async () => {
                                 <p>$15.000</p>
 
                                 <p>40 inscritos</p>
-
-                            </div>
-
-                            <div class="flex gap-3 mt-6">
-
-                                <UButton color="error" block>
-                                    Eliminar
-                                </UButton>
 
                             </div>
 
@@ -128,13 +121,6 @@ const cerrarSesion = async () => {
 
                             </div>
 
-                            <div class="mt-6">
-
-                                <UButton color="error" block>
-                                    Eliminar
-                                </UButton>
-
-                            </div>
 
                         </UCard>
 
