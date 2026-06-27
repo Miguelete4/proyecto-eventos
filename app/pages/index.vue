@@ -12,14 +12,14 @@ const consultarEventos = () => {
 </script>
 
 <template>
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-950 text-white">
 
         <!-- navbar -->
-        <header class="bg-white shadow">
-            <nav class="sticky top-0 bg-white mx-auto grid md:grid-cols-3 items-center justify-center">
+        <header class="bg-gray-950">
+            <nav class="sticky top-0 bg-gray-900 mx-auto grid md:grid-cols-3 items-center justify-center">
 
                 <!-- Logo de la pagina -->
-                <div class="text-4xl font-extrabold text-blue-600 p-4 mx-4">
+                <div class="text-4xl font-extrabold text-purple-600 p-4 mx-4">
                     Smart Events
                 </div>
 
@@ -27,15 +27,19 @@ const consultarEventos = () => {
                  pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
                 <div class="flex items-center justify-center text-center gap-5 mx-4">
 
-                    <a class="text-gray-800 hover:text-blue-600 transition-colors text-xl" href="/">
+                    <a class="text-purple-600 hover:text-blue-600 transition-colors text-xl" href="/">
                         Inscripciones
                     </a>
+
+                    <!-- Pagina para el staff al inicar sesion -->
+                    <a class="text-purple-600 hover:text-blue-600 transition-colors"
+                        href="/administracion">Administración</a>
 
                 </div>
 
                 <div class="flex justify-center md:justify-end p-4">
                     <UButton
-                        class="rounded-2xl bg-blue-600 text-white font-sans hover:bg-blue-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
                         @click.prevent="">
                         Iniciar sesión
                     </UButton>
@@ -45,7 +49,7 @@ const consultarEventos = () => {
         </header>
 
         <!-- Parte de la informacion de la pagina -->
-        <div class="flex flex-col items-center w-full h-96 bg-linear-to-br from-blue-600 to-indigo-700 text-white">
+        <div class="flex flex-col items-center w-full h-96 bg-linear-to-br from-purple-600 to-indigo-700 text-white">
 
             <div class="flex text-center flex-col py-20 px-4 gap-4">
 
@@ -63,10 +67,10 @@ const consultarEventos = () => {
 
         </div>
 
-        <section class="py-12 bg-gray-400">
+        <section class="py-12 bg-gray-900">
             <div class="max-w-6xl mx-auto px-4">
 
-                <h3 class="text-2xl font-bold text-gray-900 mb-6">
+                <h3 class="text-2xl font-bold text-purple-600 mb-6">
                     Eventos disponibles
                 </h3>
 
@@ -107,7 +111,7 @@ const consultarEventos = () => {
                             </div>
 
                             <UButton block
-                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                class="mt-4 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors py-2 text-sm justify-center">
                                 Inscribirse
                             </UButton>
                         </div>
@@ -149,7 +153,7 @@ const consultarEventos = () => {
                             </div>
 
                             <UButton block
-                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                class="mt-4 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors py-2 text-sm justify-center">
                                 Inscribirse
                             </UButton>
                         </div>
@@ -191,49 +195,7 @@ const consultarEventos = () => {
                             </div>
 
                             <UButton block
-                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
-                                Inscribirse
-                            </UButton>
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
-
-                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
-                            alt="Festival de Música" />
-
-                        <div class="p-4 text-left">
-
-                            <h4 class="text-lg font-bold text-gray-900 truncate">
-                                Festival de Música
-                            </h4>
-
-                            <div
-                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
-                                <p class="flex items-center gap-1">
-                                    <span>📅</span> 15 Oct 2026
-                                </p>
-                                <p class="flex items-center gap-1">
-                                    <span>🕒</span> 18:00 hrs
-                                </p>
-                                <p class="flex items-center gap-1 col-span-2 truncate">
-                                    <span>📍</span> Valparaíso
-                                </p>
-                            </div>
-
-                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
-                                <span class="text-emerald-600 text-base font-bold">
-                                    $15.000
-                                </span>
-                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    👥 32 inscritos
-                                </span>
-                            </div>
-
-                            <UButton block
-                                class="mt-4 rounded-xl bg-blue-600 text-white font-semibold shadow-sm hover:bg-blue-700 transition-colors py-2 text-sm justify-center">
+                                class="mt-4 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors py-2 text-sm justify-center">
                                 Inscribirse
                             </UButton>
                         </div>
