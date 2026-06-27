@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import BaseModal from '~/components/BaseModal.vue'
 
 const mostrarModal = ref(false)
 const correo = ref("")
@@ -39,6 +40,7 @@ const consultarEventos = () => {
                         @click.prevent="">
                         Iniciar sesión
                     </UButton>
+
                 </div>
 
             </nav>
