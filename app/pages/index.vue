@@ -73,20 +73,20 @@ const mostrarInscripcion = ref(false)
         </header>
 
         <!-- Parte de la informacion de la pagina -->
-        <div class="flex flex-col items-center w-full h-96 bg-linear-to-br from-gray-900 to-indigo-700 text-white">
+        <!-- Ayuda de la ia, luego cambiamos cosas xd -->
+        <div
+            class="flex flex-col items-center justify-center min-h-[400px] p-8 text-center bg-linear-to-br from-purple-600 to-gray-500">
 
-            <div class="flex text-center flex-col py-20 px-4 gap-4">
+            <div class="flex flex-col max-w-2xl gap-8">
 
-                <h2 class="text-5xl font-bold text-black mb-4">
+                <h2 class="text-5xl font-extrabold text-black">
                     El lugar donde están los mejores eventos
                 </h2>
 
-                <div class="flex flex-col text-center ">
-                    <p class="text-black-500 max-w-2xl mx-auto">
-                        Así de simple: elige lo que quieres hacer hoy, inscríbete con un par de clics y vive la
-                        experiencia.
-                    </p>
-                </div>
+                <p class="text-black text-lg">
+                    Así de simple: elige lo que quieres hacer hoy, inscríbete con un par de clics y vive la experiencia.
+                </p>
+
             </div>
 
         </div>
@@ -99,7 +99,11 @@ const mostrarInscripcion = ref(false)
                         Eventos disponibles
                     </h3>
 
+<<<<<<< HEAD
                     <!-- modal para ver inscripciones -->
+=======
+                    <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de Vue) -->
+>>>>>>> f7bd3dbe3acbc6c10fb6c78ae3d3b790e1680092
                     <button type="button"
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
                         @click="mostrarInscripciones = true">
