@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `Evento` model and its related types.
+ * This file exports the `evento` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
- * Model Evento
+ * Model evento
  * 
  */
-export type EventoModel = runtime.Types.Result.DefaultSelection<Prisma.$EventoPayload>
+export type eventoModel = runtime.Types.Result.DefaultSelection<Prisma.$eventoPayload>
 
 export type AggregateEvento = {
   _count: EventoCountAggregateOutputType | null
@@ -105,37 +105,37 @@ export type EventoCountAggregateInputType = {
 
 export type EventoAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Evento to aggregate.
+   * Filter which evento to aggregate.
    */
-  where?: Prisma.EventoWhereInput
+  where?: Prisma.eventoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Eventos to fetch.
+   * Determine the order of eventos to fetch.
    */
-  orderBy?: Prisma.EventoOrderByWithRelationInput | Prisma.EventoOrderByWithRelationInput[]
+  orderBy?: Prisma.eventoOrderByWithRelationInput | Prisma.eventoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.EventoWhereUniqueInput
+  cursor?: Prisma.eventoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Eventos from the position of the cursor.
+   * Take `±n` eventos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Eventos.
+   * Skip the first `n` eventos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned Eventos
+   * Count returned eventos
   **/
   _count?: true | EventoCountAggregateInputType
   /**
@@ -175,11 +175,11 @@ export type GetEventoAggregateType<T extends EventoAggregateArgs> = {
 
 
 
-export type EventoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.EventoWhereInput
-  orderBy?: Prisma.EventoOrderByWithAggregationInput | Prisma.EventoOrderByWithAggregationInput[]
+export type eventoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.eventoWhereInput
+  orderBy?: Prisma.eventoOrderByWithAggregationInput | Prisma.eventoOrderByWithAggregationInput[]
   by: Prisma.EventoScalarFieldEnum[] | Prisma.EventoScalarFieldEnum
-  having?: Prisma.EventoScalarWhereWithAggregatesInput
+  having?: Prisma.eventoScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: EventoCountAggregateInputType | true
@@ -203,7 +203,7 @@ export type EventoGroupByOutputType = {
   _max: EventoMaxAggregateOutputType | null
 }
 
-export type GetEventoGroupByPayload<T extends EventoGroupByArgs> = Prisma.PrismaPromise<
+export type GetEventoGroupByPayload<T extends eventoGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<EventoGroupByOutputType, T['by']> &
       {
@@ -218,108 +218,108 @@ export type GetEventoGroupByPayload<T extends EventoGroupByArgs> = Prisma.Prisma
 
 
 
-export type EventoWhereInput = {
-  AND?: Prisma.EventoWhereInput | Prisma.EventoWhereInput[]
-  OR?: Prisma.EventoWhereInput[]
-  NOT?: Prisma.EventoWhereInput | Prisma.EventoWhereInput[]
-  id?: Prisma.IntFilter<"Evento"> | number
-  titulo?: Prisma.StringFilter<"Evento"> | string
-  fecha?: Prisma.DateTimeFilter<"Evento"> | Date | string
-  lugar?: Prisma.StringFilter<"Evento"> | string
-  imagen?: Prisma.StringFilter<"Evento"> | string
-  valor?: Prisma.FloatFilter<"Evento"> | number
-  evento?: Prisma.InscritoListRelationFilter
+export type eventoWhereInput = {
+  AND?: Prisma.eventoWhereInput | Prisma.eventoWhereInput[]
+  OR?: Prisma.eventoWhereInput[]
+  NOT?: Prisma.eventoWhereInput | Prisma.eventoWhereInput[]
+  id?: Prisma.IntFilter<"evento"> | number
+  titulo?: Prisma.StringFilter<"evento"> | string
+  fecha?: Prisma.DateTimeFilter<"evento"> | Date | string
+  lugar?: Prisma.StringFilter<"evento"> | string
+  imagen?: Prisma.StringFilter<"evento"> | string
+  valor?: Prisma.FloatFilter<"evento"> | number
+  inscrito?: Prisma.InscritoListRelationFilter
 }
 
-export type EventoOrderByWithRelationInput = {
+export type eventoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   lugar?: Prisma.SortOrder
   imagen?: Prisma.SortOrder
   valor?: Prisma.SortOrder
-  evento?: Prisma.InscritoOrderByRelationAggregateInput
-  _relevance?: Prisma.EventoOrderByRelevanceInput
+  inscrito?: Prisma.inscritoOrderByRelationAggregateInput
+  _relevance?: Prisma.eventoOrderByRelevanceInput
 }
 
-export type EventoWhereUniqueInput = Prisma.AtLeast<{
+export type eventoWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  AND?: Prisma.EventoWhereInput | Prisma.EventoWhereInput[]
-  OR?: Prisma.EventoWhereInput[]
-  NOT?: Prisma.EventoWhereInput | Prisma.EventoWhereInput[]
-  titulo?: Prisma.StringFilter<"Evento"> | string
-  fecha?: Prisma.DateTimeFilter<"Evento"> | Date | string
-  lugar?: Prisma.StringFilter<"Evento"> | string
-  imagen?: Prisma.StringFilter<"Evento"> | string
-  valor?: Prisma.FloatFilter<"Evento"> | number
-  evento?: Prisma.InscritoListRelationFilter
+  AND?: Prisma.eventoWhereInput | Prisma.eventoWhereInput[]
+  OR?: Prisma.eventoWhereInput[]
+  NOT?: Prisma.eventoWhereInput | Prisma.eventoWhereInput[]
+  titulo?: Prisma.StringFilter<"evento"> | string
+  fecha?: Prisma.DateTimeFilter<"evento"> | Date | string
+  lugar?: Prisma.StringFilter<"evento"> | string
+  imagen?: Prisma.StringFilter<"evento"> | string
+  valor?: Prisma.FloatFilter<"evento"> | number
+  inscrito?: Prisma.InscritoListRelationFilter
 }, "id">
 
-export type EventoOrderByWithAggregationInput = {
+export type eventoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   lugar?: Prisma.SortOrder
   imagen?: Prisma.SortOrder
   valor?: Prisma.SortOrder
-  _count?: Prisma.EventoCountOrderByAggregateInput
-  _avg?: Prisma.EventoAvgOrderByAggregateInput
-  _max?: Prisma.EventoMaxOrderByAggregateInput
-  _min?: Prisma.EventoMinOrderByAggregateInput
-  _sum?: Prisma.EventoSumOrderByAggregateInput
+  _count?: Prisma.eventoCountOrderByAggregateInput
+  _avg?: Prisma.eventoAvgOrderByAggregateInput
+  _max?: Prisma.eventoMaxOrderByAggregateInput
+  _min?: Prisma.eventoMinOrderByAggregateInput
+  _sum?: Prisma.eventoSumOrderByAggregateInput
 }
 
-export type EventoScalarWhereWithAggregatesInput = {
-  AND?: Prisma.EventoScalarWhereWithAggregatesInput | Prisma.EventoScalarWhereWithAggregatesInput[]
-  OR?: Prisma.EventoScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.EventoScalarWhereWithAggregatesInput | Prisma.EventoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Evento"> | number
-  titulo?: Prisma.StringWithAggregatesFilter<"Evento"> | string
-  fecha?: Prisma.DateTimeWithAggregatesFilter<"Evento"> | Date | string
-  lugar?: Prisma.StringWithAggregatesFilter<"Evento"> | string
-  imagen?: Prisma.StringWithAggregatesFilter<"Evento"> | string
-  valor?: Prisma.FloatWithAggregatesFilter<"Evento"> | number
+export type eventoScalarWhereWithAggregatesInput = {
+  AND?: Prisma.eventoScalarWhereWithAggregatesInput | Prisma.eventoScalarWhereWithAggregatesInput[]
+  OR?: Prisma.eventoScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.eventoScalarWhereWithAggregatesInput | Prisma.eventoScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"evento"> | number
+  titulo?: Prisma.StringWithAggregatesFilter<"evento"> | string
+  fecha?: Prisma.DateTimeWithAggregatesFilter<"evento"> | Date | string
+  lugar?: Prisma.StringWithAggregatesFilter<"evento"> | string
+  imagen?: Prisma.StringWithAggregatesFilter<"evento"> | string
+  valor?: Prisma.FloatWithAggregatesFilter<"evento"> | number
 }
 
-export type EventoCreateInput = {
+export type eventoCreateInput = {
   titulo: string
   fecha: Date | string
   lugar: string
   imagen: string
   valor: number
-  evento?: Prisma.InscritoCreateNestedManyWithoutEventoInput
+  inscrito?: Prisma.inscritoCreateNestedManyWithoutEventoInput
 }
 
-export type EventoUncheckedCreateInput = {
+export type eventoUncheckedCreateInput = {
   id?: number
   titulo: string
   fecha: Date | string
   lugar: string
   imagen: string
   valor: number
-  evento?: Prisma.InscritoUncheckedCreateNestedManyWithoutEventoInput
+  inscrito?: Prisma.inscritoUncheckedCreateNestedManyWithoutEventoInput
 }
 
-export type EventoUpdateInput = {
+export type eventoUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
   imagen?: Prisma.StringFieldUpdateOperationsInput | string
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
-  evento?: Prisma.InscritoUpdateManyWithoutEventoNestedInput
+  inscrito?: Prisma.inscritoUpdateManyWithoutEventoNestedInput
 }
 
-export type EventoUncheckedUpdateInput = {
+export type eventoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
   imagen?: Prisma.StringFieldUpdateOperationsInput | string
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
-  evento?: Prisma.InscritoUncheckedUpdateManyWithoutEventoNestedInput
+  inscrito?: Prisma.inscritoUncheckedUpdateManyWithoutEventoNestedInput
 }
 
-export type EventoCreateManyInput = {
+export type eventoCreateManyInput = {
   id?: number
   titulo: string
   fecha: Date | string
@@ -328,7 +328,7 @@ export type EventoCreateManyInput = {
   valor: number
 }
 
-export type EventoUpdateManyMutationInput = {
+export type eventoUpdateManyMutationInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
@@ -336,7 +336,7 @@ export type EventoUpdateManyMutationInput = {
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type EventoUncheckedUpdateManyInput = {
+export type eventoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -345,13 +345,13 @@ export type EventoUncheckedUpdateManyInput = {
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type EventoOrderByRelevanceInput = {
-  fields: Prisma.EventoOrderByRelevanceFieldEnum | Prisma.EventoOrderByRelevanceFieldEnum[]
+export type eventoOrderByRelevanceInput = {
+  fields: Prisma.eventoOrderByRelevanceFieldEnum | Prisma.eventoOrderByRelevanceFieldEnum[]
   sort: Prisma.SortOrder
   search: string
 }
 
-export type EventoCountOrderByAggregateInput = {
+export type eventoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
@@ -360,21 +360,12 @@ export type EventoCountOrderByAggregateInput = {
   valor?: Prisma.SortOrder
 }
 
-export type EventoAvgOrderByAggregateInput = {
+export type eventoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   valor?: Prisma.SortOrder
 }
 
-export type EventoMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  titulo?: Prisma.SortOrder
-  fecha?: Prisma.SortOrder
-  lugar?: Prisma.SortOrder
-  imagen?: Prisma.SortOrder
-  valor?: Prisma.SortOrder
-}
-
-export type EventoMinOrderByAggregateInput = {
+export type eventoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   titulo?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
@@ -383,14 +374,27 @@ export type EventoMinOrderByAggregateInput = {
   valor?: Prisma.SortOrder
 }
 
-export type EventoSumOrderByAggregateInput = {
+export type eventoMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  titulo?: Prisma.SortOrder
+  fecha?: Prisma.SortOrder
+  lugar?: Prisma.SortOrder
+  imagen?: Prisma.SortOrder
+  valor?: Prisma.SortOrder
+}
+
+export type eventoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   valor?: Prisma.SortOrder
 }
 
 export type EventoScalarRelationFilter = {
-  is?: Prisma.EventoWhereInput
-  isNot?: Prisma.EventoWhereInput
+  is?: Prisma.eventoWhereInput
+  isNot?: Prisma.eventoWhereInput
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
 }
 
 export type DateTimeFieldUpdateOperationsInput = {
@@ -413,21 +417,21 @@ export type IntFieldUpdateOperationsInput = {
   divide?: number
 }
 
-export type EventoCreateNestedOneWithoutEventoInput = {
-  create?: Prisma.XOR<Prisma.EventoCreateWithoutEventoInput, Prisma.EventoUncheckedCreateWithoutEventoInput>
-  connectOrCreate?: Prisma.EventoCreateOrConnectWithoutEventoInput
-  connect?: Prisma.EventoWhereUniqueInput
+export type eventoCreateNestedOneWithoutInscritoInput = {
+  create?: Prisma.XOR<Prisma.eventoCreateWithoutInscritoInput, Prisma.eventoUncheckedCreateWithoutInscritoInput>
+  connectOrCreate?: Prisma.eventoCreateOrConnectWithoutInscritoInput
+  connect?: Prisma.eventoWhereUniqueInput
 }
 
-export type EventoUpdateOneRequiredWithoutEventoNestedInput = {
-  create?: Prisma.XOR<Prisma.EventoCreateWithoutEventoInput, Prisma.EventoUncheckedCreateWithoutEventoInput>
-  connectOrCreate?: Prisma.EventoCreateOrConnectWithoutEventoInput
-  upsert?: Prisma.EventoUpsertWithoutEventoInput
-  connect?: Prisma.EventoWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.EventoUpdateToOneWithWhereWithoutEventoInput, Prisma.EventoUpdateWithoutEventoInput>, Prisma.EventoUncheckedUpdateWithoutEventoInput>
+export type eventoUpdateOneRequiredWithoutInscritoNestedInput = {
+  create?: Prisma.XOR<Prisma.eventoCreateWithoutInscritoInput, Prisma.eventoUncheckedCreateWithoutInscritoInput>
+  connectOrCreate?: Prisma.eventoCreateOrConnectWithoutInscritoInput
+  upsert?: Prisma.eventoUpsertWithoutInscritoInput
+  connect?: Prisma.eventoWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.eventoUpdateToOneWithWhereWithoutInscritoInput, Prisma.eventoUpdateWithoutInscritoInput>, Prisma.eventoUncheckedUpdateWithoutInscritoInput>
 }
 
-export type EventoCreateWithoutEventoInput = {
+export type eventoCreateWithoutInscritoInput = {
   titulo: string
   fecha: Date | string
   lugar: string
@@ -435,7 +439,7 @@ export type EventoCreateWithoutEventoInput = {
   valor: number
 }
 
-export type EventoUncheckedCreateWithoutEventoInput = {
+export type eventoUncheckedCreateWithoutInscritoInput = {
   id?: number
   titulo: string
   fecha: Date | string
@@ -444,23 +448,23 @@ export type EventoUncheckedCreateWithoutEventoInput = {
   valor: number
 }
 
-export type EventoCreateOrConnectWithoutEventoInput = {
-  where: Prisma.EventoWhereUniqueInput
-  create: Prisma.XOR<Prisma.EventoCreateWithoutEventoInput, Prisma.EventoUncheckedCreateWithoutEventoInput>
+export type eventoCreateOrConnectWithoutInscritoInput = {
+  where: Prisma.eventoWhereUniqueInput
+  create: Prisma.XOR<Prisma.eventoCreateWithoutInscritoInput, Prisma.eventoUncheckedCreateWithoutInscritoInput>
 }
 
-export type EventoUpsertWithoutEventoInput = {
-  update: Prisma.XOR<Prisma.EventoUpdateWithoutEventoInput, Prisma.EventoUncheckedUpdateWithoutEventoInput>
-  create: Prisma.XOR<Prisma.EventoCreateWithoutEventoInput, Prisma.EventoUncheckedCreateWithoutEventoInput>
-  where?: Prisma.EventoWhereInput
+export type eventoUpsertWithoutInscritoInput = {
+  update: Prisma.XOR<Prisma.eventoUpdateWithoutInscritoInput, Prisma.eventoUncheckedUpdateWithoutInscritoInput>
+  create: Prisma.XOR<Prisma.eventoCreateWithoutInscritoInput, Prisma.eventoUncheckedCreateWithoutInscritoInput>
+  where?: Prisma.eventoWhereInput
 }
 
-export type EventoUpdateToOneWithWhereWithoutEventoInput = {
-  where?: Prisma.EventoWhereInput
-  data: Prisma.XOR<Prisma.EventoUpdateWithoutEventoInput, Prisma.EventoUncheckedUpdateWithoutEventoInput>
+export type eventoUpdateToOneWithWhereWithoutInscritoInput = {
+  where?: Prisma.eventoWhereInput
+  data: Prisma.XOR<Prisma.eventoUpdateWithoutInscritoInput, Prisma.eventoUncheckedUpdateWithoutInscritoInput>
 }
 
-export type EventoUpdateWithoutEventoInput = {
+export type eventoUpdateWithoutInscritoInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
@@ -468,7 +472,7 @@ export type EventoUpdateWithoutEventoInput = {
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
-export type EventoUncheckedUpdateWithoutEventoInput = {
+export type eventoUncheckedUpdateWithoutInscritoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -483,11 +487,11 @@ export type EventoUncheckedUpdateWithoutEventoInput = {
  */
 
 export type EventoCountOutputType = {
-  evento: number
+  inscrito: number
 }
 
 export type EventoCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  evento?: boolean | EventoCountOutputTypeCountEventoArgs
+  inscrito?: boolean | EventoCountOutputTypeCountInscritoArgs
 }
 
 /**
@@ -503,25 +507,25 @@ export type EventoCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
 /**
  * EventoCountOutputType without action
  */
-export type EventoCountOutputTypeCountEventoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.InscritoWhereInput
+export type EventoCountOutputTypeCountInscritoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.inscritoWhereInput
 }
 
 
-export type EventoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type eventoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   titulo?: boolean
   fecha?: boolean
   lugar?: boolean
   imagen?: boolean
   valor?: boolean
-  evento?: boolean | Prisma.Evento$eventoArgs<ExtArgs>
+  inscrito?: boolean | Prisma.evento$inscritoArgs<ExtArgs>
   _count?: boolean | Prisma.EventoCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["evento"]>
 
 
 
-export type EventoSelectScalar = {
+export type eventoSelectScalar = {
   id?: boolean
   titulo?: boolean
   fecha?: boolean
@@ -530,16 +534,16 @@ export type EventoSelectScalar = {
   valor?: boolean
 }
 
-export type EventoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "fecha" | "lugar" | "imagen" | "valor", ExtArgs["result"]["evento"]>
-export type EventoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  evento?: boolean | Prisma.Evento$eventoArgs<ExtArgs>
+export type eventoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "titulo" | "fecha" | "lugar" | "imagen" | "valor", ExtArgs["result"]["evento"]>
+export type eventoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  inscrito?: boolean | Prisma.evento$inscritoArgs<ExtArgs>
   _count?: boolean | Prisma.EventoCountOutputTypeDefaultArgs<ExtArgs>
 }
 
-export type $EventoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "Evento"
+export type $eventoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "evento"
   objects: {
-    evento: Prisma.$InscritoPayload<ExtArgs>[]
+    inscrito: Prisma.$inscritoPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -552,18 +556,18 @@ export type $EventoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
   composites: {}
 }
 
-export type EventoGetPayload<S extends boolean | null | undefined | EventoDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$EventoPayload, S>
+export type eventoGetPayload<S extends boolean | null | undefined | eventoDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$eventoPayload, S>
 
-export type EventoCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<EventoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type eventoCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<eventoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: EventoCountAggregateInputType | true
   }
 
-export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Evento'], meta: { name: 'Evento' } }
+export interface eventoDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['evento'], meta: { name: 'evento' } }
   /**
    * Find zero or one Evento that matches the filter.
-   * @param {EventoFindUniqueArgs} args - Arguments to find a Evento
+   * @param {eventoFindUniqueArgs} args - Arguments to find a Evento
    * @example
    * // Get one Evento
    * const evento = await prisma.evento.findUnique({
@@ -572,12 +576,12 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findUnique<T extends EventoFindUniqueArgs>(args: Prisma.SelectSubset<T, EventoFindUniqueArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends eventoFindUniqueArgs>(args: Prisma.SelectSubset<T, eventoFindUniqueArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Evento that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {EventoFindUniqueOrThrowArgs} args - Arguments to find a Evento
+   * @param {eventoFindUniqueOrThrowArgs} args - Arguments to find a Evento
    * @example
    * // Get one Evento
    * const evento = await prisma.evento.findUniqueOrThrow({
@@ -586,13 +590,13 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findUniqueOrThrow<T extends EventoFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, EventoFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends eventoFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, eventoFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Evento that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {EventoFindFirstArgs} args - Arguments to find a Evento
+   * @param {eventoFindFirstArgs} args - Arguments to find a Evento
    * @example
    * // Get one Evento
    * const evento = await prisma.evento.findFirst({
@@ -601,14 +605,14 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findFirst<T extends EventoFindFirstArgs>(args?: Prisma.SelectSubset<T, EventoFindFirstArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends eventoFindFirstArgs>(args?: Prisma.SelectSubset<T, eventoFindFirstArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Evento that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {EventoFindFirstOrThrowArgs} args - Arguments to find a Evento
+   * @param {eventoFindFirstOrThrowArgs} args - Arguments to find a Evento
    * @example
    * // Get one Evento
    * const evento = await prisma.evento.findFirstOrThrow({
@@ -617,13 +621,13 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  findFirstOrThrow<T extends EventoFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, EventoFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends eventoFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, eventoFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Eventos that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {EventoFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {eventoFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Eventos
    * const eventos = await prisma.evento.findMany()
@@ -635,11 +639,11 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * const eventoWithIdOnly = await prisma.evento.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends EventoFindManyArgs>(args?: Prisma.SelectSubset<T, EventoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends eventoFindManyArgs>(args?: Prisma.SelectSubset<T, eventoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Evento.
-   * @param {EventoCreateArgs} args - Arguments to create a Evento.
+   * @param {eventoCreateArgs} args - Arguments to create a Evento.
    * @example
    * // Create one Evento
    * const Evento = await prisma.evento.create({
@@ -649,11 +653,11 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  create<T extends EventoCreateArgs>(args: Prisma.SelectSubset<T, EventoCreateArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends eventoCreateArgs>(args: Prisma.SelectSubset<T, eventoCreateArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Eventos.
-   * @param {EventoCreateManyArgs} args - Arguments to create many Eventos.
+   * @param {eventoCreateManyArgs} args - Arguments to create many Eventos.
    * @example
    * // Create many Eventos
    * const evento = await prisma.evento.createMany({
@@ -663,11 +667,11 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    *     
    */
-  createMany<T extends EventoCreateManyArgs>(args?: Prisma.SelectSubset<T, EventoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends eventoCreateManyArgs>(args?: Prisma.SelectSubset<T, eventoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Delete a Evento.
-   * @param {EventoDeleteArgs} args - Arguments to delete one Evento.
+   * @param {eventoDeleteArgs} args - Arguments to delete one Evento.
    * @example
    * // Delete one Evento
    * const Evento = await prisma.evento.delete({
@@ -677,11 +681,11 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  delete<T extends EventoDeleteArgs>(args: Prisma.SelectSubset<T, EventoDeleteArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends eventoDeleteArgs>(args: Prisma.SelectSubset<T, eventoDeleteArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Evento.
-   * @param {EventoUpdateArgs} args - Arguments to update one Evento.
+   * @param {eventoUpdateArgs} args - Arguments to update one Evento.
    * @example
    * // Update one Evento
    * const evento = await prisma.evento.update({
@@ -694,11 +698,11 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  update<T extends EventoUpdateArgs>(args: Prisma.SelectSubset<T, EventoUpdateArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends eventoUpdateArgs>(args: Prisma.SelectSubset<T, eventoUpdateArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Eventos.
-   * @param {EventoDeleteManyArgs} args - Arguments to filter Eventos to delete.
+   * @param {eventoDeleteManyArgs} args - Arguments to filter Eventos to delete.
    * @example
    * // Delete a few Eventos
    * const { count } = await prisma.evento.deleteMany({
@@ -708,13 +712,13 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  deleteMany<T extends EventoDeleteManyArgs>(args?: Prisma.SelectSubset<T, EventoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends eventoDeleteManyArgs>(args?: Prisma.SelectSubset<T, eventoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Eventos.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {EventoUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {eventoUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Eventos
    * const evento = await prisma.evento.updateMany({
@@ -727,11 +731,11 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * })
    * 
    */
-  updateMany<T extends EventoUpdateManyArgs>(args: Prisma.SelectSubset<T, EventoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends eventoUpdateManyArgs>(args: Prisma.SelectSubset<T, eventoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create or update one Evento.
-   * @param {EventoUpsertArgs} args - Arguments to update or create a Evento.
+   * @param {eventoUpsertArgs} args - Arguments to update or create a Evento.
    * @example
    * // Update or create a Evento
    * const evento = await prisma.evento.upsert({
@@ -746,14 +750,14 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
    */
-  upsert<T extends EventoUpsertArgs>(args: Prisma.SelectSubset<T, EventoUpsertArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends eventoUpsertArgs>(args: Prisma.SelectSubset<T, eventoUpsertArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Eventos.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {EventoCountArgs} args - Arguments to filter Eventos to count.
+   * @param {eventoCountArgs} args - Arguments to filter Eventos to count.
    * @example
    * // Count the number of Eventos
    * const count = await prisma.evento.count({
@@ -762,8 +766,8 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    *   }
    * })
   **/
-  count<T extends EventoCountArgs>(
-    args?: Prisma.Subset<T, EventoCountArgs>,
+  count<T extends eventoCountArgs>(
+    args?: Prisma.Subset<T, eventoCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -802,7 +806,7 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * Group by Evento.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {EventoGroupByArgs} args - Group by arguments.
+   * @param {eventoGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -817,14 +821,14 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
    * 
   **/
   groupBy<
-    T extends EventoGroupByArgs,
+    T extends eventoGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: EventoGroupByArgs['orderBy'] }
-      : { orderBy?: EventoGroupByArgs['orderBy'] },
+      ? { orderBy: eventoGroupByArgs['orderBy'] }
+      : { orderBy?: eventoGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -873,22 +877,22 @@ export interface EventoDelegate<ExtArgs extends runtime.Types.Extensions.Interna
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, EventoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, eventoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the Evento model
+ * Fields of the evento model
  */
-readonly fields: EventoFieldRefs;
+readonly fields: eventoFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for Evento.
+ * The delegate class that acts as a "Promise-like" for evento.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__EventoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__eventoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  evento<T extends Prisma.Evento$eventoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Evento$eventoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  inscrito<T extends Prisma.evento$inscritoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.evento$inscritoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -915,400 +919,400 @@ export interface Prisma__EventoClient<T, Null = never, ExtArgs extends runtime.T
 
 
 /**
- * Fields of the Evento model
+ * Fields of the evento model
  */
-export interface EventoFieldRefs {
-  readonly id: Prisma.FieldRef<"Evento", 'Int'>
-  readonly titulo: Prisma.FieldRef<"Evento", 'String'>
-  readonly fecha: Prisma.FieldRef<"Evento", 'DateTime'>
-  readonly lugar: Prisma.FieldRef<"Evento", 'String'>
-  readonly imagen: Prisma.FieldRef<"Evento", 'String'>
-  readonly valor: Prisma.FieldRef<"Evento", 'Float'>
+export interface eventoFieldRefs {
+  readonly id: Prisma.FieldRef<"evento", 'Int'>
+  readonly titulo: Prisma.FieldRef<"evento", 'String'>
+  readonly fecha: Prisma.FieldRef<"evento", 'DateTime'>
+  readonly lugar: Prisma.FieldRef<"evento", 'String'>
+  readonly imagen: Prisma.FieldRef<"evento", 'String'>
+  readonly valor: Prisma.FieldRef<"evento", 'Float'>
 }
     
 
 // Custom InputTypes
 /**
- * Evento findUnique
+ * evento findUnique
  */
-export type EventoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * Filter, which Evento to fetch.
+   * Filter, which evento to fetch.
    */
-  where: Prisma.EventoWhereUniqueInput
+  where: Prisma.eventoWhereUniqueInput
 }
 
 /**
- * Evento findUniqueOrThrow
+ * evento findUniqueOrThrow
  */
-export type EventoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * Filter, which Evento to fetch.
+   * Filter, which evento to fetch.
    */
-  where: Prisma.EventoWhereUniqueInput
+  where: Prisma.eventoWhereUniqueInput
 }
 
 /**
- * Evento findFirst
+ * evento findFirst
  */
-export type EventoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * Filter, which Evento to fetch.
+   * Filter, which evento to fetch.
    */
-  where?: Prisma.EventoWhereInput
+  where?: Prisma.eventoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Eventos to fetch.
+   * Determine the order of eventos to fetch.
    */
-  orderBy?: Prisma.EventoOrderByWithRelationInput | Prisma.EventoOrderByWithRelationInput[]
+  orderBy?: Prisma.eventoOrderByWithRelationInput | Prisma.eventoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Eventos.
+   * Sets the position for searching for eventos.
    */
-  cursor?: Prisma.EventoWhereUniqueInput
+  cursor?: Prisma.eventoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Eventos from the position of the cursor.
+   * Take `±n` eventos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Eventos.
+   * Skip the first `n` eventos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Eventos.
+   * Filter by unique combinations of eventos.
    */
   distinct?: Prisma.EventoScalarFieldEnum | Prisma.EventoScalarFieldEnum[]
 }
 
 /**
- * Evento findFirstOrThrow
+ * evento findFirstOrThrow
  */
-export type EventoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * Filter, which Evento to fetch.
+   * Filter, which evento to fetch.
    */
-  where?: Prisma.EventoWhereInput
+  where?: Prisma.eventoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Eventos to fetch.
+   * Determine the order of eventos to fetch.
    */
-  orderBy?: Prisma.EventoOrderByWithRelationInput | Prisma.EventoOrderByWithRelationInput[]
+  orderBy?: Prisma.eventoOrderByWithRelationInput | Prisma.eventoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Eventos.
+   * Sets the position for searching for eventos.
    */
-  cursor?: Prisma.EventoWhereUniqueInput
+  cursor?: Prisma.eventoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Eventos from the position of the cursor.
+   * Take `±n` eventos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Eventos.
+   * Skip the first `n` eventos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Eventos.
+   * Filter by unique combinations of eventos.
    */
   distinct?: Prisma.EventoScalarFieldEnum | Prisma.EventoScalarFieldEnum[]
 }
 
 /**
- * Evento findMany
+ * evento findMany
  */
-export type EventoFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * Filter, which Eventos to fetch.
+   * Filter, which eventos to fetch.
    */
-  where?: Prisma.EventoWhereInput
+  where?: Prisma.eventoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Eventos to fetch.
+   * Determine the order of eventos to fetch.
    */
-  orderBy?: Prisma.EventoOrderByWithRelationInput | Prisma.EventoOrderByWithRelationInput[]
+  orderBy?: Prisma.eventoOrderByWithRelationInput | Prisma.eventoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing Eventos.
+   * Sets the position for listing eventos.
    */
-  cursor?: Prisma.EventoWhereUniqueInput
+  cursor?: Prisma.eventoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Eventos from the position of the cursor.
+   * Take `±n` eventos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Eventos.
+   * Skip the first `n` eventos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Eventos.
+   * Filter by unique combinations of eventos.
    */
   distinct?: Prisma.EventoScalarFieldEnum | Prisma.EventoScalarFieldEnum[]
 }
 
 /**
- * Evento create
+ * evento create
  */
-export type EventoCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * The data needed to create a Evento.
+   * The data needed to create a evento.
    */
-  data: Prisma.XOR<Prisma.EventoCreateInput, Prisma.EventoUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.eventoCreateInput, Prisma.eventoUncheckedCreateInput>
 }
 
 /**
- * Evento createMany
+ * evento createMany
  */
-export type EventoCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many Eventos.
+   * The data used to create many eventos.
    */
-  data: Prisma.EventoCreateManyInput | Prisma.EventoCreateManyInput[]
+  data: Prisma.eventoCreateManyInput | Prisma.eventoCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * Evento update
+ * evento update
  */
-export type EventoUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * The data needed to update a Evento.
+   * The data needed to update a evento.
    */
-  data: Prisma.XOR<Prisma.EventoUpdateInput, Prisma.EventoUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.eventoUpdateInput, Prisma.eventoUncheckedUpdateInput>
   /**
-   * Choose, which Evento to update.
+   * Choose, which evento to update.
    */
-  where: Prisma.EventoWhereUniqueInput
+  where: Prisma.eventoWhereUniqueInput
 }
 
 /**
- * Evento updateMany
+ * evento updateMany
  */
-export type EventoUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update Eventos.
+   * The data used to update eventos.
    */
-  data: Prisma.XOR<Prisma.EventoUpdateManyMutationInput, Prisma.EventoUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.eventoUpdateManyMutationInput, Prisma.eventoUncheckedUpdateManyInput>
   /**
-   * Filter which Eventos to update
+   * Filter which eventos to update
    */
-  where?: Prisma.EventoWhereInput
+  where?: Prisma.eventoWhereInput
   /**
-   * Limit how many Eventos to update.
+   * Limit how many eventos to update.
    */
   limit?: number
 }
 
 /**
- * Evento upsert
+ * evento upsert
  */
-export type EventoUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * The filter to search for the Evento to update in case it exists.
+   * The filter to search for the evento to update in case it exists.
    */
-  where: Prisma.EventoWhereUniqueInput
+  where: Prisma.eventoWhereUniqueInput
   /**
-   * In case the Evento found by the `where` argument doesn't exist, create a new Evento with this data.
+   * In case the evento found by the `where` argument doesn't exist, create a new evento with this data.
    */
-  create: Prisma.XOR<Prisma.EventoCreateInput, Prisma.EventoUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.eventoCreateInput, Prisma.eventoUncheckedCreateInput>
   /**
-   * In case the Evento was found with the provided `where` argument, update it with this data.
+   * In case the evento was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.EventoUpdateInput, Prisma.EventoUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.eventoUpdateInput, Prisma.eventoUncheckedUpdateInput>
 }
 
 /**
- * Evento delete
+ * evento delete
  */
-export type EventoDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
   /**
-   * Filter which Evento to delete.
+   * Filter which evento to delete.
    */
-  where: Prisma.EventoWhereUniqueInput
+  where: Prisma.eventoWhereUniqueInput
 }
 
 /**
- * Evento deleteMany
+ * evento deleteMany
  */
-export type EventoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Eventos to delete
+   * Filter which eventos to delete
    */
-  where?: Prisma.EventoWhereInput
+  where?: Prisma.eventoWhereInput
   /**
-   * Limit how many Eventos to delete.
+   * Limit how many eventos to delete.
    */
   limit?: number
 }
 
 /**
- * Evento.evento
+ * evento.inscrito
  */
-export type Evento$eventoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type evento$inscritoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
-  where?: Prisma.InscritoWhereInput
-  orderBy?: Prisma.InscritoOrderByWithRelationInput | Prisma.InscritoOrderByWithRelationInput[]
-  cursor?: Prisma.InscritoWhereUniqueInput
+  include?: Prisma.inscritoInclude<ExtArgs> | null
+  where?: Prisma.inscritoWhereInput
+  orderBy?: Prisma.inscritoOrderByWithRelationInput | Prisma.inscritoOrderByWithRelationInput[]
+  cursor?: Prisma.inscritoWhereUniqueInput
   take?: number
   skip?: number
   distinct?: Prisma.InscritoScalarFieldEnum | Prisma.InscritoScalarFieldEnum[]
 }
 
 /**
- * Evento without action
+ * evento without action
  */
-export type EventoDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type eventoDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Evento
+   * Select specific fields to fetch from the evento
    */
-  select?: Prisma.EventoSelect<ExtArgs> | null
+  select?: Prisma.eventoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Evento
+   * Omit specific fields from the evento
    */
-  omit?: Prisma.EventoOmit<ExtArgs> | null
+  omit?: Prisma.eventoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.EventoInclude<ExtArgs> | null
+  include?: Prisma.eventoInclude<ExtArgs> | null
 }

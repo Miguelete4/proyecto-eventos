@@ -28,7 +28,7 @@ const staff = async () => {
         <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
             <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
 
-                <h1 class="text-2xl font-black tracking-wider text-primary-500 uppercase">
+                <h1 class="text-2xl font-black tracking-wider text-purple-600 uppercase">
                     SMARTS EVENTS
                 </h1>
 
@@ -38,9 +38,9 @@ const staff = async () => {
                         Administrar Staff
                     </UButton>
 
-                    <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-3 ">
 
-                        <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
+                        <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg ">
                             {{ adminNombre }} {{ adminApellido }}
                         </span>
 
@@ -62,20 +62,21 @@ const staff = async () => {
                 <!-- LISTA DE EVENTOS -->
                 <div class="lg:col-span-2">
 
-                    <h2 class="text-3xl font-bold mb-2">
+                    <h2 class="text-3xl font-bold mb-2 text-purple-600 ">
                         Eventos disponibles
                     </h2>
 
                     <p class="text-gray-400 mb-6">
                         Ordenar por:
+                        <USelect class="w-40 mb-8" :items="[
+                            'Nombre (A-Z)',
+                            'Nombre (Z-A)',
+                            'Fecha',
+                            'Valor'
+                        ]" />
                     </p>
 
-                    <USelect class="w-64 mb-8" :items="[
-                        'Nombre (A-Z)',
-                        'Nombre (Z-A)',
-                        'Fecha',
-                        'Valor'
-                    ]" />
+
 
                     <div class="grid md:grid-cols-2 gap-6">
 
@@ -98,14 +99,6 @@ const staff = async () => {
                                 <p>$15.000</p>
 
                                 <p>40 inscritos</p>
-
-                            </div>
-
-                            <div class="flex gap-3 mt-6">
-
-                                <UButton color="error" block>
-                                    Eliminar
-                                </UButton>
 
                             </div>
 
@@ -133,14 +126,6 @@ const staff = async () => {
 
                             </div>
 
-                            <div class="mt-6">
-
-                                <UButton color="error" block>
-                                    Eliminar
-                                </UButton>
-
-                            </div>
-
                         </UCard>
 
                     </div>
@@ -153,7 +138,7 @@ const staff = async () => {
 
                 <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
-                    <h2 class="text-2xl font-bold mb-6">
+                    <h2 class="text-2xl font-bold mb-6 text-purple-600 ">
                         Agregar evento
                     </h2>
 

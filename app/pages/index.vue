@@ -28,10 +28,6 @@ const consultarEventos = () => {
                  pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
                 <div class="flex items-center justify-center text-center gap-5 mx-4">
 
-                    <!-- Pagina para el staff al inicar sesion -->
-                    <a class="text-purple-600 hover:text-blue-600 transition-colors"
-                        href="/administracion">Administración</a>
-
                 </div>
 
                 <div class="flex justify-center md:justify-end p-4">
@@ -97,10 +93,10 @@ const consultarEventos = () => {
                             <div
                                 class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
 
-                                <p class="flex items-center gap-1">📅 15 Oct 2026</p>
-                                <p class="flex items-center gap-1">🕒 10:00</p>
-                                <p class="flex items-center gap-1">📍 Valparaíso</p>
-                                <p class="flex items-center gap-1">💲 Gratis</p>
+                                <p class="flex items-center gap-1">15 Oct 2026</p>
+                                <p class="flex items-center gap-1">10:00</p>
+                                <p class="flex items-center gap-1">Valparaíso</p>
+                                <p class="flex items-center gap-1">Gratis</p>
 
                             </div>
 
@@ -109,7 +105,7 @@ const consultarEventos = () => {
                                     $15.000
                                 </span>
                                 <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    👥 32 inscritos
+                                    32 inscritos
                                 </span>
                             </div>
 
@@ -136,10 +132,10 @@ const consultarEventos = () => {
                             <div
                                 class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
 
-                                <p class="flex items-center gap-1">📅 28 Octubre 2026</p>
-                                <p class="flex items-center gap-1">🕒 10:00</p>
-                                <p class="flex items-center gap-1">📍 Santiago</p>
-                                <p class="flex items-center gap-1">💲 Gratis</p>
+                                <p class="flex items-center gap-1">28 Octubre 2026</p>
+                                <p class="flex items-center gap-1">10:00</p>
+                                <p class="flex items-center gap-1">Santiago</p>
+                                <p class="flex items-center gap-1">Gratis</p>
 
                             </div>
 
@@ -177,13 +173,13 @@ const consultarEventos = () => {
                             <div
                                 class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
                                 <p class="flex items-center gap-1">
-                                    <span>📅</span> 15 Oct 2026
+                                    <span></span> 15 Oct 2026
                                 </p>
                                 <p class="flex items-center gap-1">
-                                    <span>🕒</span> 18:00 hrs
+                                    <span></span> 18:00 hrs
                                 </p>
                                 <p class="flex items-center gap-1 col-span-2 truncate">
-                                    <span>📍</span> Valparaíso
+                                    <span></span> Valparaíso
                                 </p>
                             </div>
 
@@ -192,7 +188,7 @@ const consultarEventos = () => {
                                     $15.000
                                 </span>
                                 <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    👥 32 inscritos
+                                     32 inscritos
                                 </span>
                             </div>
 

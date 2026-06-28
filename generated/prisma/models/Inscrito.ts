@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `Inscrito` model and its related types.
+ * This file exports the `inscrito` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,10 +13,10 @@ import type * as $Enums from "../enums.js"
 import type * as Prisma from "../internal/prismaNamespace.js"
 
 /**
- * Model Inscrito
+ * Model inscrito
  * 
  */
-export type InscritoModel = runtime.Types.Result.DefaultSelection<Prisma.$InscritoPayload>
+export type inscritoModel = runtime.Types.Result.DefaultSelection<Prisma.$inscritoPayload>
 
 export type AggregateInscrito = {
   _count: InscritoCountAggregateOutputType | null
@@ -99,37 +99,37 @@ export type InscritoCountAggregateInputType = {
 
 export type InscritoAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Inscrito to aggregate.
+   * Filter which inscrito to aggregate.
    */
-  where?: Prisma.InscritoWhereInput
+  where?: Prisma.inscritoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Inscritos to fetch.
+   * Determine the order of inscritos to fetch.
    */
-  orderBy?: Prisma.InscritoOrderByWithRelationInput | Prisma.InscritoOrderByWithRelationInput[]
+  orderBy?: Prisma.inscritoOrderByWithRelationInput | Prisma.inscritoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.InscritoWhereUniqueInput
+  cursor?: Prisma.inscritoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Inscritos from the position of the cursor.
+   * Take `±n` inscritos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Inscritos.
+   * Skip the first `n` inscritos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned Inscritos
+   * Count returned inscritos
   **/
   _count?: true | InscritoCountAggregateInputType
   /**
@@ -169,11 +169,11 @@ export type GetInscritoAggregateType<T extends InscritoAggregateArgs> = {
 
 
 
-export type InscritoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.InscritoWhereInput
-  orderBy?: Prisma.InscritoOrderByWithAggregationInput | Prisma.InscritoOrderByWithAggregationInput[]
+export type inscritoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.inscritoWhereInput
+  orderBy?: Prisma.inscritoOrderByWithAggregationInput | Prisma.inscritoOrderByWithAggregationInput[]
   by: Prisma.InscritoScalarFieldEnum[] | Prisma.InscritoScalarFieldEnum
-  having?: Prisma.InscritoScalarWhereWithAggregatesInput
+  having?: Prisma.inscritoScalarWhereWithAggregatesInput
   take?: number
   skip?: number
   _count?: InscritoCountAggregateInputType | true
@@ -196,7 +196,7 @@ export type InscritoGroupByOutputType = {
   _max: InscritoMaxAggregateOutputType | null
 }
 
-export type GetInscritoGroupByPayload<T extends InscritoGroupByArgs> = Prisma.PrismaPromise<
+export type GetInscritoGroupByPayload<T extends inscritoGroupByArgs> = Prisma.PrismaPromise<
   Array<
     Prisma.PickEnumerable<InscritoGroupByOutputType, T['by']> &
       {
@@ -211,72 +211,72 @@ export type GetInscritoGroupByPayload<T extends InscritoGroupByArgs> = Prisma.Pr
 
 
 
-export type InscritoWhereInput = {
-  AND?: Prisma.InscritoWhereInput | Prisma.InscritoWhereInput[]
-  OR?: Prisma.InscritoWhereInput[]
-  NOT?: Prisma.InscritoWhereInput | Prisma.InscritoWhereInput[]
-  id?: Prisma.IntFilter<"Inscrito"> | number
-  email?: Prisma.StringFilter<"Inscrito"> | string
-  nombre?: Prisma.StringFilter<"Inscrito"> | string
-  apellido?: Prisma.StringFilter<"Inscrito"> | string
-  eventoId?: Prisma.IntFilter<"Inscrito"> | number
-  evento?: Prisma.XOR<Prisma.EventoScalarRelationFilter, Prisma.EventoWhereInput>
+export type inscritoWhereInput = {
+  AND?: Prisma.inscritoWhereInput | Prisma.inscritoWhereInput[]
+  OR?: Prisma.inscritoWhereInput[]
+  NOT?: Prisma.inscritoWhereInput | Prisma.inscritoWhereInput[]
+  id?: Prisma.IntFilter<"inscrito"> | number
+  email?: Prisma.StringFilter<"inscrito"> | string
+  nombre?: Prisma.StringFilter<"inscrito"> | string
+  apellido?: Prisma.StringFilter<"inscrito"> | string
+  eventoId?: Prisma.IntFilter<"inscrito"> | number
+  evento?: Prisma.XOR<Prisma.EventoScalarRelationFilter, Prisma.eventoWhereInput>
 }
 
-export type InscritoOrderByWithRelationInput = {
+export type inscritoOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   eventoId?: Prisma.SortOrder
-  evento?: Prisma.EventoOrderByWithRelationInput
-  _relevance?: Prisma.InscritoOrderByRelevanceInput
+  evento?: Prisma.eventoOrderByWithRelationInput
+  _relevance?: Prisma.inscritoOrderByRelevanceInput
 }
 
-export type InscritoWhereUniqueInput = Prisma.AtLeast<{
+export type inscritoWhereUniqueInput = Prisma.AtLeast<{
   id?: number
-  AND?: Prisma.InscritoWhereInput | Prisma.InscritoWhereInput[]
-  OR?: Prisma.InscritoWhereInput[]
-  NOT?: Prisma.InscritoWhereInput | Prisma.InscritoWhereInput[]
-  email?: Prisma.StringFilter<"Inscrito"> | string
-  nombre?: Prisma.StringFilter<"Inscrito"> | string
-  apellido?: Prisma.StringFilter<"Inscrito"> | string
-  eventoId?: Prisma.IntFilter<"Inscrito"> | number
-  evento?: Prisma.XOR<Prisma.EventoScalarRelationFilter, Prisma.EventoWhereInput>
+  AND?: Prisma.inscritoWhereInput | Prisma.inscritoWhereInput[]
+  OR?: Prisma.inscritoWhereInput[]
+  NOT?: Prisma.inscritoWhereInput | Prisma.inscritoWhereInput[]
+  email?: Prisma.StringFilter<"inscrito"> | string
+  nombre?: Prisma.StringFilter<"inscrito"> | string
+  apellido?: Prisma.StringFilter<"inscrito"> | string
+  eventoId?: Prisma.IntFilter<"inscrito"> | number
+  evento?: Prisma.XOR<Prisma.EventoScalarRelationFilter, Prisma.eventoWhereInput>
 }, "id">
 
-export type InscritoOrderByWithAggregationInput = {
+export type inscritoOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   apellido?: Prisma.SortOrder
   eventoId?: Prisma.SortOrder
-  _count?: Prisma.InscritoCountOrderByAggregateInput
-  _avg?: Prisma.InscritoAvgOrderByAggregateInput
-  _max?: Prisma.InscritoMaxOrderByAggregateInput
-  _min?: Prisma.InscritoMinOrderByAggregateInput
-  _sum?: Prisma.InscritoSumOrderByAggregateInput
+  _count?: Prisma.inscritoCountOrderByAggregateInput
+  _avg?: Prisma.inscritoAvgOrderByAggregateInput
+  _max?: Prisma.inscritoMaxOrderByAggregateInput
+  _min?: Prisma.inscritoMinOrderByAggregateInput
+  _sum?: Prisma.inscritoSumOrderByAggregateInput
 }
 
-export type InscritoScalarWhereWithAggregatesInput = {
-  AND?: Prisma.InscritoScalarWhereWithAggregatesInput | Prisma.InscritoScalarWhereWithAggregatesInput[]
-  OR?: Prisma.InscritoScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.InscritoScalarWhereWithAggregatesInput | Prisma.InscritoScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"Inscrito"> | number
-  email?: Prisma.StringWithAggregatesFilter<"Inscrito"> | string
-  nombre?: Prisma.StringWithAggregatesFilter<"Inscrito"> | string
-  apellido?: Prisma.StringWithAggregatesFilter<"Inscrito"> | string
-  eventoId?: Prisma.IntWithAggregatesFilter<"Inscrito"> | number
+export type inscritoScalarWhereWithAggregatesInput = {
+  AND?: Prisma.inscritoScalarWhereWithAggregatesInput | Prisma.inscritoScalarWhereWithAggregatesInput[]
+  OR?: Prisma.inscritoScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.inscritoScalarWhereWithAggregatesInput | Prisma.inscritoScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"inscrito"> | number
+  email?: Prisma.StringWithAggregatesFilter<"inscrito"> | string
+  nombre?: Prisma.StringWithAggregatesFilter<"inscrito"> | string
+  apellido?: Prisma.StringWithAggregatesFilter<"inscrito"> | string
+  eventoId?: Prisma.IntWithAggregatesFilter<"inscrito"> | number
 }
 
-export type InscritoCreateInput = {
+export type inscritoCreateInput = {
   email: string
   nombre: string
   apellido: string
-  evento: Prisma.EventoCreateNestedOneWithoutEventoInput
+  evento: Prisma.eventoCreateNestedOneWithoutInscritoInput
 }
 
-export type InscritoUncheckedCreateInput = {
+export type inscritoUncheckedCreateInput = {
   id?: number
   email: string
   nombre: string
@@ -284,14 +284,14 @@ export type InscritoUncheckedCreateInput = {
   eventoId: number
 }
 
-export type InscritoUpdateInput = {
+export type inscritoUpdateInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
-  evento?: Prisma.EventoUpdateOneRequiredWithoutEventoNestedInput
+  evento?: Prisma.eventoUpdateOneRequiredWithoutInscritoNestedInput
 }
 
-export type InscritoUncheckedUpdateInput = {
+export type inscritoUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
@@ -299,7 +299,7 @@ export type InscritoUncheckedUpdateInput = {
   eventoId?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type InscritoCreateManyInput = {
+export type inscritoCreateManyInput = {
   id?: number
   email: string
   nombre: string
@@ -307,13 +307,13 @@ export type InscritoCreateManyInput = {
   eventoId: number
 }
 
-export type InscritoUpdateManyMutationInput = {
+export type inscritoUpdateManyMutationInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type InscritoUncheckedUpdateManyInput = {
+export type inscritoUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
@@ -322,22 +322,22 @@ export type InscritoUncheckedUpdateManyInput = {
 }
 
 export type InscritoListRelationFilter = {
-  every?: Prisma.InscritoWhereInput
-  some?: Prisma.InscritoWhereInput
-  none?: Prisma.InscritoWhereInput
+  every?: Prisma.inscritoWhereInput
+  some?: Prisma.inscritoWhereInput
+  none?: Prisma.inscritoWhereInput
 }
 
-export type InscritoOrderByRelationAggregateInput = {
+export type inscritoOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
-export type InscritoOrderByRelevanceInput = {
-  fields: Prisma.InscritoOrderByRelevanceFieldEnum | Prisma.InscritoOrderByRelevanceFieldEnum[]
+export type inscritoOrderByRelevanceInput = {
+  fields: Prisma.inscritoOrderByRelevanceFieldEnum | Prisma.inscritoOrderByRelevanceFieldEnum[]
   sort: Prisma.SortOrder
   search: string
 }
 
-export type InscritoCountOrderByAggregateInput = {
+export type inscritoCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
@@ -345,20 +345,12 @@ export type InscritoCountOrderByAggregateInput = {
   eventoId?: Prisma.SortOrder
 }
 
-export type InscritoAvgOrderByAggregateInput = {
+export type inscritoAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   eventoId?: Prisma.SortOrder
 }
 
-export type InscritoMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  nombre?: Prisma.SortOrder
-  apellido?: Prisma.SortOrder
-  eventoId?: Prisma.SortOrder
-}
-
-export type InscritoMinOrderByAggregateInput = {
+export type inscritoMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
@@ -366,124 +358,132 @@ export type InscritoMinOrderByAggregateInput = {
   eventoId?: Prisma.SortOrder
 }
 
-export type InscritoSumOrderByAggregateInput = {
+export type inscritoMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  nombre?: Prisma.SortOrder
+  apellido?: Prisma.SortOrder
+  eventoId?: Prisma.SortOrder
+}
+
+export type inscritoSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   eventoId?: Prisma.SortOrder
 }
 
-export type InscritoCreateNestedManyWithoutEventoInput = {
-  create?: Prisma.XOR<Prisma.InscritoCreateWithoutEventoInput, Prisma.InscritoUncheckedCreateWithoutEventoInput> | Prisma.InscritoCreateWithoutEventoInput[] | Prisma.InscritoUncheckedCreateWithoutEventoInput[]
-  connectOrCreate?: Prisma.InscritoCreateOrConnectWithoutEventoInput | Prisma.InscritoCreateOrConnectWithoutEventoInput[]
-  createMany?: Prisma.InscritoCreateManyEventoInputEnvelope
-  connect?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
+export type inscritoCreateNestedManyWithoutEventoInput = {
+  create?: Prisma.XOR<Prisma.inscritoCreateWithoutEventoInput, Prisma.inscritoUncheckedCreateWithoutEventoInput> | Prisma.inscritoCreateWithoutEventoInput[] | Prisma.inscritoUncheckedCreateWithoutEventoInput[]
+  connectOrCreate?: Prisma.inscritoCreateOrConnectWithoutEventoInput | Prisma.inscritoCreateOrConnectWithoutEventoInput[]
+  createMany?: Prisma.inscritoCreateManyEventoInputEnvelope
+  connect?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
 }
 
-export type InscritoUncheckedCreateNestedManyWithoutEventoInput = {
-  create?: Prisma.XOR<Prisma.InscritoCreateWithoutEventoInput, Prisma.InscritoUncheckedCreateWithoutEventoInput> | Prisma.InscritoCreateWithoutEventoInput[] | Prisma.InscritoUncheckedCreateWithoutEventoInput[]
-  connectOrCreate?: Prisma.InscritoCreateOrConnectWithoutEventoInput | Prisma.InscritoCreateOrConnectWithoutEventoInput[]
-  createMany?: Prisma.InscritoCreateManyEventoInputEnvelope
-  connect?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
+export type inscritoUncheckedCreateNestedManyWithoutEventoInput = {
+  create?: Prisma.XOR<Prisma.inscritoCreateWithoutEventoInput, Prisma.inscritoUncheckedCreateWithoutEventoInput> | Prisma.inscritoCreateWithoutEventoInput[] | Prisma.inscritoUncheckedCreateWithoutEventoInput[]
+  connectOrCreate?: Prisma.inscritoCreateOrConnectWithoutEventoInput | Prisma.inscritoCreateOrConnectWithoutEventoInput[]
+  createMany?: Prisma.inscritoCreateManyEventoInputEnvelope
+  connect?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
 }
 
-export type InscritoUpdateManyWithoutEventoNestedInput = {
-  create?: Prisma.XOR<Prisma.InscritoCreateWithoutEventoInput, Prisma.InscritoUncheckedCreateWithoutEventoInput> | Prisma.InscritoCreateWithoutEventoInput[] | Prisma.InscritoUncheckedCreateWithoutEventoInput[]
-  connectOrCreate?: Prisma.InscritoCreateOrConnectWithoutEventoInput | Prisma.InscritoCreateOrConnectWithoutEventoInput[]
-  upsert?: Prisma.InscritoUpsertWithWhereUniqueWithoutEventoInput | Prisma.InscritoUpsertWithWhereUniqueWithoutEventoInput[]
-  createMany?: Prisma.InscritoCreateManyEventoInputEnvelope
-  set?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  disconnect?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  delete?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  connect?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  update?: Prisma.InscritoUpdateWithWhereUniqueWithoutEventoInput | Prisma.InscritoUpdateWithWhereUniqueWithoutEventoInput[]
-  updateMany?: Prisma.InscritoUpdateManyWithWhereWithoutEventoInput | Prisma.InscritoUpdateManyWithWhereWithoutEventoInput[]
-  deleteMany?: Prisma.InscritoScalarWhereInput | Prisma.InscritoScalarWhereInput[]
+export type inscritoUpdateManyWithoutEventoNestedInput = {
+  create?: Prisma.XOR<Prisma.inscritoCreateWithoutEventoInput, Prisma.inscritoUncheckedCreateWithoutEventoInput> | Prisma.inscritoCreateWithoutEventoInput[] | Prisma.inscritoUncheckedCreateWithoutEventoInput[]
+  connectOrCreate?: Prisma.inscritoCreateOrConnectWithoutEventoInput | Prisma.inscritoCreateOrConnectWithoutEventoInput[]
+  upsert?: Prisma.inscritoUpsertWithWhereUniqueWithoutEventoInput | Prisma.inscritoUpsertWithWhereUniqueWithoutEventoInput[]
+  createMany?: Prisma.inscritoCreateManyEventoInputEnvelope
+  set?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  disconnect?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  delete?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  connect?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  update?: Prisma.inscritoUpdateWithWhereUniqueWithoutEventoInput | Prisma.inscritoUpdateWithWhereUniqueWithoutEventoInput[]
+  updateMany?: Prisma.inscritoUpdateManyWithWhereWithoutEventoInput | Prisma.inscritoUpdateManyWithWhereWithoutEventoInput[]
+  deleteMany?: Prisma.inscritoScalarWhereInput | Prisma.inscritoScalarWhereInput[]
 }
 
-export type InscritoUncheckedUpdateManyWithoutEventoNestedInput = {
-  create?: Prisma.XOR<Prisma.InscritoCreateWithoutEventoInput, Prisma.InscritoUncheckedCreateWithoutEventoInput> | Prisma.InscritoCreateWithoutEventoInput[] | Prisma.InscritoUncheckedCreateWithoutEventoInput[]
-  connectOrCreate?: Prisma.InscritoCreateOrConnectWithoutEventoInput | Prisma.InscritoCreateOrConnectWithoutEventoInput[]
-  upsert?: Prisma.InscritoUpsertWithWhereUniqueWithoutEventoInput | Prisma.InscritoUpsertWithWhereUniqueWithoutEventoInput[]
-  createMany?: Prisma.InscritoCreateManyEventoInputEnvelope
-  set?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  disconnect?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  delete?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  connect?: Prisma.InscritoWhereUniqueInput | Prisma.InscritoWhereUniqueInput[]
-  update?: Prisma.InscritoUpdateWithWhereUniqueWithoutEventoInput | Prisma.InscritoUpdateWithWhereUniqueWithoutEventoInput[]
-  updateMany?: Prisma.InscritoUpdateManyWithWhereWithoutEventoInput | Prisma.InscritoUpdateManyWithWhereWithoutEventoInput[]
-  deleteMany?: Prisma.InscritoScalarWhereInput | Prisma.InscritoScalarWhereInput[]
+export type inscritoUncheckedUpdateManyWithoutEventoNestedInput = {
+  create?: Prisma.XOR<Prisma.inscritoCreateWithoutEventoInput, Prisma.inscritoUncheckedCreateWithoutEventoInput> | Prisma.inscritoCreateWithoutEventoInput[] | Prisma.inscritoUncheckedCreateWithoutEventoInput[]
+  connectOrCreate?: Prisma.inscritoCreateOrConnectWithoutEventoInput | Prisma.inscritoCreateOrConnectWithoutEventoInput[]
+  upsert?: Prisma.inscritoUpsertWithWhereUniqueWithoutEventoInput | Prisma.inscritoUpsertWithWhereUniqueWithoutEventoInput[]
+  createMany?: Prisma.inscritoCreateManyEventoInputEnvelope
+  set?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  disconnect?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  delete?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  connect?: Prisma.inscritoWhereUniqueInput | Prisma.inscritoWhereUniqueInput[]
+  update?: Prisma.inscritoUpdateWithWhereUniqueWithoutEventoInput | Prisma.inscritoUpdateWithWhereUniqueWithoutEventoInput[]
+  updateMany?: Prisma.inscritoUpdateManyWithWhereWithoutEventoInput | Prisma.inscritoUpdateManyWithWhereWithoutEventoInput[]
+  deleteMany?: Prisma.inscritoScalarWhereInput | Prisma.inscritoScalarWhereInput[]
 }
 
-export type InscritoCreateWithoutEventoInput = {
+export type inscritoCreateWithoutEventoInput = {
   email: string
   nombre: string
   apellido: string
 }
 
-export type InscritoUncheckedCreateWithoutEventoInput = {
+export type inscritoUncheckedCreateWithoutEventoInput = {
   id?: number
   email: string
   nombre: string
   apellido: string
 }
 
-export type InscritoCreateOrConnectWithoutEventoInput = {
-  where: Prisma.InscritoWhereUniqueInput
-  create: Prisma.XOR<Prisma.InscritoCreateWithoutEventoInput, Prisma.InscritoUncheckedCreateWithoutEventoInput>
+export type inscritoCreateOrConnectWithoutEventoInput = {
+  where: Prisma.inscritoWhereUniqueInput
+  create: Prisma.XOR<Prisma.inscritoCreateWithoutEventoInput, Prisma.inscritoUncheckedCreateWithoutEventoInput>
 }
 
-export type InscritoCreateManyEventoInputEnvelope = {
-  data: Prisma.InscritoCreateManyEventoInput | Prisma.InscritoCreateManyEventoInput[]
+export type inscritoCreateManyEventoInputEnvelope = {
+  data: Prisma.inscritoCreateManyEventoInput | Prisma.inscritoCreateManyEventoInput[]
   skipDuplicates?: boolean
 }
 
-export type InscritoUpsertWithWhereUniqueWithoutEventoInput = {
-  where: Prisma.InscritoWhereUniqueInput
-  update: Prisma.XOR<Prisma.InscritoUpdateWithoutEventoInput, Prisma.InscritoUncheckedUpdateWithoutEventoInput>
-  create: Prisma.XOR<Prisma.InscritoCreateWithoutEventoInput, Prisma.InscritoUncheckedCreateWithoutEventoInput>
+export type inscritoUpsertWithWhereUniqueWithoutEventoInput = {
+  where: Prisma.inscritoWhereUniqueInput
+  update: Prisma.XOR<Prisma.inscritoUpdateWithoutEventoInput, Prisma.inscritoUncheckedUpdateWithoutEventoInput>
+  create: Prisma.XOR<Prisma.inscritoCreateWithoutEventoInput, Prisma.inscritoUncheckedCreateWithoutEventoInput>
 }
 
-export type InscritoUpdateWithWhereUniqueWithoutEventoInput = {
-  where: Prisma.InscritoWhereUniqueInput
-  data: Prisma.XOR<Prisma.InscritoUpdateWithoutEventoInput, Prisma.InscritoUncheckedUpdateWithoutEventoInput>
+export type inscritoUpdateWithWhereUniqueWithoutEventoInput = {
+  where: Prisma.inscritoWhereUniqueInput
+  data: Prisma.XOR<Prisma.inscritoUpdateWithoutEventoInput, Prisma.inscritoUncheckedUpdateWithoutEventoInput>
 }
 
-export type InscritoUpdateManyWithWhereWithoutEventoInput = {
-  where: Prisma.InscritoScalarWhereInput
-  data: Prisma.XOR<Prisma.InscritoUpdateManyMutationInput, Prisma.InscritoUncheckedUpdateManyWithoutEventoInput>
+export type inscritoUpdateManyWithWhereWithoutEventoInput = {
+  where: Prisma.inscritoScalarWhereInput
+  data: Prisma.XOR<Prisma.inscritoUpdateManyMutationInput, Prisma.inscritoUncheckedUpdateManyWithoutEventoInput>
 }
 
-export type InscritoScalarWhereInput = {
-  AND?: Prisma.InscritoScalarWhereInput | Prisma.InscritoScalarWhereInput[]
-  OR?: Prisma.InscritoScalarWhereInput[]
-  NOT?: Prisma.InscritoScalarWhereInput | Prisma.InscritoScalarWhereInput[]
-  id?: Prisma.IntFilter<"Inscrito"> | number
-  email?: Prisma.StringFilter<"Inscrito"> | string
-  nombre?: Prisma.StringFilter<"Inscrito"> | string
-  apellido?: Prisma.StringFilter<"Inscrito"> | string
-  eventoId?: Prisma.IntFilter<"Inscrito"> | number
+export type inscritoScalarWhereInput = {
+  AND?: Prisma.inscritoScalarWhereInput | Prisma.inscritoScalarWhereInput[]
+  OR?: Prisma.inscritoScalarWhereInput[]
+  NOT?: Prisma.inscritoScalarWhereInput | Prisma.inscritoScalarWhereInput[]
+  id?: Prisma.IntFilter<"inscrito"> | number
+  email?: Prisma.StringFilter<"inscrito"> | string
+  nombre?: Prisma.StringFilter<"inscrito"> | string
+  apellido?: Prisma.StringFilter<"inscrito"> | string
+  eventoId?: Prisma.IntFilter<"inscrito"> | number
 }
 
-export type InscritoCreateManyEventoInput = {
+export type inscritoCreateManyEventoInput = {
   id?: number
   email: string
   nombre: string
   apellido: string
 }
 
-export type InscritoUpdateWithoutEventoInput = {
+export type inscritoUpdateWithoutEventoInput = {
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type InscritoUncheckedUpdateWithoutEventoInput = {
+export type inscritoUncheckedUpdateWithoutEventoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   apellido?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
-export type InscritoUncheckedUpdateManyWithoutEventoInput = {
+export type inscritoUncheckedUpdateManyWithoutEventoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   email?: Prisma.StringFieldUpdateOperationsInput | string
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
@@ -492,18 +492,18 @@ export type InscritoUncheckedUpdateManyWithoutEventoInput = {
 
 
 
-export type InscritoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type inscritoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   email?: boolean
   nombre?: boolean
   apellido?: boolean
   eventoId?: boolean
-  evento?: boolean | Prisma.EventoDefaultArgs<ExtArgs>
+  evento?: boolean | Prisma.eventoDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["inscrito"]>
 
 
 
-export type InscritoSelectScalar = {
+export type inscritoSelectScalar = {
   id?: boolean
   email?: boolean
   nombre?: boolean
@@ -511,15 +511,15 @@ export type InscritoSelectScalar = {
   eventoId?: boolean
 }
 
-export type InscritoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "nombre" | "apellido" | "eventoId", ExtArgs["result"]["inscrito"]>
-export type InscritoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  evento?: boolean | Prisma.EventoDefaultArgs<ExtArgs>
+export type inscritoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "email" | "nombre" | "apellido" | "eventoId", ExtArgs["result"]["inscrito"]>
+export type inscritoInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  evento?: boolean | Prisma.eventoDefaultArgs<ExtArgs>
 }
 
-export type $InscritoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "Inscrito"
+export type $inscritoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "inscrito"
   objects: {
-    evento: Prisma.$EventoPayload<ExtArgs>
+    evento: Prisma.$eventoPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -531,18 +531,18 @@ export type $InscritoPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   composites: {}
 }
 
-export type InscritoGetPayload<S extends boolean | null | undefined | InscritoDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$InscritoPayload, S>
+export type inscritoGetPayload<S extends boolean | null | undefined | inscritoDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$inscritoPayload, S>
 
-export type InscritoCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<InscritoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+export type inscritoCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<inscritoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
     select?: InscritoCountAggregateInputType | true
   }
 
-export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Inscrito'], meta: { name: 'Inscrito' } }
+export interface inscritoDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['inscrito'], meta: { name: 'inscrito' } }
   /**
    * Find zero or one Inscrito that matches the filter.
-   * @param {InscritoFindUniqueArgs} args - Arguments to find a Inscrito
+   * @param {inscritoFindUniqueArgs} args - Arguments to find a Inscrito
    * @example
    * // Get one Inscrito
    * const inscrito = await prisma.inscrito.findUnique({
@@ -551,12 +551,12 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   }
    * })
    */
-  findUnique<T extends InscritoFindUniqueArgs>(args: Prisma.SelectSubset<T, InscritoFindUniqueArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends inscritoFindUniqueArgs>(args: Prisma.SelectSubset<T, inscritoFindUniqueArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find one Inscrito that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {InscritoFindUniqueOrThrowArgs} args - Arguments to find a Inscrito
+   * @param {inscritoFindUniqueOrThrowArgs} args - Arguments to find a Inscrito
    * @example
    * // Get one Inscrito
    * const inscrito = await prisma.inscrito.findUniqueOrThrow({
@@ -565,13 +565,13 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   }
    * })
    */
-  findUniqueOrThrow<T extends InscritoFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, InscritoFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends inscritoFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, inscritoFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Inscrito that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {InscritoFindFirstArgs} args - Arguments to find a Inscrito
+   * @param {inscritoFindFirstArgs} args - Arguments to find a Inscrito
    * @example
    * // Get one Inscrito
    * const inscrito = await prisma.inscrito.findFirst({
@@ -580,14 +580,14 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   }
    * })
    */
-  findFirst<T extends InscritoFindFirstArgs>(args?: Prisma.SelectSubset<T, InscritoFindFirstArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends inscritoFindFirstArgs>(args?: Prisma.SelectSubset<T, inscritoFindFirstArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find the first Inscrito that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {InscritoFindFirstOrThrowArgs} args - Arguments to find a Inscrito
+   * @param {inscritoFindFirstOrThrowArgs} args - Arguments to find a Inscrito
    * @example
    * // Get one Inscrito
    * const inscrito = await prisma.inscrito.findFirstOrThrow({
@@ -596,13 +596,13 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   }
    * })
    */
-  findFirstOrThrow<T extends InscritoFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, InscritoFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends inscritoFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, inscritoFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Find zero or more Inscritos that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {InscritoFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {inscritoFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Inscritos
    * const inscritos = await prisma.inscrito.findMany()
@@ -614,11 +614,11 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * const inscritoWithIdOnly = await prisma.inscrito.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends InscritoFindManyArgs>(args?: Prisma.SelectSubset<T, InscritoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends inscritoFindManyArgs>(args?: Prisma.SelectSubset<T, inscritoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
    * Create a Inscrito.
-   * @param {InscritoCreateArgs} args - Arguments to create a Inscrito.
+   * @param {inscritoCreateArgs} args - Arguments to create a Inscrito.
    * @example
    * // Create one Inscrito
    * const Inscrito = await prisma.inscrito.create({
@@ -628,11 +628,11 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * })
    * 
    */
-  create<T extends InscritoCreateArgs>(args: Prisma.SelectSubset<T, InscritoCreateArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends inscritoCreateArgs>(args: Prisma.SelectSubset<T, inscritoCreateArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Create many Inscritos.
-   * @param {InscritoCreateManyArgs} args - Arguments to create many Inscritos.
+   * @param {inscritoCreateManyArgs} args - Arguments to create many Inscritos.
    * @example
    * // Create many Inscritos
    * const inscrito = await prisma.inscrito.createMany({
@@ -642,11 +642,11 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * })
    *     
    */
-  createMany<T extends InscritoCreateManyArgs>(args?: Prisma.SelectSubset<T, InscritoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends inscritoCreateManyArgs>(args?: Prisma.SelectSubset<T, inscritoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Delete a Inscrito.
-   * @param {InscritoDeleteArgs} args - Arguments to delete one Inscrito.
+   * @param {inscritoDeleteArgs} args - Arguments to delete one Inscrito.
    * @example
    * // Delete one Inscrito
    * const Inscrito = await prisma.inscrito.delete({
@@ -656,11 +656,11 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * })
    * 
    */
-  delete<T extends InscritoDeleteArgs>(args: Prisma.SelectSubset<T, InscritoDeleteArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends inscritoDeleteArgs>(args: Prisma.SelectSubset<T, inscritoDeleteArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Update one Inscrito.
-   * @param {InscritoUpdateArgs} args - Arguments to update one Inscrito.
+   * @param {inscritoUpdateArgs} args - Arguments to update one Inscrito.
    * @example
    * // Update one Inscrito
    * const inscrito = await prisma.inscrito.update({
@@ -673,11 +673,11 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * })
    * 
    */
-  update<T extends InscritoUpdateArgs>(args: Prisma.SelectSubset<T, InscritoUpdateArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends inscritoUpdateArgs>(args: Prisma.SelectSubset<T, inscritoUpdateArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
    * Delete zero or more Inscritos.
-   * @param {InscritoDeleteManyArgs} args - Arguments to filter Inscritos to delete.
+   * @param {inscritoDeleteManyArgs} args - Arguments to filter Inscritos to delete.
    * @example
    * // Delete a few Inscritos
    * const { count } = await prisma.inscrito.deleteMany({
@@ -687,13 +687,13 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * })
    * 
    */
-  deleteMany<T extends InscritoDeleteManyArgs>(args?: Prisma.SelectSubset<T, InscritoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends inscritoDeleteManyArgs>(args?: Prisma.SelectSubset<T, inscritoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Update zero or more Inscritos.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {InscritoUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {inscritoUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Inscritos
    * const inscrito = await prisma.inscrito.updateMany({
@@ -706,11 +706,11 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * })
    * 
    */
-  updateMany<T extends InscritoUpdateManyArgs>(args: Prisma.SelectSubset<T, InscritoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends inscritoUpdateManyArgs>(args: Prisma.SelectSubset<T, inscritoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
    * Create or update one Inscrito.
-   * @param {InscritoUpsertArgs} args - Arguments to update or create a Inscrito.
+   * @param {inscritoUpsertArgs} args - Arguments to update or create a Inscrito.
    * @example
    * // Update or create a Inscrito
    * const inscrito = await prisma.inscrito.upsert({
@@ -725,14 +725,14 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   }
    * })
    */
-  upsert<T extends InscritoUpsertArgs>(args: Prisma.SelectSubset<T, InscritoUpsertArgs<ExtArgs>>): Prisma.Prisma__InscritoClient<runtime.Types.Result.GetResult<Prisma.$InscritoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends inscritoUpsertArgs>(args: Prisma.SelectSubset<T, inscritoUpsertArgs<ExtArgs>>): Prisma.Prisma__inscritoClient<runtime.Types.Result.GetResult<Prisma.$inscritoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
    * Count the number of Inscritos.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {InscritoCountArgs} args - Arguments to filter Inscritos to count.
+   * @param {inscritoCountArgs} args - Arguments to filter Inscritos to count.
    * @example
    * // Count the number of Inscritos
    * const count = await prisma.inscrito.count({
@@ -741,8 +741,8 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    *   }
    * })
   **/
-  count<T extends InscritoCountArgs>(
-    args?: Prisma.Subset<T, InscritoCountArgs>,
+  count<T extends inscritoCountArgs>(
+    args?: Prisma.Subset<T, inscritoCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
@@ -781,7 +781,7 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * Group by Inscrito.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {InscritoGroupByArgs} args - Group by arguments.
+   * @param {inscritoGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -796,14 +796,14 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
    * 
   **/
   groupBy<
-    T extends InscritoGroupByArgs,
+    T extends inscritoGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: InscritoGroupByArgs['orderBy'] }
-      : { orderBy?: InscritoGroupByArgs['orderBy'] },
+      ? { orderBy: inscritoGroupByArgs['orderBy'] }
+      : { orderBy?: inscritoGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -852,22 +852,22 @@ export interface InscritoDelegate<ExtArgs extends runtime.Types.Extensions.Inter
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, InscritoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInscritoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, inscritoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetInscritoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the Inscrito model
+ * Fields of the inscrito model
  */
-readonly fields: InscritoFieldRefs;
+readonly fields: inscritoFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for Inscrito.
+ * The delegate class that acts as a "Promise-like" for inscrito.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__InscritoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__inscritoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  evento<T extends Prisma.EventoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.EventoDefaultArgs<ExtArgs>>): Prisma.Prisma__EventoClient<runtime.Types.Result.GetResult<Prisma.$EventoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  evento<T extends Prisma.eventoDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.eventoDefaultArgs<ExtArgs>>): Prisma.Prisma__eventoClient<runtime.Types.Result.GetResult<Prisma.$eventoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -894,375 +894,375 @@ export interface Prisma__InscritoClient<T, Null = never, ExtArgs extends runtime
 
 
 /**
- * Fields of the Inscrito model
+ * Fields of the inscrito model
  */
-export interface InscritoFieldRefs {
-  readonly id: Prisma.FieldRef<"Inscrito", 'Int'>
-  readonly email: Prisma.FieldRef<"Inscrito", 'String'>
-  readonly nombre: Prisma.FieldRef<"Inscrito", 'String'>
-  readonly apellido: Prisma.FieldRef<"Inscrito", 'String'>
-  readonly eventoId: Prisma.FieldRef<"Inscrito", 'Int'>
+export interface inscritoFieldRefs {
+  readonly id: Prisma.FieldRef<"inscrito", 'Int'>
+  readonly email: Prisma.FieldRef<"inscrito", 'String'>
+  readonly nombre: Prisma.FieldRef<"inscrito", 'String'>
+  readonly apellido: Prisma.FieldRef<"inscrito", 'String'>
+  readonly eventoId: Prisma.FieldRef<"inscrito", 'Int'>
 }
     
 
 // Custom InputTypes
 /**
- * Inscrito findUnique
+ * inscrito findUnique
  */
-export type InscritoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * Filter, which Inscrito to fetch.
+   * Filter, which inscrito to fetch.
    */
-  where: Prisma.InscritoWhereUniqueInput
+  where: Prisma.inscritoWhereUniqueInput
 }
 
 /**
- * Inscrito findUniqueOrThrow
+ * inscrito findUniqueOrThrow
  */
-export type InscritoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * Filter, which Inscrito to fetch.
+   * Filter, which inscrito to fetch.
    */
-  where: Prisma.InscritoWhereUniqueInput
+  where: Prisma.inscritoWhereUniqueInput
 }
 
 /**
- * Inscrito findFirst
+ * inscrito findFirst
  */
-export type InscritoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * Filter, which Inscrito to fetch.
+   * Filter, which inscrito to fetch.
    */
-  where?: Prisma.InscritoWhereInput
+  where?: Prisma.inscritoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Inscritos to fetch.
+   * Determine the order of inscritos to fetch.
    */
-  orderBy?: Prisma.InscritoOrderByWithRelationInput | Prisma.InscritoOrderByWithRelationInput[]
+  orderBy?: Prisma.inscritoOrderByWithRelationInput | Prisma.inscritoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Inscritos.
+   * Sets the position for searching for inscritos.
    */
-  cursor?: Prisma.InscritoWhereUniqueInput
+  cursor?: Prisma.inscritoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Inscritos from the position of the cursor.
+   * Take `±n` inscritos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Inscritos.
+   * Skip the first `n` inscritos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Inscritos.
+   * Filter by unique combinations of inscritos.
    */
   distinct?: Prisma.InscritoScalarFieldEnum | Prisma.InscritoScalarFieldEnum[]
 }
 
 /**
- * Inscrito findFirstOrThrow
+ * inscrito findFirstOrThrow
  */
-export type InscritoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * Filter, which Inscrito to fetch.
+   * Filter, which inscrito to fetch.
    */
-  where?: Prisma.InscritoWhereInput
+  where?: Prisma.inscritoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Inscritos to fetch.
+   * Determine the order of inscritos to fetch.
    */
-  orderBy?: Prisma.InscritoOrderByWithRelationInput | Prisma.InscritoOrderByWithRelationInput[]
+  orderBy?: Prisma.inscritoOrderByWithRelationInput | Prisma.inscritoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for Inscritos.
+   * Sets the position for searching for inscritos.
    */
-  cursor?: Prisma.InscritoWhereUniqueInput
+  cursor?: Prisma.inscritoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Inscritos from the position of the cursor.
+   * Take `±n` inscritos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Inscritos.
+   * Skip the first `n` inscritos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Inscritos.
+   * Filter by unique combinations of inscritos.
    */
   distinct?: Prisma.InscritoScalarFieldEnum | Prisma.InscritoScalarFieldEnum[]
 }
 
 /**
- * Inscrito findMany
+ * inscrito findMany
  */
-export type InscritoFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * Filter, which Inscritos to fetch.
+   * Filter, which inscritos to fetch.
    */
-  where?: Prisma.InscritoWhereInput
+  where?: Prisma.inscritoWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of Inscritos to fetch.
+   * Determine the order of inscritos to fetch.
    */
-  orderBy?: Prisma.InscritoOrderByWithRelationInput | Prisma.InscritoOrderByWithRelationInput[]
+  orderBy?: Prisma.inscritoOrderByWithRelationInput | Prisma.inscritoOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing Inscritos.
+   * Sets the position for listing inscritos.
    */
-  cursor?: Prisma.InscritoWhereUniqueInput
+  cursor?: Prisma.inscritoWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` Inscritos from the position of the cursor.
+   * Take `±n` inscritos from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` Inscritos.
+   * Skip the first `n` inscritos.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of Inscritos.
+   * Filter by unique combinations of inscritos.
    */
   distinct?: Prisma.InscritoScalarFieldEnum | Prisma.InscritoScalarFieldEnum[]
 }
 
 /**
- * Inscrito create
+ * inscrito create
  */
-export type InscritoCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * The data needed to create a Inscrito.
+   * The data needed to create a inscrito.
    */
-  data: Prisma.XOR<Prisma.InscritoCreateInput, Prisma.InscritoUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.inscritoCreateInput, Prisma.inscritoUncheckedCreateInput>
 }
 
 /**
- * Inscrito createMany
+ * inscrito createMany
  */
-export type InscritoCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many Inscritos.
+   * The data used to create many inscritos.
    */
-  data: Prisma.InscritoCreateManyInput | Prisma.InscritoCreateManyInput[]
+  data: Prisma.inscritoCreateManyInput | Prisma.inscritoCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * Inscrito update
+ * inscrito update
  */
-export type InscritoUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * The data needed to update a Inscrito.
+   * The data needed to update a inscrito.
    */
-  data: Prisma.XOR<Prisma.InscritoUpdateInput, Prisma.InscritoUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.inscritoUpdateInput, Prisma.inscritoUncheckedUpdateInput>
   /**
-   * Choose, which Inscrito to update.
+   * Choose, which inscrito to update.
    */
-  where: Prisma.InscritoWhereUniqueInput
+  where: Prisma.inscritoWhereUniqueInput
 }
 
 /**
- * Inscrito updateMany
+ * inscrito updateMany
  */
-export type InscritoUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update Inscritos.
+   * The data used to update inscritos.
    */
-  data: Prisma.XOR<Prisma.InscritoUpdateManyMutationInput, Prisma.InscritoUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.inscritoUpdateManyMutationInput, Prisma.inscritoUncheckedUpdateManyInput>
   /**
-   * Filter which Inscritos to update
+   * Filter which inscritos to update
    */
-  where?: Prisma.InscritoWhereInput
+  where?: Prisma.inscritoWhereInput
   /**
-   * Limit how many Inscritos to update.
+   * Limit how many inscritos to update.
    */
   limit?: number
 }
 
 /**
- * Inscrito upsert
+ * inscrito upsert
  */
-export type InscritoUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * The filter to search for the Inscrito to update in case it exists.
+   * The filter to search for the inscrito to update in case it exists.
    */
-  where: Prisma.InscritoWhereUniqueInput
+  where: Prisma.inscritoWhereUniqueInput
   /**
-   * In case the Inscrito found by the `where` argument doesn't exist, create a new Inscrito with this data.
+   * In case the inscrito found by the `where` argument doesn't exist, create a new inscrito with this data.
    */
-  create: Prisma.XOR<Prisma.InscritoCreateInput, Prisma.InscritoUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.inscritoCreateInput, Prisma.inscritoUncheckedCreateInput>
   /**
-   * In case the Inscrito was found with the provided `where` argument, update it with this data.
+   * In case the inscrito was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.InscritoUpdateInput, Prisma.InscritoUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.inscritoUpdateInput, Prisma.inscritoUncheckedUpdateInput>
 }
 
 /**
- * Inscrito delete
+ * inscrito delete
  */
-export type InscritoDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
   /**
-   * Filter which Inscrito to delete.
+   * Filter which inscrito to delete.
    */
-  where: Prisma.InscritoWhereUniqueInput
+  where: Prisma.inscritoWhereUniqueInput
 }
 
 /**
- * Inscrito deleteMany
+ * inscrito deleteMany
  */
-export type InscritoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which Inscritos to delete
+   * Filter which inscritos to delete
    */
-  where?: Prisma.InscritoWhereInput
+  where?: Prisma.inscritoWhereInput
   /**
-   * Limit how many Inscritos to delete.
+   * Limit how many inscritos to delete.
    */
   limit?: number
 }
 
 /**
- * Inscrito without action
+ * inscrito without action
  */
-export type InscritoDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type inscritoDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the Inscrito
+   * Select specific fields to fetch from the inscrito
    */
-  select?: Prisma.InscritoSelect<ExtArgs> | null
+  select?: Prisma.inscritoSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the Inscrito
+   * Omit specific fields from the inscrito
    */
-  omit?: Prisma.InscritoOmit<ExtArgs> | null
+  omit?: Prisma.inscritoOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.InscritoInclude<ExtArgs> | null
+  include?: Prisma.inscritoInclude<ExtArgs> | null
 }

@@ -27,7 +27,7 @@ const eventos = async () => {
         <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
             <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
 
-                <h1 class="text-2xl font-black tracking-wider text-primary-500 uppercase">
+                <h1 class="text-2xl font-black tracking-wider uppercase text-purple-600 ">
                     SMARTS EVENTS
                 </h1>
 
@@ -64,8 +64,8 @@ const eventos = async () => {
 
                 <div class="lg:col-span-3">
 
-                    <h2 class="text-3xl font-bold mb-3">
-                        Staff del sistema
+                    <h2 class="text-3xl font-bold mb-3 text-purple-600 ">
+                        Staffs actuales del sistema
                     </h2>
 
                     <div class="flex items-center gap-3 mb-8">
@@ -74,7 +74,7 @@ const eventos = async () => {
                             Ordenar por:
                         </span>
 
-                        <USelect class="w-56" placeholder="Seleccionar" :items="[
+                        <USelect class="w-40" placeholder="Seleccionar" :items="[
                             'Nombre (A-Z)',
                             'Nombre (Z-A)',
                             'Rol'
@@ -88,7 +88,7 @@ const eventos = async () => {
 
                         <UCard class="bg-gray-900 border border-gray-800">
 
-                            <h3 class="text-xl font-bold mb-4">
+                            <h3 class="text-xl font-bold mb-4 text-purple-600 ">
                                 Juan Pérez
                             </h3>
 
@@ -100,16 +100,7 @@ const eventos = async () => {
 
                             </div>
 
-                            <USelect class="mb-4" placeholder="Cambiar rol" :items="[
-                                'Admin',
-                                'Usuario'
-                            ]" />
-
                             <div class="flex gap-3">
-
-                                <UButton color="primary" block>
-                                    Guardar rol
-                                </UButton>
 
                                 <UButton color="error" block>
                                     Eliminar
@@ -121,9 +112,9 @@ const eventos = async () => {
 
                         <!-- Otro usuario -->
 
-                        <UCard class="bg-gray-900 border border-gray-800">
+                        <UCard class="bg-gray-900 border border-gray-800 ">
 
-                            <h3 class="text-xl font-bold mb-4">
+                            <h3 class="text-xl font-bold mb-4 text-purple-600 ">
                                 María Soto
                             </h3>
 
@@ -135,16 +126,8 @@ const eventos = async () => {
 
                             </div>
 
-                            <USelect class="mb-4" placeholder="Cambiar rol" :items="[
-                                'Admin',
-                                'Usuario'
-                            ]" />
 
                             <div class="flex gap-3">
-
-                                <UButton color="primary" block>
-                                    Guardar rol
-                                </UButton>
 
                                 <UButton color="error" block>
                                     Eliminar
@@ -164,7 +147,7 @@ const eventos = async () => {
 
                 <UCard class="lg:col-span-2 bg-gray-900 border border-gray-800 h-fit">
 
-                    <h2 class="text-2xl font-bold mb-6">
+                    <h2 class="text-2xl font-bold mb-6 text-purple-600 ">
                         Agregar Staff
                     </h2>
 

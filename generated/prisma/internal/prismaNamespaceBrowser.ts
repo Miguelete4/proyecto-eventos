@@ -51,9 +51,9 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  Usuario: 'Usuario',
-  Evento: 'Evento',
-  Inscrito: 'Inscrito'
+  evento: 'evento',
+  inscrito: 'inscrito',
+  usuario: 'usuario'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -70,17 +70,6 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 } as const)
 
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
-
-
-export const UsuarioScalarFieldEnum = {
-  email: 'email',
-  password: 'password',
-  nombre: 'nombre',
-  apellido: 'apellido',
-  rol: 'rol'
-} as const
-
-export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
 
 
 export const EventoScalarFieldEnum = {
@@ -106,6 +95,17 @@ export const InscritoScalarFieldEnum = {
 export type InscritoScalarFieldEnum = (typeof InscritoScalarFieldEnum)[keyof typeof InscritoScalarFieldEnum]
 
 
+export const UsuarioScalarFieldEnum = {
+  email: 'email',
+  password: 'password',
+  nombre: 'nombre',
+  apellido: 'apellido',
+  rol: 'rol'
+} as const
+
+export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -114,7 +114,25 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const UsuarioOrderByRelevanceFieldEnum = {
+export const eventoOrderByRelevanceFieldEnum = {
+  titulo: 'titulo',
+  lugar: 'lugar',
+  imagen: 'imagen'
+} as const
+
+export type eventoOrderByRelevanceFieldEnum = (typeof eventoOrderByRelevanceFieldEnum)[keyof typeof eventoOrderByRelevanceFieldEnum]
+
+
+export const inscritoOrderByRelevanceFieldEnum = {
+  email: 'email',
+  nombre: 'nombre',
+  apellido: 'apellido'
+} as const
+
+export type inscritoOrderByRelevanceFieldEnum = (typeof inscritoOrderByRelevanceFieldEnum)[keyof typeof inscritoOrderByRelevanceFieldEnum]
+
+
+export const usuarioOrderByRelevanceFieldEnum = {
   email: 'email',
   password: 'password',
   nombre: 'nombre',
@@ -122,23 +140,5 @@ export const UsuarioOrderByRelevanceFieldEnum = {
   rol: 'rol'
 } as const
 
-export type UsuarioOrderByRelevanceFieldEnum = (typeof UsuarioOrderByRelevanceFieldEnum)[keyof typeof UsuarioOrderByRelevanceFieldEnum]
-
-
-export const EventoOrderByRelevanceFieldEnum = {
-  titulo: 'titulo',
-  lugar: 'lugar',
-  imagen: 'imagen'
-} as const
-
-export type EventoOrderByRelevanceFieldEnum = (typeof EventoOrderByRelevanceFieldEnum)[keyof typeof EventoOrderByRelevanceFieldEnum]
-
-
-export const InscritoOrderByRelevanceFieldEnum = {
-  email: 'email',
-  nombre: 'nombre',
-  apellido: 'apellido'
-} as const
-
-export type InscritoOrderByRelevanceFieldEnum = (typeof InscritoOrderByRelevanceFieldEnum)[keyof typeof InscritoOrderByRelevanceFieldEnum]
+export type usuarioOrderByRelevanceFieldEnum = (typeof usuarioOrderByRelevanceFieldEnum)[keyof typeof usuarioOrderByRelevanceFieldEnum]
 
