@@ -43,6 +43,11 @@ import BaseModal from '~/components/BaseModal.vue'
         <!-- Ayuda de la ia, luego cambiamos cosas xd -->
         <div
             class="flex flex-col items-center justify-center min-h-100 p-8 text-center bg-linear-to-br from-purple-600 to-gray-500">
+<<<<<<< HEAD
+            class="flex flex-col items-center justify-center min-h-100 p-8 text-center bg-linear-to-br from-purple-800
+            to-gray-300">
+=======
+>>>>>>> 7b0ffad339cefc88eff0af5fadc6689570153f94
 
             <div class="flex flex-col max-w-2xl gap-8">
 
@@ -67,6 +72,27 @@ import BaseModal from '~/components/BaseModal.vue'
                     </h3>
 
                     <!-- modal para ver inscripciones -->
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+                    <button type="button"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        @click="mostrarInscripciones = true">
+                        Ver mis Inscripciones
+                    </button>
+=======
+                    <<<<<<< HEAD <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de
+                        Vue) -->
+
+                        =======
+                        >>>>>>> cd14a35b7289107963096b84395b1019c7b6c1c0
+                        <button type="button"
+                            class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                            @click="">
+                            Ver mis Inscripciones
+                        </button>
+>>>>>>> 7b0ffad339cefc88eff0af5fadc6689570153f94
+=======
                     <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de
                         Vue) -->
 
@@ -75,6 +101,7 @@ import BaseModal from '~/components/BaseModal.vue'
                         @click="">
                         Ver mis Inscripciones
                     </button>
+>>>>>>> 0e77491968670beadbe34bfd669af6a56be0c24c
                 </div>
 
 
