@@ -13,6 +13,31 @@ const mostrarInscripciones = ref(false) // Controla el primer modal (Email)
 const mostrarMisEventos = ref(false)    // Controla el segundo modal (Eventos)
 const emailConsulta = ref('')          // Guarda el correo
 
+// CONST PARA EL MODAL DE INSCRIPCION
+// Estado para controlar la visibilidad del modal
+const isOpen = ref(false)
+
+// Estado para almacenar los datos del formulario
+const form = ref({
+    nombre: '',
+    apellido: '',
+    email: ''
+})
+
+// Función para procesar el envío (aquí conectarías con tu API de Nuxt + Prisma)
+const handleSubmit = async () => {
+    console.log('Datos enviados:', form.value)
+
+    // Ejemplo de lo que harías con tu backend:
+    // await $fetch('/api/inscripcion', { method: 'POST', body: form.value })
+
+    // Limpiar formulario y cerrar modal
+    form.value = { nombre: '', apellido: '', email: '' }
+    isOpen.value = false
+}
+
+// Variable reactiva para controlar la apertura/cierre del modal
+const mostrarInscripcion = ref(false)
 
 </script>
 
@@ -36,11 +61,11 @@ const emailConsulta = ref('')          // Guarda el correo
 
                 <div class="flex justify-center md:justify-end p-4">
 
-                  <UButton
+                    <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
                         @click="mostrarLogin = true">
                         Iniciar sesión
-                   </UButton>
+                    </UButton>
 
                 </div>
 
@@ -74,134 +99,105 @@ const emailConsulta = ref('')          // Guarda el correo
                         Eventos disponibles
                     </h3>
 
-                  <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de Vue) -->
-                   <button type="button"
+                    <!-- modal para ver inscripciones -->
+                    <button type="button"
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
                         @click="mostrarInscripciones = true">
                         Ver mis Inscripciones
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-
-                    <div
-                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
-
-                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
-                            alt="Festival de Música" />
-
-                        <div class="p-4 text-left">
-
-                            <h4 class="text-lg font-bold text-gray-900 truncate">
-                                Festival de Música
-                            </h4>
+                <div>
+                    <section class="p-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                             <div
-                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
 
-                                <p class="flex items-center gap-1">15 Oct 2026</p>
-                                <p class="flex items-center gap-1">10:00</p>
-                                <p class="flex items-center gap-1">Valparaíso</p>
-                                <p class="flex items-center gap-1">Gratis</p>
+                                <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
+                                    alt="Festival de Música" />
+
+                                <div class="p-4 text-left">
+
+                                    <h4 class="text-lg font-bold text-gray-900 truncate">
+                                        Festival de Música
+                                    </h4>
+
+                                    <div
+                                        class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                        <p class="flex items-center gap-1">
+                                            <span></span> 15 Oct 2026
+                                        </p>
+                                        <p class="flex items-center gap-1">
+                                            <span></span> 18:00 hrs
+                                        </p>
+                                        <p class="flex items-center gap-1 col-span-2 truncate">
+                                            <span></span> Valparaíso
+                                        </p>
+                                    </div>
+
+                                    <div class="flex justify-between items-center mt-3 text-sm font-medium">
+                                        <span class="text-emerald-600 text-base font-bold">
+                                            $15.000
+                                        </span>
+                                        <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
+                                            32 inscritos
+                                        </span>
+                                    </div>
+
+                                    <div class="flex justify-center mt-4">
+                                        <UButton @click="mostrarInscripcion = true"
+                                            class="px-6 py-2 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors text-sm justify-center">
+                                            Inscribirse
+                                        </UButton>
+                                    </div>
+
+                                </div>
 
                             </div>
 
-                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
-                                <span class="text-emerald-600 text-base font-bold">
-                                    $15.000
-                                </span>
-                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    32 inscritos
-                                </span>
-                            </div>
-
-                            <UButton block
-                                class="mt-4 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors py-2 text-sm justify-center">
-                                Inscribirse
-                            </UButton>
                         </div>
+                    </section>
 
-                    </div>
+                    <div v-if="mostrarInscripcion" @click.self="mostrarInscripcion = false"
+                        class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
 
-                    <div
-                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
+                        <div
+                            class="p-6 bg-white dark:bg-gray-900 rounded-xl shadow-xl max-w-sm w-full border border-gray-150 dark:border-gray-800">
 
-                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
-                            alt="Festival de Música" />
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white text-center mb-6">
+                                Formulario de Inscripción
+                            </h3>
 
-                        <div class="p-4 text-left">
+                            <div class="space-y-4 flex flex-col items-center w-full">
 
-                            <h4 class="text-lg font-bold text-gray-900 truncate">
-                                Festival de Música
-                            </h4>
+                                <div class="w-full max-w-xs">
+                                    <label
+                                        class="block text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 text-center">Nombre</label>
+                                    <input type="text" placeholder="Tu nombre"
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none bg-transparent text-sm text-center text-gray-800 dark:text-gray-200" />
+                                </div>
 
-                            <div
-                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
+                                <div class="w-full max-w-xs">
+                                    <label
+                                        class="block text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 text-center">Apellido</label>
+                                    <input type="text" placeholder="Tu apellido"
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none bg-transparent text-sm text-center text-gray-800 dark:text-gray-200" />
+                                </div>
 
-                                <p class="flex items-center gap-1">28 Octubre 2026</p>
-                                <p class="flex items-center gap-1">10:00</p>
-                                <p class="flex items-center gap-1">Santiago</p>
-                                <p class="flex items-center gap-1">Gratis</p>
+                                <div class="w-full max-w-xs">
+                                    <label
+                                        class="block text-xs font-medium text-gray-400 dark:text-gray-500 mb-1 text-center">Email</label>
+                                    <input type="email" placeholder="correo@ejemplo.com"
+                                        class="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-lg focus:outline-none bg-transparent text-sm text-center text-gray-800 dark:text-gray-200" />
+                                </div>
+
+                                <button @click="mostrarInscripcion = false"
+                                    class="mt-4 px-6 py-2 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors text-sm w-40 text-center">
+                                    Inscribirse
+                                </button>
 
                             </div>
-
-                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
-                                <span class="text-emerald-600 text-base font-bold">
-                                    $15.000
-                                </span>
-
-                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">👥 120
-                                    inscritos
-                                </span>
-
-                            </div>
-
-                            <UButton block
-                                class="mt-4 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors py-2 text-sm justify-center">
-                                Inscribirse
-                            </UButton>
-                        </div>
-
-                    </div>
-
-                    <div
-                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
-
-                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
-                            alt="Festival de Música" />
-
-                        <div class="p-4 text-left">
-
-                            <h4 class="text-lg font-bold text-gray-900 truncate">
-                                Festival de Música
-                            </h4>
-
-                            <div
-                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
-                                <p class="flex items-center gap-1">
-                                    <span></span> 15 Oct 2026
-                                </p>
-                                <p class="flex items-center gap-1">
-                                    <span></span> 18:00 hrs
-                                </p>
-                                <p class="flex items-center gap-1 col-span-2 truncate">
-                                    <span></span> Valparaíso
-                                </p>
-                            </div>
-
-                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
-                                <span class="text-emerald-600 text-base font-bold">
-                                    $15.000
-                                </span>
-                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    32 inscritos
-                                </span>
-                            </div>
-
-                            <UButton block
-                                class="mt-4 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors py-2 text-sm justify-center">
-                                Inscribirse
-                            </UButton>
                         </div>
 
                     </div>
@@ -211,127 +207,127 @@ const emailConsulta = ref('')          // Guarda el correo
         </section>
 
 
- <!-- MODAL INICIO DE SESION -->
-<UModal v-model:open="mostrarLogin">
-    <template #content>
-        <!-- px-12 hace que el contenido empuje el modal hacia los lados, haciéndolo un poco más ancho -->
-        <div class="py-16 px-12">
+        <!-- MODAL INICIO DE SESION -->
+        <UModal v-model:open="mostrarLogin">
+            <template #content>
+                <!-- px-12 hace que el contenido empuje el modal hacia los lados, haciéndolo un poco más ancho -->
+                <div class="py-16 px-12">
 
-            <h2 class="text-xl font-bold text-center mb-10">
-                Iniciar sesión
-            </h2>
+                    <h2 class="text-xl font-bold text-center mb-10">
+                        Iniciar sesión
+                    </h2>
 
-            <div class="space-y-8">
+                    <div class="space-y-8">
 
-                <!-- Fila Email -->
-                <div class="flex items-center space-x-2">
-                    <label class="text-sm font-medium min-w-20">
-                        email:
-                    </label>
-                    <UInput v-model="email" placeholder="Ingrese su correo" class="flex-1" />
-                </div>
+                        <!-- Fila Email -->
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium min-w-20">
+                                email:
+                            </label>
+                            <UInput v-model="email" placeholder="Ingrese su correo" class="flex-1" />
+                        </div>
 
-                <!-- Fila Contraseña -->
-                <div class="flex items-center space-x-2">
-                    <label class="text-sm font-medium min-w-20">
-                        contraseña:
-                    </label>
-                    <UInput v-model="password" type="password" placeholder="Ingrese su contraseña"
-                        class="flex-1" />
-                </div>
+                        <!-- Fila Contraseña -->
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium min-w-20">
+                                contraseña:
+                            </label>
+                            <UInput v-model="password" type="password" placeholder="Ingrese su contraseña"
+                                class="flex-1" />
+                        </div>
 
-                <!-- Botón centrado de forma simple -->
-                <div class="pt-6 flex justify-center">
+                        <!-- Botón centrado de forma simple -->
+                        <div class="pt-6 flex justify-center">
 
-                    <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8"
-                        @click="navigateTo('/administracion')">
-                        Ingresar
-                    </UButton>
+                            <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8"
+                                @click="navigateTo('/administracion')">
+                                Ingresar
+                            </UButton>
 
-                </div>
+                        </div>
 
-            </div>
-
-        </div>
-    </template>
-</UModal>
-
-
-<!-- MODAL CONSULTAR EVENTOS INSCRITOS -->
-<UModal v-model:open="mostrarInscripciones">
-    <template #content>
-        <div class="py-12 px-12">
-            <h2 class="text-xl font-bold text-center mb-10">
-                Ingrese su email
-            </h2>
-
-            <div class="space-y-8">
-                <div class="flex items-center space-x-2">
-                    <label class="text-sm font-medium min-w-14">
-                        gmail:
-                    </label>
-                    <UInput v-model="emailConsulta" placeholder="Ingrese su correo" class="flex-1" />
-                </div>
-
-                <!-- Al hacer clic, cierra este modal y abre el siguiente -->
-                <div class="pt-6 flex justify-center">
-                    <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8"
-                        @click="mostrarInscripciones = false; mostrarMisEventos = true">
-                        Consultar eventos
-                    </UButton>
-                </div>
-            </div>
-        </div>
-    </template>
-</UModal>
-
-
-<!-- SEGUNDO MODAL: Lista de Eventos Registrados (despues de tocar el boton de consultar)-->
-<UModal v-model:open="mostrarMisEventos">
-    <template #content>
-        <div class="py-12 px-12">
-            <h2 class="text-xl font-bold text-purple-600 text-center mb-8">
-                Mis Eventos Inscritos
-            </h2>
-
-            <div class="space-y-4 text-sm">
-
-                <!-- EVENTOS DE EJEMPLO (para tener una idea de como quedaria) -->
-                <!-- Evento 1 -->
-                <div class="p-4 border rounded-xl bg-purple-50/50 flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-gray-900">Conferencia Tech 2026</h4>
-                        <p class="text-xs text-gray-500 mt-0.5">📅 15 de Octubre • 10:00 AM</p>
                     </div>
-                    <span class="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
-                        Confirmado
-                    </span>
-                </div>
 
-                <!-- Evento 2 -->
-                <div class="p-4 border rounded-xl bg-white flex justify-between items-center">
-                    <div>
-                        <h4 class="font-bold text-gray-900">Taller Práctico de Vue 3</h4>
-                        <p class="text-xs text-gray-500 mt-0.5">📅 22 de Noviembre • 3:00 PM</p>
+                </div>
+            </template>
+        </UModal>
+
+
+        <!-- MODAL CONSULTAR EVENTOS INSCRITOS -->
+        <UModal v-model:open="mostrarInscripciones">
+            <template #content>
+                <div class="py-12 px-12">
+                    <h2 class="text-xl font-bold text-center mb-10">
+                        Ingrese su email
+                    </h2>
+
+                    <div class="space-y-8">
+                        <div class="flex items-center space-x-2">
+                            <label class="text-sm font-medium min-w-14">
+                                gmail:
+                            </label>
+                            <UInput v-model="emailConsulta" placeholder="Ingrese su correo" class="flex-1" />
+                        </div>
+
+                        <!-- Al hacer clic, cierra este modal y abre el siguiente -->
+                        <div class="pt-6 flex justify-center">
+                            <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8"
+                                @click="mostrarInscripciones = false; mostrarMisEventos = true">
+                                Consultar eventos
+                            </UButton>
+                        </div>
                     </div>
-                    <span class="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
-                        Confirmado
-                    </span>
                 </div>
-
-            </div>
-
-            <!-- Botón opcional para cerrar todo -->
-            <div class="pt-8 flex justify-center">
-                <UButton class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6"
-                    @click="mostrarMisEventos = false">
-                    Cerrar
-                </UButton>
-            </div>
-        </div>
-    </template>
-</UModal>
+            </template>
+        </UModal>
 
 
-</div>
+        <!-- SEGUNDO MODAL: Lista de Eventos Registrados (despues de tocar el boton de consultar)-->
+        <UModal v-model:open="mostrarMisEventos">
+            <template #content>
+                <div class="py-12 px-12">
+                    <h2 class="text-xl font-bold text-purple-600 text-center mb-8">
+                        Mis Eventos Inscritos
+                    </h2>
+
+                    <div class="space-y-4 text-sm">
+
+                        <!-- EVENTOS DE EJEMPLO (para tener una idea de como quedaria) -->
+                        <!-- Evento 1 -->
+                        <div class="p-4 border rounded-xl bg-purple-50/50 flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Conferencia Tech 2026</h4>
+                                <p class="text-xs text-gray-500 mt-0.5">📅 15 de Octubre • 10:00 AM</p>
+                            </div>
+                            <span class="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
+                                Confirmado
+                            </span>
+                        </div>
+
+                        <!-- Evento 2 -->
+                        <div class="p-4 border rounded-xl bg-white flex justify-between items-center">
+                            <div>
+                                <h4 class="font-bold text-gray-900">Taller Práctico de Vue 3</h4>
+                                <p class="text-xs text-gray-500 mt-0.5">📅 22 de Noviembre • 3:00 PM</p>
+                            </div>
+                            <span class="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
+                                Confirmado
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <!-- Botón opcional para cerrar todo -->
+                    <div class="pt-8 flex justify-center">
+                        <UButton class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6"
+                            @click="mostrarMisEventos = false">
+                            Cerrar
+                        </UButton>
+                    </div>
+                </div>
+            </template>
+        </UModal>
+
+
+    </div>
 </template>
