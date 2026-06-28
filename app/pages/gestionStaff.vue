@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// Forzamos un layout vacío para manejar todo el diseño directamente aquí
+
 definePageMeta({
-    layout: false
+    layout: 'default'
 })
 
-// Datos del administrador (basado en tu modelo Prisma)
+
 const adminNombre = ref("Juan")
 const adminApellido = ref("Pérez")
 
@@ -68,20 +68,6 @@ const eventos = async () => {
                         Staffs actuales del sistema
                     </h2>
 
-                    <div class="flex items-center gap-3 mb-8">
-
-                        <span class="text-gray-300">
-                            Ordenar por:
-                        </span>
-
-                        <USelect class="w-40" placeholder="Seleccionar" :items="[
-                            'Nombre (A-Z)',
-                            'Nombre (Z-A)',
-                            'Rol'
-                        ]" />
-
-                    </div>
-
                     <div class="grid md:grid-cols-2 gap-6">
 
                         <!-- Staff -->
@@ -123,6 +109,7 @@ const eventos = async () => {
                                 <p><strong>Correo:</strong> maria@gmail.com</p>
 
                                 <p><strong>Rol actual:</strong> Usuario</p>
+                                
 
                             </div>
 
@@ -136,8 +123,6 @@ const eventos = async () => {
                             </div>
 
                         </UCard>
-
-                        <!-- Duplica las cards cuando tengas más usuarios -->
 
                     </div>
 
@@ -178,10 +163,6 @@ const eventos = async () => {
         </main>
 
 
-        <footer
-            class="bg-gray-900 border-t border-gray-800 text-center py-4 text-xs tracking-wider text-gray-500 uppercase">
-            © 2026 Smart Events - Panel Administrativo
-        </footer>
 
     </div>
 

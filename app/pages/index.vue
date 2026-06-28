@@ -2,14 +2,18 @@
 import { ref } from 'vue'
 import BaseModal from '~/components/BaseModal.vue'
 
-const mostrarModal = ref(false)
-const correo = ref("")
-const consultado = ref(false)
+// MODAL DE INICIO DE SESION
+const mostrarLogin = ref(false)
 
-const consultarEventos = () => {
-    // Después aquí consultarás la BD
-    consultado.value = true
-}
+const email = ref("")
+const password = ref("")
+
+// PARTE DE MODAL CONSULTAR INSCRIPCIONES
+const mostrarInscripciones = ref(false) // Controla el primer modal (Email)
+const mostrarMisEventos = ref(false)    // Controla el segundo modal (Eventos)
+const emailConsulta = ref('')          // Guarda el correo
+
+
 </script>
 
 <template>
@@ -31,11 +35,12 @@ const consultarEventos = () => {
                 </div>
 
                 <div class="flex justify-center md:justify-end p-4">
-                    <UButton
+
+                  <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click.prevent="">
+                        @click="mostrarLogin = true">
                         Iniciar sesión
-                    </UButton>
+                   </UButton>
 
                 </div>
 
@@ -69,9 +74,10 @@ const consultarEventos = () => {
                         Eventos disponibles
                     </h3>
 
-                    <button type="button"
+                  <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de Vue) -->
+                   <button type="button"
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        onclick="window.location.href='/';">
+                        @click="mostrarInscripciones = true">
                         Ver mis Inscripciones
                     </button>
                 </div>
@@ -204,45 +210,128 @@ const consultarEventos = () => {
             </div>
         </section>
 
-        <!-- Modal para mostrar eventos registrados -->
-        <UModal v-model:open="mostrarModal">
 
-            <template #content>
+ <!-- MODAL INICIO DE SESION -->
+<UModal v-model:open="mostrarLogin">
+    <template #content>
+        <!-- px-12 hace que el contenido empuje el modal hacia los lados, haciéndolo un poco más ancho -->
+        <div class="py-16 px-12">
 
-                <div class="p-6">
+            <h2 class="text-xl font-bold text-center mb-10">
+                Iniciar sesión
+            </h2>
 
-                    <h2 class="text-2xl font-bold mb-5">
-                        Mis eventos
-                    </h2>
+            <div class="space-y-8">
 
-                    <UInput v-model="correo" placeholder="Ingrese su correo electrónico" />
+                <!-- Fila Email -->
+                <div class="flex items-center space-x-2">
+                    <label class="text-sm font-medium min-w-20">
+                        email:
+                    </label>
+                    <UInput v-model="email" placeholder="Ingrese su correo" class="flex-1" />
+                </div>
 
-                    <UButton class="mt-4 w-full" @click="consultarEventos">
-                        Consultar
+                <!-- Fila Contraseña -->
+                <div class="flex items-center space-x-2">
+                    <label class="text-sm font-medium min-w-20">
+                        contraseña:
+                    </label>
+                    <UInput v-model="password" type="password" placeholder="Ingrese su contraseña"
+                        class="flex-1" />
+                </div>
+
+                <!-- Botón centrado de forma simple -->
+                <div class="pt-6 flex justify-center">
+
+                    <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8"
+                        @click="navigateTo('/administracion')">
+                        Ingresar
                     </UButton>
-
-                    <div v-if="consultado" class="mt-6 border-t pt-4">
-
-                        <h3 class="font-bold mb-3">
-                            Eventos encontrados
-                        </h3>
-
-                        <ul class="space-y-2">
-
-                            <li>Festival de Música</li>
-
-                            <li>Feria Tecnológica</li>
-
-                            <li>Torneo Gamer</li>
-
-                        </ul>
-
-                    </div>
 
                 </div>
 
-            </template>
+            </div>
 
-        </UModal>
-    </div>
+        </div>
+    </template>
+</UModal>
+
+
+<!-- MODAL CONSULTAR EVENTOS INSCRITOS -->
+<UModal v-model:open="mostrarInscripciones">
+    <template #content>
+        <div class="py-12 px-12">
+            <h2 class="text-xl font-bold text-center mb-10">
+                Ingrese su email
+            </h2>
+
+            <div class="space-y-8">
+                <div class="flex items-center space-x-2">
+                    <label class="text-sm font-medium min-w-14">
+                        gmail:
+                    </label>
+                    <UInput v-model="emailConsulta" placeholder="Ingrese su correo" class="flex-1" />
+                </div>
+
+                <!-- Al hacer clic, cierra este modal y abre el siguiente -->
+                <div class="pt-6 flex justify-center">
+                    <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8"
+                        @click="mostrarInscripciones = false; mostrarMisEventos = true">
+                        Consultar eventos
+                    </UButton>
+                </div>
+            </div>
+        </div>
+    </template>
+</UModal>
+
+
+<!-- SEGUNDO MODAL: Lista de Eventos Registrados (despues de tocar el boton de consultar)-->
+<UModal v-model:open="mostrarMisEventos">
+    <template #content>
+        <div class="py-12 px-12">
+            <h2 class="text-xl font-bold text-purple-600 text-center mb-8">
+                Mis Eventos Inscritos
+            </h2>
+
+            <div class="space-y-4 text-sm">
+
+                <!-- EVENTOS DE EJEMPLO (para tener una idea de como quedaria) -->
+                <!-- Evento 1 -->
+                <div class="p-4 border rounded-xl bg-purple-50/50 flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-gray-900">Conferencia Tech 2026</h4>
+                        <p class="text-xs text-gray-500 mt-0.5">📅 15 de Octubre • 10:00 AM</p>
+                    </div>
+                    <span class="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
+                        Confirmado
+                    </span>
+                </div>
+
+                <!-- Evento 2 -->
+                <div class="p-4 border rounded-xl bg-white flex justify-between items-center">
+                    <div>
+                        <h4 class="font-bold text-gray-900">Taller Práctico de Vue 3</h4>
+                        <p class="text-xs text-gray-500 mt-0.5">📅 22 de Noviembre • 3:00 PM</p>
+                    </div>
+                    <span class="text-xs font-semibold text-green-700 bg-green-100 px-2.5 py-1 rounded-full">
+                        Confirmado
+                    </span>
+                </div>
+
+            </div>
+
+            <!-- Botón opcional para cerrar todo -->
+            <div class="pt-8 flex justify-center">
+                <UButton class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6"
+                    @click="mostrarMisEventos = false">
+                    Cerrar
+                </UButton>
+            </div>
+        </div>
+    </template>
+</UModal>
+
+
+</div>
 </template>

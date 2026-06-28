@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 // Forzamos un layout vacío para manejar todo el diseño directamente aquí
 definePageMeta({
-    layout: false
+    layout: 'default'
 })
 
 // Datos del administrador (basado en tu modelo Prisma)
@@ -166,10 +166,6 @@ const staff = async () => {
 
         </main>
 
-        <footer
-            class="bg-gray-900 border-t border-gray-800 text-center py-4 text-xs tracking-wider text-gray-500 uppercase">
-            © 2026 Smart Events - Panel Administrativo
-        </footer>
 
     </div>
 </template>

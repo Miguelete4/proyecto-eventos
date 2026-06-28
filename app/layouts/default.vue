@@ -43,7 +43,6 @@
             <slot />
         </main>
 
-        <!-- Tiene una parte de IA con copilot, en especial la de copy xd -->
         <footer class="bg-gray-800 text-white py-6 flex justify-center items-center">
             <div class="mx-auto px-4 gap-2">
                 <p class="text-white font-extrabold">Universidad Federico Santa María</p>
