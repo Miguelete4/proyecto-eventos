@@ -36,8 +36,6 @@ import BaseModal from '~/components/BaseModal.vue'
             </nav>
         </header>
 
-
-
         <!-- MODAL INICIO DE SESION -->
         <BaseModal title="formulario" description="inicio">
             <template #content>
@@ -116,6 +114,7 @@ import BaseModal from '~/components/BaseModal.vue'
 
                     <!-- modal para ver inscripciones -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 
                     <button type="button"
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
@@ -134,10 +133,22 @@ import BaseModal from '~/components/BaseModal.vue'
                             Ver mis Inscripciones
                         </button>
 >>>>>>> 7b0ffad339cefc88eff0af5fadc6689570153f94
+=======
+                    <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de
+                        Vue) -->
+
+                    =======
+                    >>>>>>> cd14a35b7289107963096b84395b1019c7b6c1c0
+                    <button type="button"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        @click="">
+                        Ver mis Inscripciones
+                    </button>
+>>>>>>> 0e77491968670beadbe34bfd669af6a56be0c24c
                 </div>
 
                 <!-- MODAL CONSULTAR EVENTOS INSCRITOS -->
-                <BaseModal title="Consultar Eventos" description="Ingrese su email">
+                <!-- <BaseModal title="Consultar Eventos" description="Ingrese su email">
                     <template #content>
                         <div class="py-12 px-12">
                             <h2 class="text-xl font-bold text-center mb-10">
@@ -152,7 +163,7 @@ import BaseModal from '~/components/BaseModal.vue'
                                     <UInput placeholder="Ingrese su correo" class="flex-1" />
                                 </div>
 
-                                <!-- Al hacer clic, cierra este modal y abre el siguiente -->
+                                Al hacer clic, cierra este modal y abre el siguiente 
                                 <div class="pt-6 flex justify-center">
                                     <UButton class="bg-purple-600 hover:bg-purple-700 py-3 px-8" @click="">
                                         Consultar eventos
@@ -161,10 +172,10 @@ import BaseModal from '~/components/BaseModal.vue'
                             </div>
                         </div>
                     </template>
-                </BaseModal>
+                </BaseModal> -->
 
 
-                <!-- SEGUNDO MODAL: Lista de Eventos Registrados (despues de tocar el boton de consultar)-->
+                <!-- SEGUNDO MODAL: Lista de Eventos Registrados (despues de tocar el boton de consultar)
                 <BaseModal title="Eventos Inscritos" description="Lista de eventos">
                     <template #content>
                         <div class="py-12 px-12">
@@ -174,8 +185,8 @@ import BaseModal from '~/components/BaseModal.vue'
 
                             <div class="space-y-4 text-sm">
 
-                                <!-- EVENTOS DE EJEMPLO (para tener una idea de como quedaria) -->
-                                <!-- Evento 1 -->
+                                 EVENTOS DE EJEMPLO (para tener una idea de como quedaria) 
+                                 Evento 1
                                 <div class="p-4 border rounded-xl bg-purple-50/50 flex justify-between items-center">
                                     <div>
                                         <h4 class="font-bold text-gray-900">Conferencia Tech 2026</h4>
@@ -187,7 +198,7 @@ import BaseModal from '~/components/BaseModal.vue'
                                     </span>
                                 </div>
 
-                                <!-- Evento 2 -->
+                                 Evento 2 
                                 <div class="p-4 border rounded-xl bg-white flex justify-between items-center">
                                     <div>
                                         <h4 class="font-bold text-gray-900">Taller Práctico de Vue 3</h4>
@@ -201,7 +212,7 @@ import BaseModal from '~/components/BaseModal.vue'
 
                             </div>
 
-                            <!-- Botón opcional para cerrar todo -->
+                             Botón opcional para cerrar todo 
                             <div class="pt-8 flex justify-center">
                                 <UButton class="bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 px-6" @click="">
                                     Cerrar
@@ -209,7 +220,7 @@ import BaseModal from '~/components/BaseModal.vue'
                             </div>
                         </div>
                     </template>
-                </BaseModal>
+                </BaseModal> -->
 
 
                 <div>
