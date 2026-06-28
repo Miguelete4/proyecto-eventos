@@ -39,6 +39,7 @@ const handleSubmit = async () => {
 // Variable reactiva para controlar la apertura/cierre del modal
 const mostrarInscripcion = ref(false)
 
+
 </script>
 
 <template>
@@ -75,7 +76,11 @@ const mostrarInscripcion = ref(false)
         <!-- Parte de la informacion de la pagina -->
         <!-- Ayuda de la ia, luego cambiamos cosas xd -->
         <div
+<<<<<<< HEAD
             class="flex flex-col items-center justify-center min-h-100 p-8 text-center bg-linear-to-br from-purple-600 to-gray-500">
+=======
+            class="flex flex-col items-center justify-center min-h-100 p-8 text-center bg-linear-to-br from-purple-800 to-gray-300">
+>>>>>>> cd14a35b7289107963096b84395b1019c7b6c1c0
 
             <div class="flex flex-col max-w-2xl gap-8">
 
@@ -100,9 +105,12 @@ const mostrarInscripcion = ref(false)
                     </h3>
 
                     <!-- modal para ver inscripciones -->
+<<<<<<< HEAD
 
                     <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de Vue) -->
 
+=======
+>>>>>>> cd14a35b7289107963096b84395b1019c7b6c1c0
                     <button type="button"
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
                         @click="mostrarInscripciones = true">
@@ -211,7 +219,7 @@ const mostrarInscripcion = ref(false)
 
 
         <!-- MODAL INICIO DE SESION -->
-        <UModal v-model:open="mostrarLogin">
+        <BaseModal v-model:open="mostrarLogin" title="formulario" description="inicio">
             <template #content>
                 <!-- px-12 hace que el contenido empuje el modal hacia los lados, haciéndolo un poco más ancho -->
                 <div class="py-16 px-12">
@@ -253,7 +261,7 @@ const mostrarInscripcion = ref(false)
 
                 </div>
             </template>
-        </UModal>
+        </BaseModal>
 
 
         <!-- MODAL CONSULTAR EVENTOS INSCRITOS -->

@@ -30,7 +30,7 @@ model inscrito {
 
 model usuario {
   email    String @id
-  password String @db.VarChar(150)
+  password String @db.VarChar(60)
   nombre   String @db.VarChar(150)
   apellido String @db.VarChar(150)
   rol      String @db.VarChar(20)
