@@ -43,7 +43,7 @@ const consultarEventos = () => {
         </header>
 
         <!-- Parte de la informacion de la pagina -->
-        <div class="flex flex-col items-center w-full h-96 bg-linear-to-br from-purple-600 to-indigo-700 text-white">
+        <div class="flex flex-col items-center w-full h-96 bg-linear-to-br from-gray-900 to-indigo-700 text-white">
 
             <div class="flex text-center flex-col py-20 px-4 gap-4">
 
@@ -188,7 +188,7 @@ const consultarEventos = () => {
                                     $15.000
                                 </span>
                                 <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                     32 inscritos
+                                    32 inscritos
                                 </span>
                             </div>
 

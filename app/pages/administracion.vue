@@ -66,18 +66,6 @@ const staff = async () => {
                         Eventos disponibles
                     </h2>
 
-                    <p class="text-gray-400 mb-6">
-                        Ordenar por:
-                        <USelect class="w-40 mb-8" :items="[
-                            'Nombre (A-Z)',
-                            'Nombre (Z-A)',
-                            'Fecha',
-                            'Valor'
-                        ]" />
-                    </p>
-
-
-
                     <div class="grid md:grid-cols-2 gap-6">
 
                         <!-- Card -->
