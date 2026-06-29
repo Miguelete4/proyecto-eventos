@@ -13,24 +13,23 @@ const props = defineProps < {
 
 
 <template>
-    <div class="grid md:grid-cols-2 gap-6">
 
-        <UCard class="bg-gray-900 border border-gray-800">
 
-            <!-- La imagen nose bien como ponerla, pero veamoslo despues xd -->
-            <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
+    <UCard class="bg-gray-900 border border-gray-800">
 
-            <h3 class="text-xl font-bold mb-3">
-                {{ evento.titulo}}
-            </h3>
+        <!-- La imagen nose bien como ponerla, pero veamoslo despues xd -->
+        <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
 
-            <div class="space-y-2 text-gray-300">
-                <p>{{ evento.fecha}}</p>
-                <p>{{ evento.lugar }}</p>
-                <p>{{ evento.valor}}</p>
-            </div>
+        <h3 class="text-xl font-bold mb-3">
+            {{ evento.titulo}}
+        </h3>
 
-        </UCard>
+        <div class="space-y-2 text-gray-300">
+            <p>{{ evento.fecha}}</p>
+            <p>{{ evento.lugar }}</p>
+            <p>{{ evento.valor}}</p>
+        </div>
 
-    </div>
+    </UCard>
+
 </template>
