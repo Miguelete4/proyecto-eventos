@@ -5,6 +5,7 @@ import type { Usuario } from '~/types/usuario';
 
 const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
 
+// Formulario de iniciar sesion
 const mostrarForm = ref(false)
 const errorForm = ref()
 const guardandoForm = ref(false)
@@ -30,6 +31,7 @@ function cerrarForm() {
     resetFormContrasena()
 }
 
+// Funcion del login, verifica usuario en la BD
 const { fetch: fetchSession } = useUserSession()
 
 async function login() {
@@ -55,6 +57,59 @@ async function login() {
     }
     finally {
         guardandoForm.value = false
+    }
+}
+
+// Formluario de inscripciones
+const guardarFormInscipciones = ref(false)
+const errorFormInscripciones = ref()
+const mostrarFormInscripciones = ref(false)
+
+const formInscripciones = reactive({
+    email: '',
+    nombre: '',
+    apellido: ''
+})
+
+function resetFormInscripciones() {
+    formInscripciones.email = '',
+        formInscripciones.nombre = '',
+        formInscripciones.apellido = '',
+        errorFormInscripciones.value = ''
+}
+
+function abrirFormInscripciones() {
+    resetFormInscripciones()
+    mostrarFormInscripciones.value = true
+}
+
+function cerrarFormInscripciones() {
+    mostrarFormInscripciones.value = false
+    resetFormInscripciones()
+}
+
+// Funcion para la inscripcion
+async function guardarEvento() {
+    guardarFormInscipciones.value = true
+    errorFormInscripciones.value = ''
+
+    try {
+        await $fetch('/api/inscritos'), {
+            method: 'POST',
+            body: {
+                email: formInscripciones.email,
+                nombre: formInscripciones.nombre,
+                apellido: formInscripciones.apellido
+            }
+        }
+        cerrarFormInscripciones()
+        await refresh()
+    }
+    catch (error) {
+        errorFormInscripciones.value = 'Error, no se logro inscripbir de manera correcta'
+    }
+    finally {
+        guardarFormInscipciones.value = false
     }
 }
 
@@ -192,7 +247,7 @@ async function login() {
                             </div>
 
                             <div class="flex justify-center mt-4">
-                                <UButton @click=""
+                                <UButton @click="abrirFormInscripciones"
                                     class="px-6 py-2 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors text-sm justify-center">
                                     Inscribirse
                                 </UButton>
@@ -206,43 +261,33 @@ async function login() {
             </div>
         </section>
 
-        <BaseModal v-model:open="mostrarForm" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
+        <!-- Modal de inscripciones -->
+        <BaseModal v-model:open="mostrarFormInscripciones" title="Inicio de Sesion"
+            description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" @submit.prevent="login" :state="form">
+            <UForm class="space-y-5" @submit.prevent="guardarEvento" :state="form">
+
                 <UFormField name="email" label="Email" type="email">
-                    <UInput v-model="form.email" placeholder="example@gmail.com" color="neutral" variant="outline"
+                    <UInput v-model="formInscripciones.email" placeholder="example@gmail.com" color="neutral"
+                        variant="outline" class="w-full">
+                    </UInput>
+                </UFormField>
+
+                <UFormField name="nombre" label="Nombre" type="name">
+                    <UInput v-model="formInscripciones.nombre" placeholder="Nombre" color="neutral" variant="outline"
                         class="w-full">
                     </UInput>
                 </UFormField>
 
-                <UFormField name="contraseña" label="Contraseña" type="password">
-                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
-                        class="w-full">
-                    </UInput>
-                </UFormField>
-
-                <UFormField name="contraseña" label="Contraseña" type="password">
-                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
-                        class="w-full">
-                    </UInput>
-                </UFormField>
-
-
-                <UFormField name="contraseña" label="Contraseña" type="password">
-                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
-                        class="w-full">
-                    </UInput>
-                </UFormField>
-
-                <UFormField name="contraseña" label="Contraseña" type="password">
-                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
-                        class="w-full">
+                <UFormField name="apellido" label="Apellido" type="name">
+                    <UInput v-model="formInscripciones.apellido" placeholder="Apellido" color="neutral"
+                        variant="outline" class="w-full">
                     </UInput>
                 </UFormField>
 
                 <UButton type="submit" :loading="guardandoForm"
                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                    Ingresar
+                    Inscribirse al evento
                 </UButton>
 
                 <UButton @click="cerrarForm" type="button"
