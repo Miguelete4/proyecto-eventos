@@ -1,0 +1,36 @@
+<script setup lang="ts">
+import type { Evento } from '~/types/evento';
+
+
+
+const props = defineProps < {
+    evento: Evento
+} > ()
+
+// const fechaFormateada = computed(() => formatFechaCorta(props.evento.fecha))
+// const horaFormateada = computed(() => formatHora(props.evento.fecha))
+</script>
+
+
+<template>
+    <div class="grid md:grid-cols-2 gap-6">
+
+        <UCard class="bg-gray-900 border border-gray-800">
+
+            <!-- La imagen nose bien como ponerla, pero veamoslo despues xd -->
+            <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
+
+            <h3 class="text-xl font-bold mb-3">
+                {{ evento.titulo}}
+            </h3>
+
+            <div class="space-y-2 text-gray-300">
+                <p>{{ evento.fecha}}</p>
+                <p>{{ evento.lugar }}</p>
+                <p>{{ evento.valor}}</p>
+            </div>
+
+        </UCard>
+
+    </div>
+</template>

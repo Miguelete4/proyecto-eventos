@@ -1,14 +1,6 @@
 <script setup lang="ts">
+
 import { ref } from 'vue'
-
-// Forzamos un layout vacío para manejar todo el diseño directamente aquí
-definePageMeta({
-    layout: 'default'
-})
-
-// Datos del administrador (basado en tu modelo Prisma)
-const adminNombre = ref("Juan")
-const adminApellido = ref("Pérez")
 
 const cerrarSesion = async () => {
     await navigateTo('/')
@@ -16,7 +8,12 @@ const cerrarSesion = async () => {
 
 const staff = async () => {
     await navigateTo('/gestionStaff')
-}
+} 
+
+import type { Evento } from '~/types/evento'
+
+const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
+
 
 </script>
 
@@ -41,7 +38,7 @@ const staff = async () => {
                     <div class="flex items-center gap-3 ">
 
                         <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg ">
-                            {{ adminNombre }} {{ adminApellido }}
+                            <!-- {{ adminNombre }} {{ adminApellido }} -->
                         </span>
 
                         <UButton color="error" variant="soft" @click="cerrarSesion">
@@ -55,91 +52,32 @@ const staff = async () => {
             </div>
         </header>
 
+        <!-- PARTE IZQUIERDA (CARDS DE EVENTOS) -->
         <main class="flex-1 container mx-auto px-6 py-10">
-
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-                <!-- LISTA DE EVENTOS -->
                 <div class="lg:col-span-2">
 
-                    <h2 class="text-3xl font-bold mb-2 text-purple-600 ">
+                    <h2 class="text-3xl font-bold mb-6 text-purple-600">
                         Eventos disponibles
                     </h2>
 
-                    <div class="grid md:grid-cols-2 gap-6">
-
-                        <!-- Card -->
-
-                        <UCard class="bg-gray-900 border border-gray-800">
-
-                            <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
-
-                            <h3 class="text-xl font-bold mb-3">
-                                Festival de Música
-                            </h3>
-
-                            <div class="space-y-2 text-gray-300">
-
-                                <p>15/10/2026</p>
-
-                                <p>Valparaíso</p>
-
-                                <p>$15.000</p>
-
-                                <p>40 inscritos</p>
-
-                            </div>
-
-                        </UCard>
-
-                        <!-- Duplicar cuando existan más eventos -->
-
-                        <UCard class="bg-gray-900 border border-gray-800">
-
-                            <img src="https://picsum.photos/601/250" class="rounded-lg h-44 w-full object-cover mb-4">
-
-                            <h3 class="text-xl font-bold mb-3">
-                                Feria Tecnológica
-                            </h3>
-
-                            <div class="space-y-2 text-gray-300">
-
-                                <p>22/11/2026</p>
-
-                                <p>Santiago</p>
-
-                                <p>Gratis</p>
-
-                                <p>120 inscritos</p>
-
-                            </div>
-
-                        </UCard>
-
-                    </div>
+                    <EventoCard v-for="evento in eventos" :evento = "evento" />
 
                 </div>
 
-                <!-- ========================= -->
-                <!-- PANEL DERECHO -->
-                <!-- ========================= -->
+                <!-- PARTE DERECHA (AGREGAR / ELIMINAR EVENTOS) -->
+                <UCard class="bg-gray-900 border border-gray-800 h-fit lg:sticky lg:top-10">
 
-                <UCard class="bg-gray-900 border border-gray-800 h-fit">
-
-                    <h2 class="text-2xl font-bold mb-6 text-purple-600 ">
+                    <h2 class="text-2xl font-bold mb-6 text-purple-600">
                         Agregar evento
                     </h2>
 
                     <div class="space-y-5">
-
                         <UInput placeholder="Título" />
-
                         <UInput type="date" />
-
                         <UInput placeholder="Lugar" />
-
                         <UInput placeholder="Valor" />
-
                         <UInput type="file" />
 
                         <UButton color="primary" block>
@@ -157,15 +95,12 @@ const staff = async () => {
                         <UButton color="error" block>
                             Eliminar
                         </UButton>
-
                     </div>
 
                 </UCard>
 
             </div>
-
         </main>
-
 
     </div>
 </template>

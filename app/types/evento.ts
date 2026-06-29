@@ -1,4 +1,4 @@
-import type { Inscrito } from "./inscrito"
+import type { Inscrito } from "~/types/inscrito"
 
 export interface Evento {
   id: number
