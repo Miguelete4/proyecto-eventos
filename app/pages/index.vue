@@ -5,11 +5,14 @@ import type { Usuario } from '~/types/usuario';
 
 const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
 
-const errorFormulario = ref(false)
+const errorForm = ref('')
 const mostrarFormulario = ref(false)
 
-function abrirFormulario(usuario: Usuario) {
-    mostrarFormulario.value = true
+const mostrarLogin = ref(false)
+
+function abrirFormulario(usuario?: Usuario) {
+    mostrarLogin.value = true
+    errorForm.value = '' // Limpia errores previos al abrir
 }
 
 
@@ -37,9 +40,10 @@ function abrirFormulario(usuario: Usuario) {
 
                     <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="abrirFormulario">
+                        @click="abrirFormulario()">
 
                         Iniciar sesión
+
                     </UButton>
 
                 </div>
@@ -49,7 +53,8 @@ function abrirFormulario(usuario: Usuario) {
 
         <!-- Inicio de sesion -->
 
-        <BaseModal title="Inicio de Sesion" description="Ingrese sus datos para inicar">
+        <BaseModal v-model:open="mostrarFormulario" title="Inicio de Sesion"
+            description="Ingrese sus datos para inicar ">
             <UForm>
                 <UFormField name="email" label="Email">
                     <UInput placeholder="example@gmail.com">
