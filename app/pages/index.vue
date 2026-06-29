@@ -5,6 +5,13 @@ import type { Usuario } from '~/types/usuario';
 
 const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
 
+const errorFormulario = ref(false)
+const mostrarFormulario = ref(false)
+
+function abrirFormulario(usuario: Usuario) {
+    mostrarFormulario.value = true
+}
+
 
 </script>
 
@@ -29,7 +36,9 @@ const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/a
                 <div class="flex justify-center md:justify-end p-4">
 
                     <UButton
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        @click="abrirFormulario">
+
                         Iniciar sesión
                     </UButton>
 
