@@ -62,19 +62,21 @@ async function login() {
 
 // Formluario de inscripciones
 const guardarFormInscipciones = ref(false)
-const errorFormInscripciones = ref()
+const errorFormInscripciones = ref('')
 const mostrarFormInscripciones = ref(false)
 
 const formInscripciones = reactive({
     email: '',
     nombre: '',
-    apellido: ''
+    apellido: '',
+    eventoId: null
 })
 
 function resetFormInscripciones() {
     formInscripciones.email = '',
         formInscripciones.nombre = '',
         formInscripciones.apellido = '',
+        formInscripciones.eventoId = null,
         errorFormInscripciones.value = ''
 }
 
@@ -99,13 +101,15 @@ async function guardarEvento() {
             body: {
                 email: formInscripciones.email,
                 nombre: formInscripciones.nombre,
-                apellido: formInscripciones.apellido
+                apellido: formInscripciones.apellido,
+                eventoId: formInscripciones.eventoId
             }
         })
-        cerrarFormInscripciones()
         await refresh()
+        cerrarFormInscripciones()
+
     }
-    catch (error) {
+    catch {
         errorFormInscripciones.value = 'Error, no se logro inscripbir de manera correcta'
     }
     finally {
@@ -265,7 +269,7 @@ async function guardarEvento() {
         <BaseModal v-model:open="mostrarFormInscripciones" title="Inicio de Sesion"
             description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" @submit="guardarEvento" :state="formInscripciones">
+            <UForm class="space-y-5" @submit="guardarEvento">
 
                 <UFormField name="email" label="Email" type="email">
                     <UInput v-model="formInscripciones.email" placeholder="example@gmail.com" color="neutral"
