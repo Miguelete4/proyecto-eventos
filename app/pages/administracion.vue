@@ -13,7 +13,7 @@ const staff = async () => {
 import type { Evento } from '~/types/evento'
 
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
-
+console.log(eventos.value)
 
 </script>
 
@@ -54,20 +54,21 @@ const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/ap
 
         <!-- PARTE IZQUIERDA (CARDS DE EVENTOS) -->
         <main class="flex-1 container mx-auto px-6 py-10">
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
                 <div class="lg:col-span-2">
 
-                    <h2 class="text-3xl font-bold mb-6 text-purple-600">
-                        Eventos disponibles
-                    </h2>
+                    <div class="grid md:grid-cols-2 gap-6">
 
-                    <EventoCard v-for="evento in eventos" :evento = "evento" />
+                        <EventoCard v-for="evento in eventos" :key="evento.id" :evento="evento" />
 
+                    </div>
                 </div>
+ 
 
                 <!-- PARTE DERECHA (AGREGAR / ELIMINAR EVENTOS) -->
-                <UCard class="bg-gray-900 border border-gray-800 h-fit lg:sticky lg:top-10">
+                <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                     <h2 class="text-2xl font-bold mb-6 text-purple-600">
                         Agregar evento
