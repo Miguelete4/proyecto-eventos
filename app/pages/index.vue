@@ -49,7 +49,7 @@ async function login() {
         cerrarForm() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
         await navigateTo('/administracion')
     }
-    catch (err) {
+    catch (err: any) {
         // Opcional: capturar el mensaje real que viene del servidor backend
         errorForm.value = ('No se pudo iniciar sesión. Verifique sus datos.')
     }
