@@ -12,7 +12,7 @@ model evento {
   titulo   String     @db.VarChar(150)
   fecha    DateTime
   lugar    String     @db.VarChar(150)
-  imagen   String     @db.VarChar(255)
+  imagen   Bytes?
   valor    Float
   inscrito inscrito[]
 }

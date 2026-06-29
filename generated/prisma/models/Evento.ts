@@ -41,7 +41,7 @@ export type EventoMinAggregateOutputType = {
   titulo: string | null
   fecha: Date | null
   lugar: string | null
-  imagen: string | null
+  imagen: runtime.Bytes | null
   valor: number | null
 }
 
@@ -50,7 +50,7 @@ export type EventoMaxAggregateOutputType = {
   titulo: string | null
   fecha: Date | null
   lugar: string | null
-  imagen: string | null
+  imagen: runtime.Bytes | null
   valor: number | null
 }
 
@@ -194,7 +194,7 @@ export type EventoGroupByOutputType = {
   titulo: string
   fecha: Date
   lugar: string
-  imagen: string
+  imagen: runtime.Bytes | null
   valor: number
   _count: EventoCountAggregateOutputType | null
   _avg: EventoAvgAggregateOutputType | null
@@ -226,7 +226,7 @@ export type eventoWhereInput = {
   titulo?: Prisma.StringFilter<"evento"> | string
   fecha?: Prisma.DateTimeFilter<"evento"> | Date | string
   lugar?: Prisma.StringFilter<"evento"> | string
-  imagen?: Prisma.StringFilter<"evento"> | string
+  imagen?: Prisma.BytesNullableFilter<"evento"> | runtime.Bytes | null
   valor?: Prisma.FloatFilter<"evento"> | number
   inscrito?: Prisma.InscritoListRelationFilter
 }
@@ -236,7 +236,7 @@ export type eventoOrderByWithRelationInput = {
   titulo?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   lugar?: Prisma.SortOrder
-  imagen?: Prisma.SortOrder
+  imagen?: Prisma.SortOrderInput | Prisma.SortOrder
   valor?: Prisma.SortOrder
   inscrito?: Prisma.inscritoOrderByRelationAggregateInput
   _relevance?: Prisma.eventoOrderByRelevanceInput
@@ -250,7 +250,7 @@ export type eventoWhereUniqueInput = Prisma.AtLeast<{
   titulo?: Prisma.StringFilter<"evento"> | string
   fecha?: Prisma.DateTimeFilter<"evento"> | Date | string
   lugar?: Prisma.StringFilter<"evento"> | string
-  imagen?: Prisma.StringFilter<"evento"> | string
+  imagen?: Prisma.BytesNullableFilter<"evento"> | runtime.Bytes | null
   valor?: Prisma.FloatFilter<"evento"> | number
   inscrito?: Prisma.InscritoListRelationFilter
 }, "id">
@@ -260,7 +260,7 @@ export type eventoOrderByWithAggregationInput = {
   titulo?: Prisma.SortOrder
   fecha?: Prisma.SortOrder
   lugar?: Prisma.SortOrder
-  imagen?: Prisma.SortOrder
+  imagen?: Prisma.SortOrderInput | Prisma.SortOrder
   valor?: Prisma.SortOrder
   _count?: Prisma.eventoCountOrderByAggregateInput
   _avg?: Prisma.eventoAvgOrderByAggregateInput
@@ -277,7 +277,7 @@ export type eventoScalarWhereWithAggregatesInput = {
   titulo?: Prisma.StringWithAggregatesFilter<"evento"> | string
   fecha?: Prisma.DateTimeWithAggregatesFilter<"evento"> | Date | string
   lugar?: Prisma.StringWithAggregatesFilter<"evento"> | string
-  imagen?: Prisma.StringWithAggregatesFilter<"evento"> | string
+  imagen?: Prisma.BytesNullableWithAggregatesFilter<"evento"> | runtime.Bytes | null
   valor?: Prisma.FloatWithAggregatesFilter<"evento"> | number
 }
 
@@ -285,7 +285,7 @@ export type eventoCreateInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen: string
+  imagen?: runtime.Bytes | null
   valor: number
   inscrito?: Prisma.inscritoCreateNestedManyWithoutEventoInput
 }
@@ -295,7 +295,7 @@ export type eventoUncheckedCreateInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen: string
+  imagen?: runtime.Bytes | null
   valor: number
   inscrito?: Prisma.inscritoUncheckedCreateNestedManyWithoutEventoInput
 }
@@ -304,7 +304,7 @@ export type eventoUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
   inscrito?: Prisma.inscritoUpdateManyWithoutEventoNestedInput
 }
@@ -314,7 +314,7 @@ export type eventoUncheckedUpdateInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
   inscrito?: Prisma.inscritoUncheckedUpdateManyWithoutEventoNestedInput
 }
@@ -324,7 +324,7 @@ export type eventoCreateManyInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen: string
+  imagen?: runtime.Bytes | null
   valor: number
 }
 
@@ -332,7 +332,7 @@ export type eventoUpdateManyMutationInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -341,7 +341,7 @@ export type eventoUncheckedUpdateManyInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -401,6 +401,10 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
+export type NullableBytesFieldUpdateOperationsInput = {
+  set?: runtime.Bytes | null
+}
+
 export type FloatFieldUpdateOperationsInput = {
   set?: number
   increment?: number
@@ -435,7 +439,7 @@ export type eventoCreateWithoutInscritoInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen: string
+  imagen?: runtime.Bytes | null
   valor: number
 }
 
@@ -444,7 +448,7 @@ export type eventoUncheckedCreateWithoutInscritoInput = {
   titulo: string
   fecha: Date | string
   lugar: string
-  imagen: string
+  imagen?: runtime.Bytes | null
   valor: number
 }
 
@@ -468,7 +472,7 @@ export type eventoUpdateWithoutInscritoInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -477,7 +481,7 @@ export type eventoUncheckedUpdateWithoutInscritoInput = {
   titulo?: Prisma.StringFieldUpdateOperationsInput | string
   fecha?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   lugar?: Prisma.StringFieldUpdateOperationsInput | string
-  imagen?: Prisma.StringFieldUpdateOperationsInput | string
+  imagen?: Prisma.NullableBytesFieldUpdateOperationsInput | runtime.Bytes | null
   valor?: Prisma.FloatFieldUpdateOperationsInput | number
 }
 
@@ -550,7 +554,7 @@ export type $eventoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     titulo: string
     fecha: Date
     lugar: string
-    imagen: string
+    imagen: runtime.Bytes | null
     valor: number
   }, ExtArgs["result"]["evento"]>
   composites: {}
@@ -926,7 +930,7 @@ export interface eventoFieldRefs {
   readonly titulo: Prisma.FieldRef<"evento", 'String'>
   readonly fecha: Prisma.FieldRef<"evento", 'DateTime'>
   readonly lugar: Prisma.FieldRef<"evento", 'String'>
-  readonly imagen: Prisma.FieldRef<"evento", 'String'>
+  readonly imagen: Prisma.FieldRef<"evento", 'Bytes'>
   readonly valor: Prisma.FieldRef<"evento", 'Float'>
 }
     

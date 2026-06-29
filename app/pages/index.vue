@@ -5,16 +5,58 @@ import type { Usuario } from '~/types/usuario';
 
 const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
 
-const errorForm = ref('')
-const mostrarFormulario = ref(false)
+const mostrarForm = ref(false)
+const errorForm = ref()
+const guardandoForm = ref(false)
 
-const mostrarLogin = ref(false)
+const form = reactive({
+    email: '',
+    password: ''
+})
 
-function abrirFormulario(usuario?: Usuario) {
-    mostrarLogin.value = true
-    errorForm.value = '' // Limpia errores previos al abrir
+function resetFormContrasena() {
+    form.email = ''
+    form.password = ''
+    errorForm.value = ''
 }
 
+function abrirForm() {
+    resetFormContrasena()
+    mostrarForm.value = true
+}
+
+function cerrarForm() {
+    mostrarForm.value = false
+    resetFormContrasena()
+}
+
+const { fetch: fetchSession } = useUserSession()
+
+async function login() {
+    guardandoForm.value = true
+    errorForm.value = ''
+
+    try {
+        await $fetch('/api/auth/login', {
+            method: 'POST',
+            body: {
+                email: form.email,
+                password: form.password
+            }
+        })
+
+        await fetchSession()
+        cerrarForm() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
+        await navigateTo('/administracion')
+    }
+    catch (err) {
+        // Opcional: capturar el mensaje real que viene del servidor backend
+        errorForm.value = ('No se pudo iniciar sesión. Verifique sus datos.')
+    }
+    finally {
+        guardandoForm.value = false
+    }
+}
 
 </script>
 
@@ -40,10 +82,8 @@ function abrirFormulario(usuario?: Usuario) {
 
                     <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="abrirFormulario()">
-
+                        @click="abrirForm">
                         Iniciar sesión
-
                     </UButton>
 
                 </div>
@@ -53,26 +93,33 @@ function abrirFormulario(usuario?: Usuario) {
 
         <!-- Inicio de sesion -->
 
-        <BaseModal v-model:open="mostrarFormulario" title="Inicio de Sesion"
-            description="Ingrese sus datos para inicar ">
-            <UForm>
-                <UFormField name="email" label="Email">
-                    <UInput placeholder="example@gmail.com">
-
+        <BaseModal v-model:open="mostrarForm" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
+            :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
+            <UForm class="space-y-5" @submit.prevent="login" :state="form">
+                <UFormField name="email" label="Email" type="email">
+                    <UInput v-model="form.email" placeholder="example@gmail.com" color="neutral" variant="outline"
+                        class="w-full">
                     </UInput>
                 </UFormField>
 
-                <UFormField name="contraseña" label="Contraseña">
-                    <UInput placeholder="Contraseña">
-
+                <UFormField name="contraseña" label="Contraseña" type="password">
+                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
+                        class="w-full">
                     </UInput>
                 </UFormField>
+
+                <UButton type="submit" :loading="guardandoForm"
+                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                    Ingresar
+                </UButton>
+
+                <UButton @click="cerrarForm" type="button"
+                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                    Cancelar
+                </UButton>
 
             </UForm>
         </BaseModal>
-
-
-
 
         <!-- Parte de la informacion de la pagina -->
         <!-- Ayuda de la ia, luego cambiamos cosas xd -->
