@@ -1,6 +1,9 @@
 <script setup lang="ts">
 
-import BaseModal from '~/components/BaseModal.vue'
+import BaseModal from '~/components/BaseModal.vue';
+import type { Usuario } from '~/types/usuario';
+
+const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
 
 
 </script>
@@ -26,8 +29,7 @@ import BaseModal from '~/components/BaseModal.vue'
                 <div class="flex justify-center md:justify-end p-4">
 
                     <UButton
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="">
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                         Iniciar sesión
                     </UButton>
 
@@ -36,7 +38,26 @@ import BaseModal from '~/components/BaseModal.vue'
             </nav>
         </header>
 
-        <!-- MODAL INICIO DE SESION -->
+        <!-- Inicio de sesion -->
+
+        <BaseModal title="Inicio de Sesion" description="Ingrese sus datos para inicar">
+            <UForm>
+                <UFormField name="email" label="Email">
+                    <UInput placeholder="example@gmail.com">
+
+                    </UInput>
+                </UFormField>
+
+                <UFormField name="contraseña" label="Contraseña">
+                    <UInput placeholder="Contraseña">
+
+                    </UInput>
+                </UFormField>
+
+            </UForm>
+        </BaseModal>
+
+
 
 
         <!-- Parte de la informacion de la pagina -->
@@ -51,14 +72,28 @@ import BaseModal from '~/components/BaseModal.vue'
                 </h2>
 
                 <p class="text-black text-lg">
-                    Así de simple: elige lo que quieres hacer hoy, inscríbete con un par de clics y vive la
-                    experiencia.
+                    Así de simple: elige lo que quieres hacer hoy, inscríbete con un par de clics y vive la experiencia.
                 </p>
+
             </div>
+
         </div>
 
-        <div>
-            <section class="p-6">
+        <section class="py-12 bg-gray-900">
+            <div class="max-w-6xl mx-auto px-4">
+
+                <div class="flex justify-between items-center mb-12">
+                    <h3 class="text-2xl font-bold text-purple-600">
+                        Eventos disponibles
+                    </h3>
+
+                    <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de Vue) -->
+                    <button type="button"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        Ver mis Inscripciones
+                    </button>
+                </div>
+
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                     <div
@@ -107,9 +142,10 @@ import BaseModal from '~/components/BaseModal.vue'
                     </div>
 
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
+
 
     </div>
 </template>
