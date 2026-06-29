@@ -2,18 +2,80 @@
 
 import { ref } from 'vue'
 
+//CONST PARA EL NAVBAR
 const cerrarSesion = async () => {
     await navigateTo('/')
 }
 
 const staff = async () => {
     await navigateTo('/gestionStaff')
-} 
+}
 
+// CONST PARA MOSTRAR EVENTOS
 import type { Evento } from '~/types/evento'
 
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
-console.log(eventos.value)
+// console.log(eventos.value)
+
+
+// CONST PARA INGRESAR EVENTOS
+import type { Inscrito } from '~/types/inscrito'
+// const { data: inscritos, pending: pendingInscritos } = await useFetch<Inscrito[]>('/api/inscritos')
+
+async function agregarEvento() {
+    guardando.value = true
+
+    try {
+        await $fetch('/api/eventos', {
+            method: 'POST',
+            body: formEvento
+        })
+
+        await refresh()
+        limpiarFormulario()
+
+    } catch (error) {
+        console.error(error)
+    } finally {
+        guardando.value = false
+    }
+}
+
+
+const guardando = ref(false)
+const errorFormulario = ref('')
+
+const formEvento = reactive({
+    titulo: '',
+    fecha: '',
+    hora: '',
+    lugar: '',
+    // imagen: '',
+    valor: undefined,
+    inscritos: undefined
+})
+
+function limpiarFormulario() {
+    formEvento.titulo = ''
+    formEvento.fecha = ''
+    formEvento.hora = ''
+    formEvento.lugar = ''
+    // formEvento.imagen = ''
+    formEvento.valor = undefined
+    formEvento.inscritos = undefined
+    errorFormulario.value = ''
+}
+
+// PARA LAS IMAGENES DE LOS CARDS
+// const imagen = ref<File | null>(null)
+
+// function seleccionarImagen(event: Event) {
+//     const input = event.target as HTMLInputElement
+
+//     if (input.files && input.files.length > 0) {
+//         imagen.value = input.files[0]!
+//     }
+// }
 
 </script>
 
@@ -65,7 +127,7 @@ console.log(eventos.value)
 
                     </div>
                 </div>
- 
+
 
                 <!-- PARTE DERECHA (AGREGAR / ELIMINAR EVENTOS) -->
                 <UCard class="bg-gray-900 border border-gray-800 h-fit">
@@ -75,14 +137,17 @@ console.log(eventos.value)
                     </h2>
 
                     <div class="space-y-5">
-                        <UInput placeholder="Título" />
-                        <UInput type="date" />
-                        <UInput placeholder="Lugar" />
-                        <UInput placeholder="Valor" />
-                        <UInput type="file" />
+                        <UInput v-model="formEvento.titulo" placeholder="Título" />
+                        <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
+                        <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
+                        <UInput v-model="formEvento.lugar" placeholder="Lugar" />
+                        <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
+                        <!-- <UInput type="file" @change="seleccionarImagen" /> -->
 
-                        <UButton color="primary" block>
+                        <UButton color="primary" block @click="agregarEvento">
+
                             Agregar evento
+
                         </UButton>
 
                         <UDivider class="my-3" />
@@ -99,6 +164,7 @@ console.log(eventos.value)
                     </div>
 
                 </UCard>
+
 
             </div>
         </main>
