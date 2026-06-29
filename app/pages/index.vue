@@ -49,7 +49,7 @@ async function login() {
         cerrarForm() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
         await navigateTo('/administracion')
     }
-    catch (err) {
+    catch (err: any) {
         // Opcional: capturar el mensaje real que viene del servidor backend
         errorForm.value = ('No se pudo iniciar sesión. Verifique sus datos.')
     }
@@ -206,7 +206,52 @@ async function login() {
             </div>
         </section>
 
+        <BaseModal v-model:open="mostrarForm" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
+            :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
+            <UForm class="space-y-5" @submit.prevent="login" :state="form">
+                <UFormField name="email" label="Email" type="email">
+                    <UInput v-model="form.email" placeholder="example@gmail.com" color="neutral" variant="outline"
+                        class="w-full">
+                    </UInput>
+                </UFormField>
 
+                <UFormField name="contraseña" label="Contraseña" type="password">
+                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
+                        class="w-full">
+                    </UInput>
+                </UFormField>
+
+                <UFormField name="contraseña" label="Contraseña" type="password">
+                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
+                        class="w-full">
+                    </UInput>
+                </UFormField>
+
+
+                <UFormField name="contraseña" label="Contraseña" type="password">
+                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
+                        class="w-full">
+                    </UInput>
+                </UFormField>
+
+                <UFormField name="contraseña" label="Contraseña" type="password">
+                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
+                        class="w-full">
+                    </UInput>
+                </UFormField>
+
+                <UButton type="submit" :loading="guardandoForm"
+                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                    Ingresar
+                </UButton>
+
+                <UButton @click="cerrarForm" type="button"
+                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                    Cancelar
+                </UButton>
+
+            </UForm>
+        </BaseModal>
 
     </div>
 </template>
