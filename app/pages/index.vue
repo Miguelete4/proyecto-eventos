@@ -64,7 +64,6 @@ import BaseModal from '~/components/BaseModal.vue'
                     <div
                         class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
 
-<<<<<<< HEAD
                         <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
                             alt="Festival de Música" />
 
@@ -73,41 +72,6 @@ import BaseModal from '~/components/BaseModal.vue'
                             <h4 class="text-lg font-bold text-gray-900 truncate">
                                 Festival de Música
                             </h4>
-=======
-                    <!-- modal para ver inscripciones -->
-
-                    <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="">
-                        Ver mis Inscripciones
-                    </button>
-
-                    <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de
-                        Vue) -->
-
-
-                    <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="">
-                        Ver mis Inscripciones
-                    </button>
-
-                    <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de
-                        Vue) -->
-
-                    <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="">
-                        Ver mis Inscripciones
-                    </button>
-
-                </div>
-
-
-                <div>
-                    <section class="p-6">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
->>>>>>> aa4f38f31d0c19d9f2dac696ebe1f42ff308523b
 
                             <div
                                 class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
@@ -131,7 +95,6 @@ import BaseModal from '~/components/BaseModal.vue'
                                 </span>
                             </div>
 
-<<<<<<< HEAD
                             <div class="flex justify-center mt-4">
                                 <UButton @click=""
                                     class="px-6 py-2 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors text-sm justify-center">
@@ -142,8 +105,6 @@ import BaseModal from '~/components/BaseModal.vue'
                         </div>
 
                     </div>
-=======
->>>>>>> aa4f38f31d0c19d9f2dac696ebe1f42ff308523b
 
                 </div>
             </section>
