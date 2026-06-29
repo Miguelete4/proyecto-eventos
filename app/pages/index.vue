@@ -6,37 +6,37 @@ import type { Usuario } from '~/types/usuario';
 const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
 
 // Formulario de iniciar sesion
-const mostrarForm = ref(false)
-const errorForm = ref()
-const guardandoForm = ref(false)
+const mostrarFormInicio = ref(false)
+const errorFormInicio = ref()
+const guardarFormInicio = ref(false)
 
 const form = reactive({
     email: '',
     password: ''
 })
 
-function resetFormContrasena() {
+function resetFormInicio() {
     form.email = ''
     form.password = ''
-    errorForm.value = ''
+    errorFormInicio.value = ''
 }
 
-function abrirForm() {
-    resetFormContrasena()
-    mostrarForm.value = true
+function abrirFormInicio() {
+    resetFormInicio()
+    mostrarFormInicio.value = true
 }
 
-function cerrarForm() {
-    mostrarForm.value = false
-    resetFormContrasena()
+function cerrarFormInicio() {
+    mostrarFormInicio.value = false
+    resetFormInicio()
 }
 
 // Funcion del login, verifica usuario en la BD
 const { fetch: fetchSession } = useUserSession()
 
 async function login() {
-    guardandoForm.value = true
-    errorForm.value = ''
+    guardarFormInicio.value = true
+    errorFormInicio.value = ''
 
     try {
         await $fetch('/api/auth/login', {
@@ -48,15 +48,15 @@ async function login() {
         })
 
         await fetchSession()
-        cerrarForm() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
+        cerrarFormInicio() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
         await navigateTo('/administracion')
     }
     catch (err: any) {
         // Opcional: capturar el mensaje real que viene del servidor backend
-        errorForm.value = ('No se pudo iniciar sesión. Verifique sus datos.')
+        errorFormInicio.value = ('No se pudo iniciar sesión. Verifique sus datos.')
     }
     finally {
-        guardandoForm.value = false
+        guardarFormInicio.value = false
     }
 }
 
@@ -94,14 +94,14 @@ async function guardarEvento() {
     errorFormInscripciones.value = ''
 
     try {
-        await $fetch('/api/inscritos'), {
+        await $fetch('/api/inscritos', {
             method: 'POST',
             body: {
                 email: formInscripciones.email,
                 nombre: formInscripciones.nombre,
                 apellido: formInscripciones.apellido
             }
-        }
+        })
         cerrarFormInscripciones()
         await refresh()
     }
@@ -137,7 +137,7 @@ async function guardarEvento() {
 
                     <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="abrirForm">
+                        @click="abrirFormInicio">
                         Iniciar sesión
                     </UButton>
 
@@ -148,7 +148,7 @@ async function guardarEvento() {
 
         <!-- Inicio de sesion -->
 
-        <BaseModal v-model:open="mostrarForm" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
+        <BaseModal v-model:open="mostrarFormInicio" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
             <UForm class="space-y-5" @submit.prevent="login" :state="form">
                 <UFormField name="email" label="Email" type="email">
@@ -163,12 +163,12 @@ async function guardarEvento() {
                     </UInput>
                 </UFormField>
 
-                <UButton type="submit" :loading="guardandoForm"
+                <UButton type="submit" :loading="guardarFormInicio"
                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                     Ingresar
                 </UButton>
 
-                <UButton @click="cerrarForm" type="button"
+                <UButton @click="cerrarFormInicio" type="button"
                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                     Cancelar
                 </UButton>
@@ -265,7 +265,7 @@ async function guardarEvento() {
         <BaseModal v-model:open="mostrarFormInscripciones" title="Inicio de Sesion"
             description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" @submit.prevent="guardarEvento" :state="form">
+            <UForm class="space-y-5" @submit="guardarEvento" :state="formInscripciones">
 
                 <UFormField name="email" label="Email" type="email">
                     <UInput v-model="formInscripciones.email" placeholder="example@gmail.com" color="neutral"
@@ -285,12 +285,12 @@ async function guardarEvento() {
                     </UInput>
                 </UFormField>
 
-                <UButton type="submit" :loading="guardandoForm"
+                <UButton type="submit" :loading="guardarFormInscipciones"
                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                     Inscribirse al evento
                 </UButton>
 
-                <UButton @click="cerrarForm" type="button"
+                <UButton @click="cerrarFormInscripciones" type="button"
                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                     Cancelar
                 </UButton>
