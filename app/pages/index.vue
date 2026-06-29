@@ -1,9 +1,11 @@
 <script setup lang="ts">
 
 import BaseModal from '~/components/BaseModal.vue';
+import type { Evento } from '~/types/evento';
 import type { Usuario } from '~/types/usuario';
 
 const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
+const { data: evento } = await useFetch<Evento[]>('/api/eventos')
 
 // Formulario de iniciar sesion
 const mostrarFormInicio = ref(false)
@@ -95,8 +97,10 @@ async function guardarEvento() {
     guardarFormInscipciones.value = true
     errorFormInscripciones.value = ''
 
+    console.log("Datos a enviar:", JSON.parse(JSON.stringify(formInscripciones)))
+
     try {
-        await $fetch('/api/inscritos', {
+        await $fetch('api/inscritos', {
             method: 'POST',
             body: {
                 email: formInscripciones.email,
@@ -269,7 +273,7 @@ async function guardarEvento() {
         <BaseModal v-model:open="mostrarFormInscripciones" title="Inicio de Sesion"
             description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" @submit="guardarEvento">
+            <form class="space-y-5" @submit.prevent="guardarEvento">
 
                 <UFormField name="email" label="Email" type="email">
                     <UInput v-model="formInscripciones.email" placeholder="example@gmail.com" color="neutral"
@@ -294,12 +298,12 @@ async function guardarEvento() {
                     Inscribirse al evento
                 </UButton>
 
-                <UButton @click="cerrarFormInscripciones" type="button"
+                <UButton @click.prevent="cerrarFormInscripciones" type="button"
                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                     Cancelar
                 </UButton>
 
-            </UForm>
+            </form>
         </BaseModal>
 
     </div>
