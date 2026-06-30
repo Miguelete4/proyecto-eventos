@@ -166,6 +166,7 @@ async function guardarEvento() {
         <BaseModal v-model:open="mostrarFormInicio" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
             <UForm class="space-y-5" :state="form" @submit="login" :schema="schemaInicioSesion">
+
                 <UFormField name="email" label="Email" type="email">
                     <UInput v-model="form.email" placeholder="example@gmail.com" color="neutral" variant="outline"
                         class="w-full">

@@ -8,10 +8,8 @@ const isActive = (to: String) => route.path === to
 
 // Validacion con zod, esta instalado
 const schemaEventos = z.object({
-    nombre: z.string().max(100, 'El nombre debe tener como máximo 100 letras.'),
-    apellido: z.string().max(100, 'El apellido debe tener como máximo 100 letras.'),
-    email: z.email({ message: 'Debe ingresar un correo válido.' }),
-    password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
+    lugar: z.string().min(3, 'El lugar debe tener minimo 3 caracteres').max(100, 'El lugar debe tener como máximo 100 caracteres.'),
+    valor: z.int().min(1000, 'El valor debe ser desde 1000 en adelante').max(90000, 'El valor debe ser maximo 90.000')
 })
 
 // Validacion de si es administrador o no en la pagina
