@@ -97,7 +97,6 @@ function limpiarFormulario() {
 
 // PARA LAS IMAGENES DE LOS CARDS
 const imagen = ref<File | null>(null)
-// const imagen = ref<any>(null) //comprobar despues cual es la que mejor sirve
 
 
 //FUNCION PARA ELIMINAR EVENTOS
