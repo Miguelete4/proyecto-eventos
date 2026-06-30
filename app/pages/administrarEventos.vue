@@ -157,7 +157,6 @@ function limpiarFormulario() {
                     </div>
                 </div>
 
-
                 <!-- PARTE DERECHA (AGREGAR / ELIMINAR EVENTOS) -->
                 <UCard class="bg-gray-900 border border-gray-800 h-fit">
 

@@ -67,6 +67,7 @@ const guardarFormInscipciones = ref(false)
 const errorFormInscripciones = ref('')
 const mostrarFormInscripciones = ref(false)
 
+// =========================CAMBIAR ESTO =======================
 const formInscripciones = reactive<{
     email: string
     nombre: string
