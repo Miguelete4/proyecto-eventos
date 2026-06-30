@@ -187,123 +187,91 @@ const eventoSeleccionado = computed(() => {
                     </div>
                 </div>
 
-                <aside class="w-full lg:w-80 shrink-0">
-                    <UCard class="bg-gray-900 border border-gray-800">
+               <aside class="w-full lg:w-80 shrink-0">
+                    <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                         <h2 class="text-2xl font-bold mb-6 text-purple-600">
                             Agregar evento
                         </h2>
 
-                        <UForm class="space-y-5" :schema="schemaEventos" @submit="agregarEvento">
+                        <UForm class="space-y-5" :schema="schemaEventos" :state="formEvento" @submit="agregarEvento">
 
-                            <UFormField name="imagen" label="Imagen" type="image">
+                            <UFormField name="imagen" label="Imagen">
                                 <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
                             </UFormField>
 
-                            <UFormField name="fecha" label="Fecha" type="date">
-                                <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
+                            <UFormField name="titulo" label="Título">
+                                <UInput v-model="formEvento.titulo" placeholder="Título" class="w-full" />
                             </UFormField>
 
-                            <UFormField name="hora" label="Hora" type="hour">
-                                <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
+                            <UFormField name="fecha" label="Fecha">
+                                <UInput type="date" v-model="formEvento.fecha" class="w-full" />
                             </UFormField>
 
-                            <UFormField name="lugar" label="Lugar" type="place">
-                                <UInput v-model="formEvento.lugar" placeholder="Lugar" />
+                            <UFormField name="hora" label="Hora">
+                                <UInput type="time" v-model="formEvento.hora" class="w-full" />
                             </UFormField>
 
-                            <UFormField name="valor" label="Valor" type="float">
-                                <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
+                            <UFormField name="lugar" label="Lugar">
+                                <UInput v-model="formEvento.lugar" placeholder="Lugar" class="w-full" />
                             </UFormField>
 
-                            <UButton color="primary" @click="agregarEvento" class="w-full flex justify-center"
-                                type="submit">
+                            <UFormField name="valor" label="Valor">
+                                <UInput type="number" v-model="formEvento.valor" placeholder="Valor" class="w-full" />
+                            </UFormField>
+
+                            <UButton color="primary" block type="submit">
                                 Agregar evento
                             </UButton>
 
-                            <UDivider class="my-3" />
-
-                            <h3 class="text-xl font-semibold">
-                                Eliminar evento
-                            </h3>
-
-                            <UFormField>
-                                <UInput v-model="idEliminar" type="number" placeholder="ID del evento" />
-                            </UFormField>
-
-                            <UButton color="error" @click="eliminarEvento" class="w-full flex justify-center"
-                                type="button">
-                                Eliminar
-                            </UButton>
-
                         </UForm>
-                    </UCard>
-                </aside>
 
-                <!-- PARTE DERECHA (AGREGAR / ELIMINAR EVENTOS) -->
-                <!-- <UCard class="bg-gray-900 border border-gray-800 h-fit">
+                        <UDivider class="my-5" />
 
-                    <h2 class="text-2xl font-bold mb-6 text-purple-600">
-                        Agregar evento
-                    </h2>
-
-                    <div class="space-y-5">
-                        <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
-                        <UInput v-model="formEvento.titulo" placeholder="Título" />
-                        <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
-                        <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
-                        <UInput v-model="formEvento.lugar" placeholder="Lugar" />
-                        <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
-
-                        <UButton color="primary" block @click="agregarEvento">
-                            Agregar evento
-                        </UButton>
-
-                        <UDivider class="my-3" />
-
-                        <h3 class="text-xl font-semibold">
+                        <h3 class="text-xl font-semibold mb-3">
                             Eliminar evento
                         </h3>
 
-                        <UInput v-model="idEliminar" type="number" placeholder="ID del evento" />
+                        <div class="space-y-3">
+                            <UInput v-model="idEliminar" type="number" placeholder="ID del evento" class="w-full" />
 
-                        <UButton color="error" block @click="eliminarEvento">
-                            Eliminar
-                        </UButton>
-                    </div>
-
-                     listar inscritos 
-
-                <UDivider class="my-3" />
-
-                <h3 class="text-xl font-semibold p-2 translate-y">
-                    Ver inscritos
-                </h3>
-
-                <UInput v-model="idVerInscritos" type="number" placeholder="ID del evento" />
-
-                <div v-if="eventoSeleccionado" class="space-y-3 mt-4">
-
-                    <h4 class="font-bold text-purple-400">
-                        Inscritos en: {{ eventoSeleccionado.titulo }}
-                    </h4>
-
-                    <div v-if="eventoSeleccionado.inscrito.length > 0" class="space-y-2">
-                        <div v-for="persona in eventoSeleccionado.inscrito" :key="persona.id"
-                            class="bg-gray-800 rounded-lg p-3 text-sm">
-                            <p><strong>Nombre:</strong> {{ persona.nombre }} {{ persona.apellido }}</p>
-                            <p><strong>Email:</strong> {{ persona.email }}</p>
+                            <UButton color="error" block @click="eliminarEvento">
+                                Eliminar
+                            </UButton>
                         </div>
-                    </div>
 
-                    <p v-else class="text-gray-400">
-                        Este evento no tiene inscritos.
-                    </p>
+                        <UDivider class="my-5" />
 
-                </div>
+                        <h3 class="text-xl font-semibold mb-3">
+                            Ver inscritos
+                        </h3>
 
-                </UCard> -->
+                        <div class="space-y-3">
+                            <UInput v-model="idVerInscritos" type="number" placeholder="ID del evento" class="w-full" />
 
+                            <div v-if="eventoSeleccionado" class="space-y-3 mt-4">
+
+                                <h4 class="font-bold text-purple-400">
+                                    Inscritos en: {{ eventoSeleccionado.titulo }}
+                                </h4>
+
+                                <div v-if="eventoSeleccionado.inscrito.length > 0" class="space-y-2">
+                                    <div v-for="persona in eventoSeleccionado.inscrito" :key="persona.id"
+                                        class="bg-gray-800 rounded-lg p-3 text-sm">
+                                        <p><strong>Nombre:</strong> {{ persona.nombre }} {{ persona.apellido }}</p>
+                                        <p><strong>Email:</strong> {{ persona.email }}</p>
+                                    </div>
+                                </div>
+
+                                <p v-else class="text-gray-400">
+                                    Este evento no tiene inscritos.
+                                </p>
+
+                            </div>
+                        </div>
+
+                    </UCard>
+                </aside>
 
             </div>
         </main>
