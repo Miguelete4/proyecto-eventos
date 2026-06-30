@@ -51,11 +51,11 @@ async function login() {
 
         await fetchSession()
         cerrarFormInicio() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
-        await navigateTo('/administracion')
+        await navigateTo('/administrarEventos')
     }
     catch (err: any) {
         // Opcional: capturar el mensaje real que viene del servidor backend
-        errorFormInicio.value = ('No se pudo iniciar sesión. Verifique sus datos.')
+        errorFormInicio.value = getApiErrorMessage(err, 'No se pudo iniciar sesión. Verifique sus datos.')
     }
     finally {
         guardarFormInicio.value = false
