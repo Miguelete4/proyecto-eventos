@@ -55,8 +55,6 @@ function limpiarForm() {
         formUsuario.password = '',
         formUsuario.rol = roles[1]
 }
-
-// ==================esto para que es?? xd no lo estamos usando creo=========================================
 async function agregarUsuario() {
     guardarUsuario.value = true
     errorFormAgregar.value = ''
@@ -113,7 +111,6 @@ function cerrarConfirmBorrar() {
     usuarioBorrar.value = null
 }
 
-
 </script>
 
 <template>
@@ -127,10 +124,6 @@ function cerrarConfirmBorrar() {
                 <div class="text-4xl font-extrabold text-purple-600 p-4 mx-4">
                     Smart Events
                 </div>
-
-                <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
-                 pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
-
 
                 <div class="flex justify-center items-center md:justify-end gap-3">
 
@@ -167,17 +160,8 @@ function cerrarConfirmBorrar() {
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
-<<<<<<< HEAD
                         <div v-for="usuario in usuarios ?? []" :key="usuario.email">
                             <UsuarioCard :usuario="usuario" />
-=======
-                    <UButton @click="" type="button"
-                        class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
-                        Eliminar
-                    </UButton>
-
-                    <!-- <div class="grid md:grid-cols-2 gap-6">
->>>>>>> bc2efc0bad93484b78f899b1e80bd7b21d8f1076
 
                             <UButton @click="confirmarBorrarUsuario(usuario)" type="button"
                                 class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
