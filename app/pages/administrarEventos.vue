@@ -186,11 +186,9 @@ const eventoSeleccionado = computed(() => {
                     </div>
                 </div>
 
+                <!-- PANEL DE LA DERECHA -->
 
-
-                <!-- panel de la derecha -->
-
-               <aside class="w-full lg:w-80 shrink-0">
+                <aside class="w-full lg:w-80 shrink-0">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                         <h2 class="text-2xl font-bold mb-6 text-purple-600">
@@ -201,6 +199,10 @@ const eventoSeleccionado = computed(() => {
 
                             <UFormField name="imagen" label="Imagen">
                                 <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
+                            </UFormField>
+
+                            <UFormField name="titulo" label="Título">
+                                <UInput v-model="formEvento.titulo" placeholder="Título" class="w-full" />
                             </UFormField>
 
                             <UFormField name="fecha" label="Fecha">
