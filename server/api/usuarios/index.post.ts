@@ -1,11 +1,9 @@
 import bcrypt from "bcryptjs"
 
 export default defineEventHandler(async (event) => {
-    const body = await readBody(event)
-
-    const { email, nombre, apellido, password, rol } = body
+    const { email, nombre, apellido, password, rol } = await readBody(event)
     
-    const hash = await bcrypt.hash(password, 12)
+    const hash = await bcrypt.hash(password, 12);
 
     const usuario = await prisma.usuario.create({
         data: {
@@ -13,12 +11,12 @@ export default defineEventHandler(async (event) => {
             nombre,
             apellido,
             password: hash,
-            rol
-        }
-    })
+            rol,
+        },
+    });
 
     return {
         ok: true,
         usuario
-    }
-})
+    };
+});

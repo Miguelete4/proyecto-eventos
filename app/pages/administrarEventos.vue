@@ -205,7 +205,7 @@ const eventoSeleccionado = computed(() => {
                             Eliminar evento
                         </h3>
 
-                      <UInput v-model="idEliminar" type="number" placeholder="ID del evento" />
+                        <UInput v-model="idEliminar" type="number" placeholder="ID del evento" />
 
                         <UButton color="error" block @click="eliminarEvento">
                             Eliminar

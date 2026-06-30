@@ -19,7 +19,7 @@ const schemaNuevoUsuario = z.object({
     nombre: z.string().max(100, 'El nombre debe tener como máximo 100 letras.'),
     apellido: z.string().max(100, 'El apellido debe tener como máximo 100 letras.'),
     email: z.email({ message: 'Debe ingresar un correo válido.' }),
-    password: z.string().min(6, 'La contraseña debe tener como mínimo 6 caracteres.'),
+    password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
 })
 
 //esto es para obtener los datos del usuario (su nombre y apellido)
@@ -53,7 +53,7 @@ function limpiarForm() {
         formUsuario.email = '',
         formUsuario.apellido = '',
         formUsuario.password = '',
-        formUsuario.rol = roles[2]
+        formUsuario.rol = roles[1]
 }
 
 // ==================esto para que es?? xd no lo estamos usando creo=========================================
@@ -266,7 +266,7 @@ async function agregarUsuario() {
                             </UFormField>
 
                             <div class="flex gap-5 items-center">
-                                <UButton type="submit"
+                                <UButton type="submit" :loading="guardarUsuario"
                                     class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                                     Agregar
                                 </UButton>
