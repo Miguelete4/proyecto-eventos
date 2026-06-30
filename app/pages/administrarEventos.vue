@@ -213,7 +213,6 @@ const eventoSeleccionado = computed(() => {
                     </div>
 
                     <!-- listar inscritos -->
-
                     <UDivider class="my-3" />
 
                     <h3 class="text-xl font-semibold p-2 translate-y">

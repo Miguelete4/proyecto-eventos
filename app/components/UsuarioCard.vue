@@ -16,9 +16,9 @@ const props = defineProps<{
 
         <div class="space-y-2 text-gray-300 mb-5">
 
-            <span>{{ usuario.email }}</span>
+            <p>Correo: {{ usuario.email }}</p>
 
-            <span>{{ usuario.rol }}</span>
+            <p>Rol: {{ usuario.rol }}</p>
 
         </div>
 
