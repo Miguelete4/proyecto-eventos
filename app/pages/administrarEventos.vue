@@ -186,8 +186,11 @@ const eventoSeleccionado = computed(() => {
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <!-- PANEL DE LA DERECHA -->
 
+=======
+>>>>>>> 0358702895900dc344118f6b7435f6cf5819532b
                 <aside class="w-full lg:w-80 shrink-0">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
@@ -206,15 +209,15 @@ const eventoSeleccionado = computed(() => {
                             </UFormField>
 
                             <UFormField name="fecha" label="Fecha">
-                                <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
+                                <UInput type="date" v-model="formEvento.fecha" class="w-full" />
                             </UFormField>
 
                             <UFormField name="hora" label="Hora">
-                                <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
+                                <UInput type="time" v-model="formEvento.hora" class="w-full" />
                             </UFormField>
 
                             <UFormField name="lugar" label="Lugar">
-                                <UInput v-model="formEvento.lugar" placeholder="Lugar" type="text" />
+                                <UInput v-model="formEvento.lugar" placeholder="Lugar" class="w-full" />
                             </UFormField>
 
                             <UFormField name="valor" label="Valor">
