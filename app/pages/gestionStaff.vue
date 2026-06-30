@@ -4,10 +4,18 @@ import type { Usuario } from '~/types/usuario'
 const route = useRoute()
 
 const isActive = (to: String) => route.path === to
-
+//APARTADO DE NAVEGACION (NAVBAR)
 const navigationItems = [
     { label: 'Administrar Eventos', to: '/administrarEventos' },
 ]
+
+async function cerrarSesion() {
+    await $fetch('/api/auth/loginout', {
+        method: 'POST'
+    })
+
+    await navigateTo('/')
+}
 
 const { data: usuario, error, refresh, pending } = await useFetch<Usuario[]>('/api/usuarios')
 
@@ -32,6 +40,8 @@ function reiniciarForm() {
         formUsuario.rol = roles[1]
 }
 
+
+// ==================esto para que es?? xd no lo estamos usando creo=========================================
 async function agregarUsuario() {
     guardarUsuario.value = true
     errorFormAgregar.value = ''
@@ -91,7 +101,7 @@ async function agregarUsuario() {
 
                     <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="">
+                        @click="cerrarSesion">
                         Cerrar Sesion
                     </UButton>
 

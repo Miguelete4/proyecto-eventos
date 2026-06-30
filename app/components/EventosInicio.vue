@@ -1,19 +1,22 @@
 <script setup lang="ts">
-import type { Evento } from '~/types/evento'
+import type { Evento } from '~/types/evento';
 
-defineProps<{
+const props = defineProps<{
     evento: Evento
 }>()
 
 const emit = defineEmits<{
     (e: 'inscribirse', evento: Evento): void
 }>()
+
+const fechaFormateada = computed(() => formatFecha(props.evento.fecha))
+const horaFormateada = computed(() => formatHora(props.evento.fecha))
 </script>
 
 <template>
-    <UCard class="flex flex-col h-full">
 
-        <!-- despues modificamos la imagen para que se pueda ver una personalizada xd -->
+    <UCard class="bg-gray-900 border border-gray-800">
+
         <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
 
         <h3 class="text-xl font-bold mb-3">
@@ -21,9 +24,10 @@ const emit = defineEmits<{
         </h3>
 
         <div class="space-y-2 text-gray-300">
-            <p>{{ evento.fecha }}</p>
-            <p>{{ evento.lugar }}</p>
-            <p>${{ evento.valor }}</p>
+            <p>Fecha: {{ fechaFormateada }}</p>
+            <p>Hora: {{ horaFormateada }}</p>
+            <p>Lugar: {{ evento.lugar }}</p>
+            <p>Valor: {{ evento.valor }}</p>
             <p>{{ evento.inscritos?.length ?? 0 }} inscritos</p>
         </div>
 
@@ -36,6 +40,13 @@ const emit = defineEmits<{
             </UButton>
 
         </div>
-
     </UCard>
+
 </template>
+
+
+
+
+
+
+

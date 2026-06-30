@@ -1,23 +1,30 @@
 <script setup lang="ts">
 
+import type { UseFileUploadOptions } from '@nuxt/ui/runtime/composables/useFileUpload.js'
 import { ref } from 'vue'
 const route = useRoute()
 
 const isActive = (to: String) => route.path === to
 
+//DATOS PARA EL INICIO DE SESION
 const navigationItems = [
     { label: 'Administrar Staff', to: '/gestionStaff' },
 ]
+
+async function cerrarSesion() {
+    await $fetch('/api/auth/loginout', {
+        method: 'POST'
+    })
+
+    await navigateTo('/')
+}
 
 // CONST PARA MOSTRAR EVENTOS
 import type { Evento } from '~/types/evento'
 
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
-// console.log(eventos.value)
 
 // CONST PARA INGRESAR EVENTOS
-import type { Inscrito } from '~/types/inscrito'
-// const { data: inscritos, pending: pendingInscritos } = await useFetch<Inscrito[]>('/api/inscritos')
 
 async function agregarEvento() {
     guardando.value = true
@@ -41,12 +48,13 @@ async function agregarEvento() {
 const guardando = ref(false)
 const errorFormulario = ref('')
 
+// datos para los cards
+const imagen = ref<File | null>(null)
 const formEvento = reactive({
     titulo: '',
     fecha: '',
     hora: '',
     lugar: '',
-    // imagen: '',
     valor: undefined,
     inscritos: undefined
 })
@@ -63,15 +71,7 @@ function limpiarFormulario() {
 }
 
 // PARA LAS IMAGENES DE LOS CARDS
-// const imagen = ref<File | null>(null)
 
-// function seleccionarImagen(event: Event) {
-//     const input = event.target as HTMLInputElement
-
-//     if (input.files && input.files.length > 0) {
-//         imagen.value = input.files[0]!
-//     }
-// }
 
 </script>
 
@@ -104,7 +104,7 @@ function limpiarFormulario() {
 
                     <UButton
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
-                        @click="">
+                        @click="cerrarSesion">
                         Cerrar Sesion
                     </UButton>
 
@@ -112,36 +112,6 @@ function limpiarFormulario() {
 
             </nav>
         </header>
-
-        <!-- <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
-            <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-
-                <h1 class="text-2xl font-black tracking-wider text-purple-600 uppercase">
-                    SMARTS EVENTS
-                </h1>
-
-                <div class="flex items-center gap-8">
-
-                    <UButton color="primary" variant="soft" @click="staff">
-                        Administrar Staff
-                    </UButton>
-
-                    <div class="flex items-center gap-3 ">
-
-                        <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg ">
-                             {{ adminNombre }} {{ adminApellido }}
-                        </span>
-
-                        <UButton color="error" variant="soft" @click="cerrarSesion">
-                            Cerrar sesión
-                        </UButton>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </header> -->
 
         <!-- PARTE IZQUIERDA (CARDS DE EVENTOS) -->
         <main class="flex-1 container mx-auto px-6 py-10">
