@@ -114,17 +114,10 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const eventoOrderByRelevanceFieldEnum = {
   titulo: 'titulo',
-  lugar: 'lugar'
+  lugar: 'lugar',
+  imagen: 'imagen'
 } as const
 
 export type eventoOrderByRelevanceFieldEnum = (typeof eventoOrderByRelevanceFieldEnum)[keyof typeof eventoOrderByRelevanceFieldEnum]

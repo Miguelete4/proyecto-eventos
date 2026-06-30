@@ -5,7 +5,7 @@ export interface Evento {
   titulo: string     
   fecha: Date
   lugar:string     
-  imagen :string     
+  imagen :string   
   valor  : number
   inscritos : Inscrito[]
 }

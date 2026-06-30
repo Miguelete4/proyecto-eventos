@@ -1,7 +1,6 @@
 <script setup lang="ts">
-
-import type { UseFileUploadOptions } from '@nuxt/ui/runtime/composables/useFileUpload.js'
 import { ref } from 'vue'
+
 const route = useRoute()
 
 const isActive = (to: String) => route.path === to
@@ -18,21 +17,35 @@ async function cerrarSesion() {
 
     await navigateTo('/')
 }
+//esto es para obtener los datos del usuario (su nombre y apellido)
+const { user } = useUserSession()
+
 
 // CONST PARA MOSTRAR EVENTOS
 import type { Evento } from '~/types/evento'
 
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
 
-// CONST PARA INGRESAR EVENTOS
-
+// FUNCION PARA INGRESAR EVENTOS (e imagenes, por eso esta asi de raro)
 async function agregarEvento() {
     guardando.value = true
 
     try {
+        const datos = new FormData()
+
+        datos.append('titulo', formEvento.titulo)
+        datos.append('fecha', formEvento.fecha)
+        datos.append('hora', formEvento.hora)
+        datos.append('lugar', formEvento.lugar)
+        datos.append('valor', String(formEvento.valor ?? ''))
+
+        if (imagen.value) {
+            datos.append('imagen', imagen.value)
+        }
+
         await $fetch('/api/eventos', {
             method: 'POST',
-            body: formEvento
+            body: datos
         })
 
         await refresh()
@@ -49,7 +62,7 @@ const guardando = ref(false)
 const errorFormulario = ref('')
 
 // datos para los cards
-const imagen = ref<File | null>(null)
+
 const formEvento = reactive({
     titulo: '',
     fecha: '',
@@ -64,22 +77,24 @@ function limpiarFormulario() {
     formEvento.fecha = ''
     formEvento.hora = ''
     formEvento.lugar = ''
-    // formEvento.imagen = ''
+    imagen.value = null
     formEvento.valor = undefined
     formEvento.inscritos = undefined
     errorFormulario.value = ''
 }
 
 // PARA LAS IMAGENES DE LOS CARDS
+const imagen = ref<File | null>(null)
+// const imagen = ref<any>(null) //comprobar despues cual es la que mejor sirve
 
-
+// < pre > {{ imagen }}</pre> //esto es nomas para poner debajo el UFileUpload, para verificar si la imagen es un Object fila
+//osea para ver si funcionaba correctamente xd (borralo o pruebalo si quieres miguelete (ayuda tengo sueño))
 </script>
 
 <template>
 
 
     <div class="min-h-screen bg-gray-950 text-white flex flex-col justify-between">
-
 
         <!-- navbar -->
         <header class="bg-gray-950">
@@ -99,7 +114,7 @@ function limpiarFormulario() {
                     </UButton>
 
                     <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
-                        Nombre Apellido
+                        {{ user?.nombre }} {{ user?.apellido }}
                     </span>
 
                     <UButton
@@ -135,17 +150,15 @@ function limpiarFormulario() {
                     </h2>
 
                     <div class="space-y-5">
+                        <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
                         <UInput v-model="formEvento.titulo" placeholder="Título" />
                         <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
                         <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
                         <UInput v-model="formEvento.lugar" placeholder="Lugar" />
                         <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
-                        <!-- <UInput type="file" @change="seleccionarImagen" /> -->
 
                         <UButton color="primary" block @click="agregarEvento">
-
                             Agregar evento
-
                         </UButton>
 
                         <UDivider class="my-3" />

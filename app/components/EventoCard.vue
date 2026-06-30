@@ -13,7 +13,7 @@ const horaFormateada = computed(() => formatHora(props.evento.fecha))
 
     <UCard class="bg-gray-900 border border-gray-800">
 
-        <img src="https://picsum.photos/600/250" class="rounded-lg h-44 w-full object-cover mb-4">
+        <img :src="evento.imagen || '/imagenes/default.jpg'" class="rounded-lg h-44 w-full object-cover mb-4">
 
         <h3 class="text-xl font-bold mb-3">
             {{ evento.titulo }}

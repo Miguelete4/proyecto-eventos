@@ -685,17 +685,10 @@ export const SortOrder = {
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-export const NullsOrder = {
-  first: 'first',
-  last: 'last'
-} as const
-
-export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
-
-
 export const eventoOrderByRelevanceFieldEnum = {
   titulo: 'titulo',
-  lugar: 'lugar'
+  lugar: 'lugar',
+  imagen: 'imagen'
 } as const
 
 export type eventoOrderByRelevanceFieldEnum = (typeof eventoOrderByRelevanceFieldEnum)[keyof typeof eventoOrderByRelevanceFieldEnum]
@@ -745,13 +738,6 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-/**
- * Reference to a field of type 'Bytes'
- */
-export type BytesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Bytes'>
     
 
 

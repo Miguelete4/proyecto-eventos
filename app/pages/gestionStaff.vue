@@ -5,6 +5,10 @@ const route = useRoute()
 
 const isActive = (to: String) => route.path === to
 //APARTADO DE NAVEGACION (NAVBAR)
+
+//esto es para obtener los datos del usuario (su nombre y apellido)
+const { user } = useUserSession()
+
 const navigationItems = [
     { label: 'Administrar Eventos', to: '/administrarEventos' },
 ]
@@ -96,7 +100,7 @@ async function agregarUsuario() {
                     </UButton>
 
                     <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
-                        Nombre Apellido
+                        {{ user?.nombre }} {{ user?.apellido }}
                     </span>
 
                     <UButton
