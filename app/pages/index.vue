@@ -67,6 +67,7 @@ const guardarFormInscipciones = ref(false)
 const errorFormInscripciones = ref('')
 const mostrarFormInscripciones = ref(false)
 
+// =========================CAMBIAR ESTO =======================
 const formInscripciones = reactive<{
     email: string
     nombre: string
@@ -221,7 +222,7 @@ async function guardarEvento() {
                     </button>
                 </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                     <EventosInicio v-for="evento in eventos ?? []" :key="evento.id" :evento="evento"
                         @inscribirse="abrirFormInscripciones" />
