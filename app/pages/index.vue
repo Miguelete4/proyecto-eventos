@@ -172,17 +172,18 @@ async function guardarEvento() {
                         class="w-full">
                     </UInput>
                 </UFormField>
+                <div class="flex justify-between items-center">
 
-                <UButton type="submit" :loading="guardarFormInicio"
-                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                    Ingresar
-                </UButton>
+                    <UButton type="submit" :loading="guardarFormInicio"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        Ingresar
+                    </UButton>
 
-                <UButton @click="cerrarFormInicio" type="button"
-                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                    Cancelar
-                </UButton>
-
+                    <UButton @click="cerrarFormInicio" type="button"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        Cancelar
+                    </UButton>
+                </div>
             </UForm>
         </BaseModal>
 
@@ -193,11 +194,11 @@ async function guardarEvento() {
 
             <div class="flex flex-col max-w-2xl gap-8">
 
-                <h2 class="text-5xl font-extrabold text-black">
+                <h2 class="text-6xl font-extrabold text-black">
                     El lugar donde están los mejores eventos
                 </h2>
 
-                <p class="text-black text-lg">
+                <p class="text-black text-2xl">
                     Así de simple: elige lo que quieres hacer hoy, inscríbete con un par de clics y vive la experiencia.
                 </p>
 
@@ -216,12 +217,12 @@ async function guardarEvento() {
                     </h3>
 
                     <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
                         Ver mis Inscripciones
                     </button>
                 </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                     <EventosInicio v-for="evento in eventos ?? []" :key="evento.id" :evento="evento"
                         @inscribirse="abrirFormInscripciones" />
@@ -255,16 +256,17 @@ async function guardarEvento() {
                     </UInput>
                 </UFormField>
 
-                <UButton type="submit" :loading="guardarFormInscipciones"
-                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                    Inscribirse al evento
-                </UButton>
+                <div class="flex justify-between items-center">
+                    <UButton type="submit" :loading="guardarFormInscipciones"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        Inscribirse al evento
+                    </UButton>
 
-                <UButton @click.prevent="cerrarFormInscripciones" type="button"
-                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                    Cancelar
-                </UButton>
-
+                    <UButton @click.prevent="cerrarFormInscripciones" type="button"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        Cancelar
+                    </UButton>
+                </div>
             </form>
         </BaseModal>
 
