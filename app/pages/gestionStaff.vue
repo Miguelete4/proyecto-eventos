@@ -33,7 +33,7 @@ async function cerrarSesion() {
     await navigateTo('/')
 }
 
-const { data: usuario, error, refresh, pending } = await useFetch<Usuario[]>('/api/usuarios')
+const { data: usuarios, error, refresh, pending } = await useFetch<Usuario[]>('/api/usuarios')
 
 /* AGREGAR USUARIO */
 const roles = ['Administrador', 'Usuario']
@@ -82,6 +82,37 @@ async function agregarUsuario() {
         guardarUsuario.value = false
     }
 }
+
+/* ***** BORRAR USUARIO ***** */
+const mostrarConfirmBorrar = ref(false)
+const borrandoUsuario = ref(false)
+const usuarioBorrar = ref<Usuario | null>(null)
+
+async function borrarUsuario() {
+    borrandoUsuario.value = true
+    try {
+        await $fetch(`/api/usuarios/${usuarioBorrar.value?.email}`, {
+            method: 'DELETE'
+        })
+        cerrarConfirmBorrar()
+        await refresh()
+    }
+    catch (err: any) { }
+    finally {
+        borrandoUsuario.value = false
+    }
+}
+
+function confirmarBorrarUsuario(usuario: Usuario) {
+    usuarioBorrar.value = usuario
+    mostrarConfirmBorrar.value = true
+}
+
+function cerrarConfirmBorrar() {
+    mostrarConfirmBorrar.value = false
+    usuarioBorrar.value = null
+}
+
 
 </script>
 
@@ -166,9 +197,15 @@ async function agregarUsuario() {
                         Staffs actuales del sistema
                     </h2>
 
-                    <div class="grid md:grid-cols-2 gap-6">
+                    <UsuarioCard v-for="usuario in usuarios" :key="usuario.email" :usuario="usuario" />
 
-                        <!-- Staff -->
+                    <UButton @click="" type="button"
+                        class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
+                        Eliminar
+                    </UButton>
+                    <!-- <div class="grid md:grid-cols-2 gap-6">
+
+                        Staff 
 
                         <UCard class="bg-gray-900 border border-gray-800">
 
@@ -194,7 +231,7 @@ async function agregarUsuario() {
 
                         </UCard>
 
-                        <!-- Otro usuario -->
+                         Otro usuario 
 
                         <UCard class="bg-gray-900 border border-gray-800 ">
 
@@ -214,7 +251,8 @@ async function agregarUsuario() {
 
                             <div class="flex gap-3">
 
-                                <UButton color="error" block>
+                                <UButton @click="borrarUsuario" type="button"
+                                    class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
                                     Eliminar
                                 </UButton>
 
@@ -222,7 +260,7 @@ async function agregarUsuario() {
 
                         </UCard>
 
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -265,17 +303,12 @@ async function agregarUsuario() {
                                 </USelectMenu>
                             </UFormField>
 
-                            <div class="flex gap-5 items-center">
-                                <UButton type="submit" :loading="guardarUsuario"
-                                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                                    Agregar
-                                </UButton>
 
-                                <UButton @click="" type="button"
-                                    class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none">
-                                    Eliminar
-                                </UButton>
-                            </div>
+                            <UButton type="submit" :loading="guardarUsuario"
+                                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                                Agregar
+                            </UButton>
+
                         </UForm>
                     </UCard>
                 </aside>
