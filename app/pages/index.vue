@@ -55,7 +55,7 @@ async function login() {
     }
     catch (err: any) {
         // Use la funcion del profe a ver si funciona 
-        errorFormInicio.value = getApiErrorMessage(err, 'Error, no se logro iniciar sesion  debido a que no es administrador')
+        errorFormInicio.value = getApiErrorMessage(err, 'Error, no se logro iniciar sesion  debido a que no es')
     }
     finally {
         guardarFormInicio.value = false
@@ -136,17 +136,11 @@ async function guardarEvento() {
 
         <!-- navbar -->
         <header class="bg-gray-950">
-            <nav class="sticky top-0 bg-gray-900 mx-auto grid md:grid-cols-3 items-center justify-center">
+            <nav class="sticky top-0 bg-gray-900 mx-auto grid md:grid-cols-2 items-center justify-center">
 
                 <!-- Logo de la pagina -->
                 <div class="text-4xl font-extrabold text-purple-600 p-4 mx-4">
                     Smart Events
-                </div>
-
-                <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
-                 pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
-                <div class="flex items-center justify-center text-center gap-5 mx-4">
-
                 </div>
 
                 <div class="flex justify-center md:justify-end p-4">

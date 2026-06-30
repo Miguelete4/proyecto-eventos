@@ -13,7 +13,7 @@ export default eventHandler(async (event) => {
             email: emailNormalizado,
             nombre: nombreNormalizado,
             apellido: apellidoNormalizado,
-            eventoId: 1
+            eventoId: Number(eventoId)
         }
     })
 

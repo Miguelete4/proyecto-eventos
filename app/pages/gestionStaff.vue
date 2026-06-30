@@ -66,7 +66,7 @@ async function agregarUsuario() {
     <div class="min-h-screen bg-gray-950 text-white flex flex-col justify-between">
         <!-- navbar -->
         <header class="bg-gray-950">
-            <nav class="sticky top-0 bg-gray-900 mx-auto grid md:grid-cols-3 items-center justify-center">
+            <nav class="sticky top-0 bg-gray-900 mx-auto grid md:grid-cols-2 items-center justify-center">
 
                 <!-- Logo de la pagina -->
                 <div class="text-4xl font-extrabold text-purple-600 p-4 mx-4">
@@ -75,11 +75,9 @@ async function agregarUsuario() {
 
                 <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
                  pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
-                <div class="flex items-center justify-center text-center gap-5 mx-4">
 
-                </div>
 
-                <div class="flex justify-center items-center md:justify-end p-4 gap-3">
+                <div class="flex justify-center items-center md:justify-end gap-3">
 
                     <UButton color="primary" variant="soft">
                         <NuxtLink v-for="item in navigationItems" :key="item.to" :to="item.to">
@@ -214,23 +212,26 @@ async function agregarUsuario() {
                         <UForm class="space-y-5" @submit.prevent="">
 
                             <UFormField name="nombre" label="Nombre" type="name">
-                                <UInput placeholder="Nombre" color="neutral" variant="outline" class="w-full">
+                                <UInput v-model="formUsuario.nombre" placeholder="Nombre" color="neutral"
+                                    variant="outline" class="w-full">
                                 </UInput>
                             </UFormField>
 
                             <UFormField name="apellido" label="Apellido" type="name">
-                                <UInput placeholder="Apellido" color="neutral" variant="outline" class="w-full">
+                                <UInput v-model="formUsuario.apellido" placeholder="Apellido" color="neutral"
+                                    variant="outline" class="w-full">
                                 </UInput>
                             </UFormField>
 
                             <UFormField name="email" label="Email" type="email">
-                                <UInput placeholder="example@gmail.com" color="neutral" variant="outline"
-                                    class="w-full">
+                                <UInput v-model="formUsuario.email" placeholder="example@gmail.com" color="neutral"
+                                    variant="outline" class="w-full">
                                 </UInput>
                             </UFormField>
 
                             <UFormField name="contraseña" label="Contraseña" type="password">
-                                <UInput placeholder="Contraseña" color="neutral" variant="outline" class="w-full">
+                                <UInput v-model="formUsuario.password" placeholder="Contraseña" color="neutral"
+                                    variant="outline" class="w-full">
                                 </UInput>
                             </UFormField>
 
