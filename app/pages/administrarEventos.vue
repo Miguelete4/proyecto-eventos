@@ -1,9 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { z } from 'zod'
 
 const route = useRoute()
 
 const isActive = (to: String) => route.path === to
+
+// Validacion con zod, esta instalado
+const schemaEventos = z.object({
+    nombre: z.string().max(100, 'El nombre debe tener como máximo 100 letras.'),
+    apellido: z.string().max(100, 'El apellido debe tener como máximo 100 letras.'),
+    email: z.email({ message: 'Debe ingresar un correo válido.' }),
+    password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
+})
 
 // Validacion de si es administrador o no en la pagina
 definePageMeta({
@@ -180,8 +189,61 @@ const eventoSeleccionado = computed(() => {
                     </div>
                 </div>
 
+                <aside class="w-full lg:w-80 shrink-0">
+                    <UCard class="bg-gray-900 border border-gray-800">
+
+                        <h2 class="text-2xl font-bold mb-6 text-purple-600">
+                            Agregar evento
+                        </h2>
+
+                        <UForm class="space-y-5" :schema="schemaEventos" @submit="agregarEvento">
+
+                            <UFormField name="imagen" label="Imagen" type="image">
+                                <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
+                            </UFormField>
+
+                            <UFormField name="fecha" label="Fecha" type="date">
+                                <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
+                            </UFormField>
+
+                            <UFormField name="hora" label="Hora" type="hour">
+                                <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
+                            </UFormField>
+
+                            <UFormField name="lugar" label="Lugar" type="place">
+                                <UInput v-model="formEvento.lugar" placeholder="Lugar" />
+                            </UFormField>
+
+                            <UFormField name="valor" label="Valor" type="float">
+                                <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
+                            </UFormField>
+
+                            <UButton color="primary" @click="agregarEvento" class="w-full flex justify-center"
+                                type="submit">
+                                Agregar evento
+                            </UButton>
+
+                            <UDivider class="my-3" />
+
+                            <h3 class="text-xl font-semibold">
+                                Eliminar evento
+                            </h3>
+
+                            <UFormField>
+                                <UInput v-model="idEliminar" type="number" placeholder="ID del evento" />
+                            </UFormField>
+
+                            <UButton color="error" @click="eliminarEvento" class="w-full flex justify-center"
+                                type="button">
+                                Eliminar
+                            </UButton>
+
+                        </UForm>
+                    </UCard>
+                </aside>
+
                 <!-- PARTE DERECHA (AGREGAR / ELIMINAR EVENTOS) -->
-                <UCard class="bg-gray-900 border border-gray-800 h-fit">
+                <!-- <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                     <h2 class="text-2xl font-bold mb-6 text-purple-600">
                         Agregar evento
@@ -212,39 +274,37 @@ const eventoSeleccionado = computed(() => {
                         </UButton>
                     </div>
 
-                    <!-- listar inscritos -->
+                     listar inscritos 
 
-                    <UDivider class="my-3" />
+                <UDivider class="my-3" />
 
-                    <h3 class="text-xl font-semibold p-2 translate-y">
-                        Ver inscritos
-                    </h3>
+                <h3 class="text-xl font-semibold p-2 translate-y">
+                    Ver inscritos
+                </h3>
 
-                    <UInput v-model="idVerInscritos" type="number" placeholder="ID del evento" />
+                <UInput v-model="idVerInscritos" type="number" placeholder="ID del evento" />
 
+                <div v-if="eventoSeleccionado" class="space-y-3 mt-4">
 
+                    <h4 class="font-bold text-purple-400">
+                        Inscritos en: {{ eventoSeleccionado.titulo }}
+                    </h4>
 
-                    <div v-if="eventoSeleccionado" class="space-y-3 mt-4">
-
-                        <h4 class="font-bold text-purple-400">
-                            Inscritos en: {{ eventoSeleccionado.titulo }}
-                        </h4>
-
-                        <div v-if="eventoSeleccionado.inscrito.length > 0" class="space-y-2">
-                            <div v-for="persona in eventoSeleccionado.inscrito" :key="persona.id"
-                                class="bg-gray-800 rounded-lg p-3 text-sm">
-                                <p><strong>Nombre:</strong> {{ persona.nombre }} {{ persona.apellido }}</p>
-                                <p><strong>Email:</strong> {{ persona.email }}</p>
-                            </div>
+                    <div v-if="eventoSeleccionado.inscrito.length > 0" class="space-y-2">
+                        <div v-for="persona in eventoSeleccionado.inscrito" :key="persona.id"
+                            class="bg-gray-800 rounded-lg p-3 text-sm">
+                            <p><strong>Nombre:</strong> {{ persona.nombre }} {{ persona.apellido }}</p>
+                            <p><strong>Email:</strong> {{ persona.email }}</p>
                         </div>
-
-                        <p v-else class="text-gray-400">
-                            Este evento no tiene inscritos.
-                        </p>
-
                     </div>
 
-                </UCard>
+                    <p v-else class="text-gray-400">
+                        Este evento no tiene inscritos.
+                    </p>
+
+                </div>
+
+                </UCard> -->
 
 
             </div>

@@ -3,6 +3,13 @@
 import BaseModal from '~/components/BaseModal.vue';
 import type { Evento } from '~/types/evento';
 import type { Usuario } from '~/types/usuario';
+import { z } from 'zod'
+
+// Validacion con zod, esta instalado
+const schemaInicioSesion = z.object({
+    email: z.email({ message: 'Debe ingresar un correo válido.' }),
+    password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
+})
 
 const { data: usuario, pending, error, refresh: refreshUsuarios } = await useFetch<Usuario[]>('/api/usuarios')
 const { data: eventos, refresh: refreshEventos } = await useFetch<Evento[]>('/api/eventos')
@@ -161,7 +168,7 @@ async function guardarEvento() {
 
         <BaseModal v-model:open="mostrarFormInicio" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" :state="form" @submit.prevent="login">
+            <UForm class="space-y-5" :state="form" @submit="login" :schema="schemaInicioSesion">
                 <UFormField name="email" label="Email" type="email">
                     <UInput v-model="form.email" placeholder="example@gmail.com" color="neutral" variant="outline"
                         class="w-full">
