@@ -16,8 +16,8 @@ definePageMeta({
 
 // Validacion con zod, esta instalado
 const schemaNuevoUsuario = z.object({
-    nombre: z.string().max(100, 'El nombre debe tener como máximo 100 letras.'),
-    apellido: z.string().max(100, 'El apellido debe tener como máximo 100 letras.'),
+    nombre: z.string().min(3, 'El nombre debe tener como minimo 3 caracteres').max(100, 'El nombre debe tener como máximo 100 caracteres.'),
+    apellido: z.string().min(3, 'El nombre debe tener como minimo 3 caracteres').max(100, 'El apellido debe tener como máximo 100 letras.'),
     email: z.email({ message: 'Debe ingresar un correo válido.' }),
     password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
 })
@@ -148,7 +148,7 @@ function cerrarConfirmBorrar() {
             </nav>
         </header>
 
-      <main class="flex-1 container mx-auto px-6 py-10">
+        <main class="flex-1 container mx-auto px-6 py-10">
             <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
 
                 <!-- lado izquierdo: staffs actuales-->
