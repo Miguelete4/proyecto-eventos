@@ -1,17 +1,29 @@
 <script setup lang="ts">
 import type { Usuario } from '~/types/usuario'
+import { z } from 'zod'
 
+// Navegacion entre paginas
 const route = useRoute()
-
-const isActive = (to: String) => route.path === to
-//APARTADO DE NAVEGACION (NAVBAR)
-
-//esto es para obtener los datos del usuario (su nombre y apellido)
-const { user } = useUserSession()
 
 const navigationItems = [
     { label: 'Administrar Eventos', to: '/administrarEventos' },
 ]
+
+// Validacion de si es administrador o no en la pagina
+definePageMeta({
+    middleware: ['admin']
+})
+
+// Validacion con zod, esta instalado
+const schemaNuevoUsuario = z.object({
+    nombre: z.string().max(100, 'El nombre debe tener como máximo 100 letras.'),
+    apellido: z.string().max(100, 'El apellido debe tener como máximo 100 letras.'),
+    email: z.email({ message: 'Debe ingresar un correo válido.' }),
+    password: z.string().min(6, 'La contraseña debe tener como mínimo 6 caracteres.'),
+})
+
+//esto es para obtener los datos del usuario (su nombre y apellido)
+const { user } = useUserSession()
 
 async function cerrarSesion() {
     await $fetch('/api/auth/loginout', {
@@ -24,7 +36,7 @@ async function cerrarSesion() {
 const { data: usuario, error, refresh, pending } = await useFetch<Usuario[]>('/api/usuarios')
 
 /* AGREGAR USUARIO */
-const roles = ['Administrador', 'Funcionario']
+const roles = ['Administrador', 'Usuario']
 const errorFormAgregar = ref('')
 const guardarUsuario = ref(false)
 
@@ -36,14 +48,13 @@ const formUsuario = reactive({
     rol: roles[1],
 })
 
-function reiniciarForm() {
+function limpiarForm() {
     formUsuario.nombre = '',
         formUsuario.email = '',
         formUsuario.apellido = '',
         formUsuario.password = '',
-        formUsuario.rol = roles[1]
+        formUsuario.rol = roles[2]
 }
-
 
 // ==================esto para que es?? xd no lo estamos usando creo=========================================
 async function agregarUsuario() {
@@ -51,18 +62,17 @@ async function agregarUsuario() {
     errorFormAgregar.value = ''
 
     try {
-        await $fetch('/api/usuarios', {
+        await $fetch('/api/usuarios/', {
             method: 'POST',
             body: {
                 nombre: formUsuario.nombre,
-                email: formUsuario.email,
                 apellido: formUsuario.apellido,
+                email: formUsuario.email,
                 password: formUsuario.password,
                 rol: formUsuario.rol,
-
             }
         })
-        reiniciarForm()
+        limpiarForm()
         await refresh()
     }
     catch (err: any) {
@@ -220,10 +230,10 @@ async function agregarUsuario() {
 
                 <aside class="w-full lg:w-80 shrink-0">
                     <UCard class="bg-gray-900 border border-gray-800">
-                        <h3> Administracion del Staff</h3>
-                        <p>Ingrese los datos de la persona para agregar o eliminar del sistema</p>
+                        <h3 class="text-lg"> Administracion del Staff</h3>
 
-                        <UForm class="space-y-5" @submit.prevent="">
+                        <UForm class="space-y-5" :schema="schemaNuevoUsuario" @submit="agregarUsuario"
+                            :state="formUsuario">
 
                             <UFormField name="nombre" label="Nombre" type="name">
                                 <UInput v-model="formUsuario.nombre" placeholder="Nombre" color="neutral"
@@ -247,6 +257,12 @@ async function agregarUsuario() {
                                 <UInput v-model="formUsuario.password" placeholder="Contraseña" color="neutral"
                                     variant="outline" class="w-full">
                                 </UInput>
+                            </UFormField>
+
+                            <UFormField name="rol" label="Rol">
+                                <USelectMenu v-model="formUsuario.rol" :items="['administrador', 'usuario']"
+                                    placeholder="Seleccione el rol" variant="outline" class="w-full" color="neutral">
+                                </USelectMenu>
                             </UFormField>
 
                             <div class="flex gap-5 items-center">

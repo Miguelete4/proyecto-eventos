@@ -5,6 +5,11 @@ const route = useRoute()
 
 const isActive = (to: String) => route.path === to
 
+// Validacion de si es administrador o no en la pagina
+definePageMeta({
+    middleware: ['admin']
+})
+
 //DATOS PARA EL INICIO DE SESION
 const navigationItems = [
     { label: 'Administrar Staff', to: '/gestionStaff' },
