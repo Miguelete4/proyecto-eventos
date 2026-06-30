@@ -97,7 +97,6 @@ function limpiarFormulario() {
 
 // PARA LAS IMAGENES DE LOS CARDS
 const imagen = ref<File | null>(null)
-// const imagen = ref<any>(null) //comprobar despues cual es la que mejor sirve
 
 
 //FUNCION PARA ELIMINAR EVENTOS
@@ -187,6 +186,10 @@ const eventoSeleccionado = computed(() => {
                     </div>
                 </div>
 
+
+
+                <!-- panel de la derecha -->
+
                <aside class="w-full lg:w-80 shrink-0">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
@@ -196,30 +199,10 @@ const eventoSeleccionado = computed(() => {
 
                         <UForm class="space-y-5" :schema="schemaEventos" :state="formEvento" @submit="agregarEvento">
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 9a3ba826e25072476f2b2b78d9b1f6775e2ba47c
                             <UFormField name="imagen" label="Imagen">
                                 <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
                             </UFormField>
 
-<<<<<<< HEAD
-                            <UFormField name="titulo" label="Título">
-                                <UInput v-model="formEvento.titulo" placeholder="Título" class="w-full" />
-                            </UFormField>
-
-                            <UFormField name="fecha" label="Fecha">
-                                <UInput type="date" v-model="formEvento.fecha" class="w-full" />
-                            </UFormField>
-
-                            <UFormField name="hora" label="Hora">
-                                <UInput type="time" v-model="formEvento.hora" class="w-full" />
-                            </UFormField>
-
-                            <UFormField name="lugar" label="Lugar">
-                                <UInput v-model="formEvento.lugar" placeholder="Lugar" class="w-full" />
-=======
                             <UFormField name="fecha" label="Fecha">
                                 <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
                             </UFormField>
@@ -230,11 +213,6 @@ const eventoSeleccionado = computed(() => {
 
                             <UFormField name="lugar" label="Lugar">
                                 <UInput v-model="formEvento.lugar" placeholder="Lugar" type="text" />
-                            </UFormField>
-
-                            <UFormField name="valor" label="Valor">
-                                <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
->>>>>>> 9a3ba826e25072476f2b2b78d9b1f6775e2ba47c
                             </UFormField>
 
                             <UFormField name="valor" label="Valor">
