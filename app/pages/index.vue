@@ -14,8 +14,8 @@ const schemaInicioSesion = z.object({
 // Validacion formInscripciones
 const schemaInscripciones = z.object({
     email: z.email({ message: 'Debe ingresar un correo válido.' }),
-    nombre: z.string().min(8, 'El nombre debe tener un minimo de 3 caracteres.').max(100, 'El nombre debe tener un maximo de 100 caracteres'),
-    apellido: z.string().min(8, 'El apellido debe tener un minimo de 3 caracteres.').max(100, 'El apellido debe tener un maximo de 100 caracteres'),
+    nombre: z.string().min(3, 'El nombre debe tener un minimo de 3 caracteres.').max(100, 'El nombre debe tener un maximo de 100 caracteres'),
+    apellido: z.string().min(3, 'El apellido debe tener un minimo de 3 caracteres.').max(100, 'El apellido debe tener un maximo de 100 caracteres'),
 })
 
 const { data: usuario, pending, error, refresh: refreshUsuarios } = await useFetch<Usuario[]>('/api/usuarios')
@@ -237,10 +237,10 @@ async function guardarEvento() {
         </section>
 
         <!-- Modal de inscripciones -->
-        <BaseModal v-model:open="mostrarFormInscripciones" title="Inicio de Sesion"
-            description="Ingrese sus datos para inicar"
+        <BaseModal v-model:open="mostrarFormInscripciones" title="Inscribirse a eventos"
+            description="Ingrese sus datos para inscribirse al evento"
             :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" @submit="guardarEvento" :schema="schemaInscripciones">
+            <UForm class="space-y-5" @submit="guardarEvento" :schema="schemaInscripciones" :state="formInscripciones">
 
                 <UFormField name="email" label="Email" type="email">
                     <UInput v-model="formInscripciones.email" placeholder="example@gmail.com" color="neutral"
