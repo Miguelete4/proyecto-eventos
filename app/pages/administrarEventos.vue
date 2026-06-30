@@ -196,23 +196,24 @@ const eventoSeleccionado = computed(() => {
 
                         <UForm class="space-y-5" :schema="schemaEventos" @submit="agregarEvento">
 
-                            <UFormField name="imagen" label="Imagen" type="image">
+
+                            <UFormField name="imagen" label="Imagen">
                                 <UFileUpload v-model="imagen" accept="image/*" label="Seleccionar imagen" />
                             </UFormField>
 
-                            <UFormField name="fecha" label="Fecha" type="date">
+                            <UFormField name="fecha" label="Fecha">
                                 <UInput type="date" v-model="formEvento.fecha" placeholder="Fecha" />
                             </UFormField>
 
-                            <UFormField name="hora" label="Hora" type="hour">
+                            <UFormField name="hora" label="Hora">
                                 <UInput type="time" v-model="formEvento.hora" placeholder="Hora" />
                             </UFormField>
 
-                            <UFormField name="lugar" label="Lugar" type="place">
-                                <UInput v-model="formEvento.lugar" placeholder="Lugar" />
+                            <UFormField name="lugar" label="Lugar">
+                                <UInput v-model="formEvento.lugar" placeholder="Lugar" type="text" />
                             </UFormField>
 
-                            <UFormField name="valor" label="Valor" type="float">
+                            <UFormField name="valor" label="Valor">
                                 <UInput type="number" v-model="formEvento.valor" placeholder="Valor" />
                             </UFormField>
 
