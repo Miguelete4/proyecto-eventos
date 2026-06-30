@@ -167,8 +167,17 @@ function cerrarConfirmBorrar() {
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
+<<<<<<< HEAD
                         <div v-for="usuario in usuarios ?? []" :key="usuario.email">
                             <UsuarioCard :usuario="usuario" />
+=======
+                    <UButton @click="" type="button"
+                        class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
+                        Eliminar
+                    </UButton>
+
+                    <!-- <div class="grid md:grid-cols-2 gap-6">
+>>>>>>> bc2efc0bad93484b78f899b1e80bd7b21d8f1076
 
                             <UButton @click="confirmarBorrarUsuario(usuario)" type="button"
                                 class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
