@@ -4,8 +4,8 @@ import BaseModal from '~/components/BaseModal.vue';
 import type { Evento } from '~/types/evento';
 import type { Usuario } from '~/types/usuario';
 
-const { data: usuario, pending, error, refresh } = await useFetch<Usuario[]>('/api/usuarios')
-const { data: evento } = await useFetch<Evento[]>('/api/eventos')
+const { data: usuario, pending, error, refresh: refreshUsuarios } = await useFetch<Usuario[]>('/api/usuarios')
+const { data: eventos, refresh: refreshEventos } = await useFetch<Evento[]>('/api/eventos')
 
 // Formulario de iniciar sesion
 const mostrarFormInicio = ref(false)
@@ -67,7 +67,12 @@ const guardarFormInscipciones = ref(false)
 const errorFormInscripciones = ref('')
 const mostrarFormInscripciones = ref(false)
 
-const formInscripciones = reactive({
+const formInscripciones = reactive<{
+    email: string
+    nombre: string
+    apellido: string
+    eventoId: number | null
+}>({
     email: '',
     nombre: '',
     apellido: '',
@@ -82,8 +87,12 @@ function resetFormInscripciones() {
         errorFormInscripciones.value = ''
 }
 
-function abrirFormInscripciones() {
+function abrirFormInscripciones(evento: Evento) {
+
     resetFormInscripciones()
+
+    formInscripciones.eventoId = evento.id
+
     mostrarFormInscripciones.value = true
 }
 
@@ -109,7 +118,7 @@ async function guardarEvento() {
                 eventoId: formInscripciones.eventoId
             }
         })
-        await refresh()
+        await refreshEventos()
         cerrarFormInscripciones()
 
     }
@@ -120,7 +129,6 @@ async function guardarEvento() {
         guardarFormInscipciones.value = false
     }
 }
-
 </script>
 
 <template>
@@ -203,6 +211,8 @@ async function guardarEvento() {
 
         </div>
 
+
+        <!-- eventos disponibles -->
         <section class="py-12 bg-gray-900">
             <div class="max-w-6xl mx-auto px-4">
 
@@ -218,54 +228,16 @@ async function guardarEvento() {
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-                    <div
-                        class="bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow border border-gray-100 overflow-hidden max-w-sm mx-auto w-full">
+                    <div v-for="evento in eventos ?? []" :key="evento.id">
 
-                        <img src="https://picsum.photos/500/250" class="w-full h-40 object-cover"
-                            alt="Festival de Música" />
-
-                        <div class="p-4 text-left">
-
-                            <h4 class="text-lg font-bold text-gray-900 truncate">
-                                Festival de Música
-                            </h4>
-
-                            <div
-                                class="grid grid-cols-2 gap-x-2 gap-y-1.5 mt-3 text-sm text-gray-600 border-b border-gray-100 pb-3">
-                                <p class="flex items-center gap-1">
-                                    <span></span> 15 Oct 2026
-                                </p>
-                                <p class="flex items-center gap-1">
-                                    <span></span> 18:00 hrs
-                                </p>
-                                <p class="flex items-center gap-1 col-span-2 truncate">
-                                    <span></span> Valparaíso
-                                </p>
-                            </div>
-
-                            <div class="flex justify-between items-center mt-3 text-sm font-medium">
-                                <span class="text-emerald-600 text-base font-bold">
-                                    $15.000
-                                </span>
-                                <span class="text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full text-xs">
-                                    32 inscritos
-                                </span>
-                            </div>
-
-                            <div class="flex justify-center mt-4">
-                                <UButton @click="abrirFormInscripciones"
-                                    class="px-6 py-2 rounded-xl bg-purple-600 text-white font-semibold shadow-sm hover:bg-purple-700 transition-colors text-sm justify-center">
-                                    Inscribirse
-                                </UButton>
-                            </div>
-
-                        </div>
+                        <EventosInicio :evento="evento" />
 
                     </div>
 
                 </div>
+
             </div>
         </section>
 

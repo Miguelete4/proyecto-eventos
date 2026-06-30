@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { Evento } from '~/types/evento';
 
-
-
 const props = defineProps < {
     evento: Evento
 } > ()
