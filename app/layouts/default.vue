@@ -11,10 +11,10 @@
             <slot />
         </main>
 
-        <footer class="bg-gray-800 text-white py-6 flex justify-center items-center">
-            <div class="mx-auto px-4 gap-2">
-                <p class="text-white font-extrabold">Universidad Federico Santa María</p>
-                <p class="text-white font-extrabold">&copy; 2023 Smart Events. Todos los derechos reservados.</p>
+      <footer class="bg-gray-800 text-white py-6">
+            <div class="mx-auto px-4 flex flex-col items-center text-center gap-2">
+                <p class="font-extrabold">Universidad Federico Santa María</p>
+                <p class="font-extrabold">&copy; 2026 Smart Events. Todos los derechos reservados.</p>
             </div>
         </footer>
 

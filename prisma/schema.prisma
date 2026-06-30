@@ -23,9 +23,7 @@ model inscrito {
   nombre   String @db.VarChar(150)
   apellido String @db.VarChar(150)
   eventoId Int
-  evento   evento @relation(fields: [eventoId], references: [id], map: "Inscrito_eventoId_fkey")
-
-  @@index([eventoId], map: "Inscrito_eventoId_idx")
+  evento   evento @relation(fields: [eventoId], references: [id])
 }
 
 model usuario {

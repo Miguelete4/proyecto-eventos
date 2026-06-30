@@ -8,7 +8,7 @@ import { z } from 'zod'
 // Validacion con zod, esta instalado
 const schemaInicioSesion = z.object({
     email: z.email({ message: 'Debe ingresar un correo válido.' }),
-    password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
+    password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.')
 })
 
 // Validacion formInscripciones

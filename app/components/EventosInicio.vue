@@ -43,10 +43,3 @@ const horaFormateada = computed(() => formatHora(props.evento.fecha))
     </UCard>
 
 </template>
-
-
-
-
-
-
-
