@@ -203,6 +203,7 @@ function cerrarConfirmBorrar() {
                         class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
                         Eliminar
                     </UButton>
+
                     <!-- <div class="grid md:grid-cols-2 gap-6">
 
                         Staff 
