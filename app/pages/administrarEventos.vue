@@ -1,22 +1,19 @@
 <script setup lang="ts">
 
 import { ref } from 'vue'
+const route = useRoute()
 
-//CONST PARA EL NAVBAR
-const cerrarSesion = async () => {
-    await navigateTo('/')
-}
+const isActive = (to: String) => route.path === to
 
-const staff = async () => {
-    await navigateTo('/gestionStaff')
-}
+const navigationItems = [
+    { label: 'Administrar Staff', to: '/gestionStaff' },
+]
 
 // CONST PARA MOSTRAR EVENTOS
 import type { Evento } from '~/types/evento'
 
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
 // console.log(eventos.value)
-
 
 // CONST PARA INGRESAR EVENTOS
 import type { Inscrito } from '~/types/inscrito'
@@ -40,7 +37,6 @@ async function agregarEvento() {
         guardando.value = false
     }
 }
-
 
 const guardando = ref(false)
 const errorFormulario = ref('')
@@ -84,7 +80,46 @@ function limpiarFormulario() {
 
     <div class="min-h-screen bg-gray-950 text-white flex flex-col justify-between">
 
-        <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
+
+        <!-- navbar -->
+        <header class="bg-gray-950">
+            <nav class="sticky top-0 bg-gray-900 mx-auto grid md:grid-cols-3 items-center justify-center">
+
+                <!-- Logo de la pagina -->
+                <div class="text-4xl font-extrabold text-purple-600 p-4 mx-4">
+                    Smart Events
+                </div>
+
+                <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
+                 pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
+                <div class="flex items-center justify-center text-center gap-5 mx-4">
+
+                </div>
+
+                <div class="flex justify-center items-center md:justify-end p-4 gap-3">
+
+                    <UButton color="primary" variant="soft">
+                        <NuxtLink v-for="item in navigationItems" :key="item.to" :to="item.to">
+                            {{ item.label }}
+                        </NuxtLink>
+                    </UButton>
+
+                    <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
+                        Nombre Apellido
+                    </span>
+
+                    <UButton
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        @click="">
+                        Cerrar Sesion
+                    </UButton>
+
+                </div>
+
+            </nav>
+        </header>
+
+        <!-- <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
             <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
 
                 <h1 class="text-2xl font-black tracking-wider text-purple-600 uppercase">
@@ -100,7 +135,7 @@ function limpiarFormulario() {
                     <div class="flex items-center gap-3 ">
 
                         <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg ">
-                            <!-- {{ adminNombre }} {{ adminApellido }} -->
+                             {{ adminNombre }} {{ adminApellido }}
                         </span>
 
                         <UButton color="error" variant="soft" @click="cerrarSesion">
@@ -112,7 +147,7 @@ function limpiarFormulario() {
                 </div>
 
             </div>
-        </header>
+        </header> -->
 
         <!-- PARTE IZQUIERDA (CARDS DE EVENTOS) -->
         <main class="flex-1 container mx-auto px-6 py-10">
