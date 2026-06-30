@@ -28,7 +28,7 @@ const horaFormateada = computed(() => formatHora(props.evento.fecha))
             <p>Hora: {{ horaFormateada }}</p>
             <p>Lugar: {{ evento.lugar }}</p>
             <p>Valor: {{ evento.valor }}</p>
-            <p>{{ evento.inscritos?.length ?? 0 }} inscritos</p>
+            <p>{{ evento.inscrito?.length ?? 0 }} inscripciones realizadas</p>
         </div>
 
         <div class="mt-auto flex justify-center pt-6">
