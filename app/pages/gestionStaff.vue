@@ -55,8 +55,6 @@ function limpiarForm() {
         formUsuario.password = '',
         formUsuario.rol = roles[1]
 }
-
-// ==================esto para que es?? xd no lo estamos usando creo=========================================
 async function agregarUsuario() {
     guardarUsuario.value = true
     errorFormAgregar.value = ''
@@ -113,7 +111,6 @@ function cerrarConfirmBorrar() {
     usuarioBorrar.value = null
 }
 
-
 </script>
 
 <template>
@@ -127,10 +124,6 @@ function cerrarConfirmBorrar() {
                 <div class="text-4xl font-extrabold text-purple-600 p-4 mx-4">
                     Smart Events
                 </div>
-
-                <!-- Links de las paaginas, cuando terminemos el diseño de todo vemos como hacer el
-                 pasar las paginas que usabamos en clase, el NavegationLink:[]... -->
-
 
                 <div class="flex justify-center items-center md:justify-end gap-3">
 
@@ -155,155 +148,65 @@ function cerrarConfirmBorrar() {
             </nav>
         </header>
 
-        <!-- <header class="bg-gray-900 border-b border-gray-800 px-6 py-4 shadow-xl">
-            <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+      <main class="flex-1 container mx-auto px-6 py-10">
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
 
-                <h1 class="text-2xl font-black tracking-wider uppercase text-purple-600 ">
-                    SMARTS EVENTS
-                </h1>
-
-                <div class="flex items-center gap-8">
-
-                    <UButton color="primary" variant="soft" @click="eventos">
-                        Administrar Eventos
-                    </UButton>
-
-                    <div class="flex items-center gap-3">
-
-                        <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
-                            {{ adminNombre }} {{ adminApellido }}
-                        </span>
-
-                        <UButton color="error" variant="soft" @click="cerrarSesion">
-                            Cerrar sesion
-                        </UButton>
-
-                    </div>
-
-                </div>
-
-            </div>
-        </header>  -->
-
-        <main class="flex-1 container mx-auto px-6 py-10">
-
-            <div class="grid lg:grid-cols-5 gap-10 items-start">
-
-                <!-- ================= STAFF ================= -->
-
+                <!-- lado izquierdo: staffs actuales-->
                 <div class="lg:col-span-3">
 
-                    <h2 class="text-3xl font-bold mb-3 text-purple-600 ">
+                    <h2 class="text-3xl font-bold mb-6 text-purple-600">
                         Staffs actuales del sistema
                     </h2>
 
-                    <UsuarioCard v-for="usuario in usuarios" :key="usuario.email" :usuario="usuario" />
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
-                    <UButton @click="" type="button"
-                        class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
-                        Eliminar
-                    </UButton>
+                        <div v-for="usuario in usuarios ?? []" :key="usuario.email">
+                            <UsuarioCard :usuario="usuario" />
 
-                    <!-- <div class="grid md:grid-cols-2 gap-6">
+                            <UButton @click="confirmarBorrarUsuario(usuario)" type="button"
+                                class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
+                                Eliminar
+                            </UButton>
+                        </div>
 
-                        Staff 
-
-                        <UCard class="bg-gray-900 border border-gray-800">
-
-                            <h3 class="text-xl font-bold mb-4 text-purple-600 ">
-                                Juan Pérez
-                            </h3>
-
-                            <div class="space-y-2 text-gray-300 mb-5">
-
-                                <p><strong>Correo:</strong> juan@gmail.com</p>
-
-                                <p><strong>Rol actual:</strong> Admin</p>
-
-                            </div>
-
-                            <div class="flex gap-3">
-
-                                <UButton color="error" block>
-                                    Eliminar
-                                </UButton>
-
-                            </div>
-
-                        </UCard>
-
-                         Otro usuario 
-
-                        <UCard class="bg-gray-900 border border-gray-800 ">
-
-                            <h3 class="text-xl font-bold mb-4 text-purple-600 ">
-                                María Soto
-                            </h3>
-
-                            <div class="space-y-2 text-gray-300 mb-5">
-
-                                <p><strong>Correo:</strong> maria@gmail.com</p>
-
-                                <p><strong>Rol actual:</strong> Usuario</p>
-
-
-                            </div>
-
-
-                            <div class="flex gap-3">
-
-                                <UButton @click="borrarUsuario" type="button"
-                                    class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
-                                    Eliminar
-                                </UButton>
-
-                            </div>
-
-                        </UCard>
-
-                    </div> -->
-
+                    </div>
                 </div>
 
-                <!-- ================= PANEL ================= -->
+                <!-- Lado derecho: Creacion de staff -->
+                <aside class="lg:col-span-1">
+                    <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
-                <aside class="w-full lg:w-80 shrink-0">
-                    <UCard class="bg-gray-900 border border-gray-800">
-                        <h3 class="text-lg"> Administracion del Staff</h3>
+                        <h3 class="text-xl font-bold mb-6 text-purple-600">
+                            Administración del Staff
+                        </h3>
 
                         <UForm class="space-y-5" :schema="schemaNuevoUsuario" @submit="agregarUsuario"
                             :state="formUsuario">
 
-                            <UFormField name="nombre" label="Nombre" type="name">
+                            <UFormField name="nombre" label="Nombre">
                                 <UInput v-model="formUsuario.nombre" placeholder="Nombre" color="neutral"
-                                    variant="outline" class="w-full">
-                                </UInput>
+                                    variant="outline" class="w-full" />
                             </UFormField>
 
-                            <UFormField name="apellido" label="Apellido" type="name">
+                            <UFormField name="apellido" label="Apellido">
                                 <UInput v-model="formUsuario.apellido" placeholder="Apellido" color="neutral"
-                                    variant="outline" class="w-full">
-                                </UInput>
+                                    variant="outline" class="w-full" />
                             </UFormField>
 
-                            <UFormField name="email" label="Email" type="email">
+                            <UFormField name="email" label="Email">
                                 <UInput v-model="formUsuario.email" placeholder="example@gmail.com" color="neutral"
-                                    variant="outline" class="w-full">
-                                </UInput>
+                                    variant="outline" class="w-full" />
                             </UFormField>
 
-                            <UFormField name="contraseña" label="Contraseña" type="password">
-                                <UInput v-model="formUsuario.password" placeholder="Contraseña" color="neutral"
-                                    variant="outline" class="w-full">
-                                </UInput>
+                            <UFormField name="contraseña" label="Contraseña">
+                                <UInput v-model="formUsuario.password" type="password" placeholder="Contraseña"
+                                    color="neutral" variant="outline" class="w-full" />
                             </UFormField>
 
                             <UFormField name="rol" label="Rol">
                                 <USelectMenu v-model="formUsuario.rol" :items="['administrador', 'usuario']"
-                                    placeholder="Seleccione el rol" variant="outline" class="w-full" color="neutral">
-                                </USelectMenu>
+                                    placeholder="Seleccione el rol" variant="outline" class="w-full" color="neutral" />
                             </UFormField>
-
 
                             <UButton type="submit" :loading="guardarUsuario"
                                 class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
@@ -311,39 +214,41 @@ function cerrarConfirmBorrar() {
                             </UButton>
 
                         </UForm>
+
                     </UCard>
                 </aside>
 
-                <!-- <UCard class="lg:col-span-2 bg-gray-900 border border-gray-800 h-fit">
+            </div>
 
-                    <h2 class="text-2xl font-bold mb-6 text-purple-600 ">
-                        Agregar Staff
-                    </h2>
+            <!-- MODAL CONFIRMAR BORRADO -->
+            <BaseModal v-model:open="mostrarConfirmBorrar" title="Eliminar staff"
+                description="¿Seguro que desea eliminar este usuario?"
+                :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-red-500' }">
+                <div class="space-y-5">
 
-                    <div class="space-y-5">
+                    <p class="text-gray-300">
+                        Se eliminará a:
+                        <strong>
+                            {{ usuarioBorrar?.nombre }} {{ usuarioBorrar?.apellido }}
+                        </strong>
+                    </p>
 
-                        <UInput placeholder="Nombre" />
+                    <p class="text-gray-400 text-sm">
+                        Email: {{ usuarioBorrar?.email }}
+                    </p>
 
-                        <UInput placeholder="Apellido" />
-
-                        <UInput placeholder="Correo electrónico" />
-
-                        <UInput type="password" placeholder="Contraseña" />
-
-                        <USelect placeholder="Rol" :items="[
-                            'Admin',
-                            'Usuario'
-                        ]" />
-
-                        <UButton color="primary" block>
-                            Agregar Staff
+                    <div class="flex justify-between gap-3">
+                        <UButton color="error" :loading="borrandoUsuario" @click="borrarUsuario">
+                            Sí, eliminar
                         </UButton>
 
+                        <UButton type="button" @click="cerrarConfirmBorrar">
+                            Cancelar
+                        </UButton>
                     </div>
 
-                </UCard> -->
-
-            </div>
+                </div>
+            </BaseModal>
         </main>
 
     </div>

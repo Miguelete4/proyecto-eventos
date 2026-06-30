@@ -75,24 +75,19 @@ const errorFormInscripciones = ref('')
 const mostrarFormInscripciones = ref(false)
 
 // =========================CAMBIAR ESTO =======================
-const formInscripciones = reactive<{
-    email: string
-    nombre: string
-    apellido: string
-    eventoId: number | null
-}>({
+const formInscripciones = reactive({
     email: '',
     nombre: '',
     apellido: '',
-    eventoId: null
+    eventoId: 0
 })
 
 function resetFormInscripciones() {
-    formInscripciones.email = '',
-        formInscripciones.nombre = '',
-        formInscripciones.apellido = '',
-        formInscripciones.eventoId = null,
-        errorFormInscripciones.value = ''
+    formInscripciones.email = ''
+    formInscripciones.nombre = ''
+    formInscripciones.apellido = ''
+    formInscripciones.eventoId = 0
+    errorFormInscripciones.value = ''
 }
 
 function abrirFormInscripciones(evento: Evento) {
@@ -114,10 +109,8 @@ async function guardarEvento() {
     guardarFormInscipciones.value = true
     errorFormInscripciones.value = ''
 
-    console.log("Datos a enviar:", JSON.parse(JSON.stringify(formInscripciones)))
-
     try {
-        await $fetch('api/inscritos', {
+        await $fetch('/api/inscritos', {
             method: 'POST',
             body: {
                 email: formInscripciones.email,
@@ -128,12 +121,9 @@ async function guardarEvento() {
         })
         await refreshEventos()
         cerrarFormInscripciones()
-
-    }
-    catch {
-        errorFormInscripciones.value = 'Error, no se logro inscripbir de manera correcta'
-    }
-    finally {
+    } catch {
+        errorFormInscripciones.value = 'Error, no se logró inscribir correctamente'
+    } finally {
         guardarFormInscipciones.value = false
     }
 }
@@ -196,7 +186,6 @@ async function guardarEvento() {
         </BaseModal>
 
         <!-- Parte de la informacion de la pagina -->
-        <!-- Ayuda de la ia, luego cambiamos cosas xd -->
         <div
             class="flex flex-col items-center justify-center min-h-100 p-8 text-center bg-linear-to-br from-purple-600 to-gray-500">
 
