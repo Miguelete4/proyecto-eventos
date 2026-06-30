@@ -92,8 +92,41 @@ function limpiarFormulario() {
 const imagen = ref<File | null>(null)
 // const imagen = ref<any>(null) //comprobar despues cual es la que mejor sirve
 
-// < pre > {{ imagen }}</pre> //esto es nomas para poner debajo el UFileUpload, para verificar si la imagen es un Object fila
-//osea para ver si funcionaba correctamente xd (borralo o pruebalo si quieres miguelete (ayuda tengo sueño))
+
+//FUNCION PARA ELIMINAR EVENTOS
+const idEliminar = ref<number | null>(null)
+
+async function eliminarEvento() {
+    if (!idEliminar.value) {
+        alert('Ingrese un ID válido')
+        return
+    }
+
+    try {
+        await $fetch('/api/eventos/id', {
+            method: 'DELETE',
+            body: {
+                id: idEliminar.value
+            }
+        })
+
+        await refresh()
+        idEliminar.value = null
+
+    } catch (error) {
+        console.error(error)
+        alert('No se pudo eliminar el evento')
+    }
+}
+
+//CONST PARA LISTAR INSCRITOS
+const idVerInscritos = ref<number | null>(null)
+
+const eventoSeleccionado = computed(() => {
+    return eventos.value?.find(evento => evento.id === idVerInscritos.value)
+    // Busca dentro de todos los eventos el que tenga el ID escrito. luego muestra los que estan en ese id
+})
+
 </script>
 
 <template>
@@ -172,11 +205,43 @@ const imagen = ref<File | null>(null)
                             Eliminar evento
                         </h3>
 
-                        <UInput placeholder="ID del evento" />
+                      <UInput v-model="idEliminar" type="number" placeholder="ID del evento" />
 
-                        <UButton color="error" block>
+                        <UButton color="error" block @click="eliminarEvento">
                             Eliminar
                         </UButton>
+                    </div>
+
+                    <!-- listar inscritos -->
+
+                    <UDivider class="my-3" />
+
+                    <h3 class="text-xl font-semibold p-2 translate-y">
+                        Ver inscritos
+                    </h3>
+
+                    <UInput v-model="idVerInscritos" type="number" placeholder="ID del evento" />
+
+
+
+                    <div v-if="eventoSeleccionado" class="space-y-3 mt-4">
+
+                        <h4 class="font-bold text-purple-400">
+                            Inscritos en: {{ eventoSeleccionado.titulo }}
+                        </h4>
+
+                        <div v-if="eventoSeleccionado.inscrito.length > 0" class="space-y-2">
+                            <div v-for="persona in eventoSeleccionado.inscrito" :key="persona.id"
+                                class="bg-gray-800 rounded-lg p-3 text-sm">
+                                <p><strong>Nombre:</strong> {{ persona.nombre }} {{ persona.apellido }}</p>
+                                <p><strong>Email:</strong> {{ persona.email }}</p>
+                            </div>
+                        </div>
+
+                        <p v-else class="text-gray-400">
+                            Este evento no tiene inscritos.
+                        </p>
+
                     </div>
 
                 </UCard>

@@ -7,5 +7,5 @@ export interface Evento {
   lugar:string     
   imagen :string   
   valor  : number
-  inscritos : Inscrito[]
+  inscrito : Inscrito[]
 }
