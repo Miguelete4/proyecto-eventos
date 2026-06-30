@@ -186,11 +186,7 @@ const eventoSeleccionado = computed(() => {
                     </div>
                 </div>
 
-<<<<<<< HEAD
                 <!-- PANEL DE LA DERECHA -->
-
-=======
->>>>>>> 0358702895900dc344118f6b7435f6cf5819532b
                 <aside class="w-full lg:w-80 shrink-0">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
