@@ -50,12 +50,12 @@ async function login() {
         })
 
         await fetchSession()
-        cerrarFormInicio() // <-- IMPORTANTE: Cerramos el modal antes de redirigir
+        cerrarFormInicio()
         await navigateTo('/administrarEventos')
     }
     catch (err: any) {
-        // Opcional: capturar el mensaje real que viene del servidor backend
-        errorFormInicio.value = getApiErrorMessage(err, 'No se pudo iniciar sesión. Verifique sus datos.')
+        // Use la funcion del profe a ver si funciona 
+        errorFormInicio.value = getApiErrorMessage(err, 'Error, no se logro iniciar sesion  debido a que no es administrador')
     }
     finally {
         guardarFormInicio.value = false
@@ -228,7 +228,7 @@ async function guardarEvento() {
                     </button>
                 </div>
 
-              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
                     <div v-for="evento in eventos ?? []" :key="evento.id">
 

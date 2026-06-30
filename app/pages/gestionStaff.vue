@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Usuario } from '~/types/usuario'
+
 const route = useRoute()
 
 const isActive = (to: String) => route.path === to
@@ -7,35 +9,56 @@ const navigationItems = [
     { label: 'Administrar Eventos', to: '/administrarEventos' },
 ]
 
-const adminNombre = ref("Juan")
-const adminApellido = ref("Pérez")
+const { data: usuario, error, refresh, pending } = await useFetch<Usuario[]>('/api/usuarios')
 
+/* AGREGAR USUARIO */
+const roles = ['Administrador', 'Funcionario']
+const errorFormAgregar = ref('')
 const guardarUsuario = ref(false)
-const errorUsuario = ref('')
 
 const formUsuario = reactive({
     nombre: '',
-    apellido: '',
     email: '',
+    apellido: '',
     password: '',
+    rol: roles[1],
 })
+
+function reiniciarForm() {
+    formUsuario.nombre = '',
+        formUsuario.email = '',
+        formUsuario.apellido = '',
+        formUsuario.password = '',
+        formUsuario.rol = roles[1]
+}
 
 async function agregarUsuario() {
     guardarUsuario.value = true
-    errorUsuario.value = ''
+    errorFormAgregar.value = ''
 
     try {
         await $fetch('/api/usuarios', {
+            method: 'POST',
+            body: {
+                nombre: formUsuario.nombre,
+                email: formUsuario.email,
+                apellido: formUsuario.apellido,
+                password: formUsuario.password,
+                rol: formUsuario.rol,
 
+            }
         })
+        reiniciarForm()
+        await refresh()
     }
     catch (err: any) {
-
+        errorFormAgregar.value = getApiErrorMessage(err, 'Error, no se logro guardar al usuario')
     }
     finally {
-
+        guardarUsuario.value = false
     }
 }
+
 </script>
 
 <template>
@@ -65,7 +88,7 @@ async function agregarUsuario() {
                     </UButton>
 
                     <span class="text-sm font-medium text-gray-300 bg-gray-800 px-3 py-1 rounded-lg">
-                        {{ adminNombre }} {{ adminApellido }}
+                        Nombre Apellido
                     </span>
 
                     <UButton
@@ -108,8 +131,6 @@ async function agregarUsuario() {
 
             </div>
         </header>  -->
-
-
 
         <main class="flex-1 container mx-auto px-6 py-10">
 
@@ -185,7 +206,50 @@ async function agregarUsuario() {
 
                 <!-- ================= PANEL ================= -->
 
-                <UCard class="lg:col-span-2 bg-gray-900 border border-gray-800 h-fit">
+                <aside class="w-full lg:w-80 shrink-0">
+                    <UCard class="bg-gray-900 border border-gray-800">
+                        <h3> Administracion del Staff</h3>
+                        <p>Ingrese los datos de la persona para agregar o eliminar del sistema</p>
+
+                        <UForm class="space-y-5" @submit.prevent="">
+
+                            <UFormField name="nombre" label="Nombre" type="name">
+                                <UInput placeholder="Nombre" color="neutral" variant="outline" class="w-full">
+                                </UInput>
+                            </UFormField>
+
+                            <UFormField name="apellido" label="Apellido" type="name">
+                                <UInput placeholder="Apellido" color="neutral" variant="outline" class="w-full">
+                                </UInput>
+                            </UFormField>
+
+                            <UFormField name="email" label="Email" type="email">
+                                <UInput placeholder="example@gmail.com" color="neutral" variant="outline"
+                                    class="w-full">
+                                </UInput>
+                            </UFormField>
+
+                            <UFormField name="contraseña" label="Contraseña" type="password">
+                                <UInput placeholder="Contraseña" color="neutral" variant="outline" class="w-full">
+                                </UInput>
+                            </UFormField>
+
+                            <div class="flex gap-5 items-center">
+                                <UButton type="submit"
+                                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                                    Agregar
+                                </UButton>
+
+                                <UButton @click="" type="button"
+                                    class="rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                                    Eliminar
+                                </UButton>
+                            </div>
+                        </UForm>
+                    </UCard>
+                </aside>
+
+                <!-- <UCard class="lg:col-span-2 bg-gray-900 border border-gray-800 h-fit">
 
                     <h2 class="text-2xl font-bold mb-6 text-purple-600 ">
                         Agregar Staff
@@ -212,12 +276,10 @@ async function agregarUsuario() {
 
                     </div>
 
-                </UCard>
+                </UCard> -->
 
             </div>
         </main>
-
-
 
     </div>
 

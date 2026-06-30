@@ -1,11 +1,7 @@
 <script setup lang="ts">
 import type { Evento } from '~/types/evento';
 
-<<<<<<< HEAD
-const props = defineProps < {
-=======
 const props = defineProps<{
->>>>>>> 5eec68608a9897646ad126a70309d71ebd040d8d
     evento: Evento
 }>()
 
