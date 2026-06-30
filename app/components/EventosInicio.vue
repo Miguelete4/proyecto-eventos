@@ -27,7 +27,6 @@ const emit = defineEmits<{
             <p>{{ evento.inscritos?.length ?? 0 }} inscritos</p>
         </div>
 
-        <!-- Empuja el botón hacia abajo -->
         <div class="mt-auto flex justify-center pt-6">
 
             <UButton @click="emit('inscribirse', evento)" class="px-6">

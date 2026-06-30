@@ -215,20 +215,16 @@ async function guardarEvento() {
                         Eventos disponibles
                     </h3>
 
-                    <!-- Tu botón modificado para abrir el modal (cambiamos el onclick por la variable de Vue) -->
                     <button type="button"
                         class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                         Ver mis Inscripciones
                     </button>
                 </div>
 
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-                    <div v-for="evento in eventos ?? []" :key="evento.id">
-
-                        <EventosInicio :evento="evento" />
-
-                    </div>
+                    <EventosInicio v-for="evento in eventos ?? []" :key="evento.id" :evento="evento"
+                        @inscribirse="abrirFormInscripciones" />
 
                 </div>
 
