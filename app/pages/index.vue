@@ -228,13 +228,8 @@ function cerrarMisInscripciones() {
                         Eventos disponibles
                     </h3>
 
-<<<<<<< HEAD
                     <button type="button" @click="abrirMisInscripciones"
                         class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
-=======
-                    <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors text-xl">
->>>>>>> 28d3857edd8916c875d42b60d6599f80b5756d8d
                         Ver mis Inscripciones
                     </button>
                 </div>
