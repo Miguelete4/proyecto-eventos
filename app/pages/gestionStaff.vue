@@ -82,6 +82,7 @@ const usuarioBorrar = ref<Usuario | null>(null)
 
 async function borrarUsuario() {
     borrandoUsuario.value = true
+
     try {
         await $fetch(`/api/usuarios/${usuarioBorrar.value?.email}`, {
             method: 'DELETE'
@@ -132,7 +133,7 @@ function cerrarConfirmBorrar() {
                     </span>
 
                     <UButton
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors"
                         @click="cerrarSesion">
                         Cerrar Sesion
                     </UButton>
@@ -154,11 +155,11 @@ function cerrarConfirmBorrar() {
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
 
-                        <div v-for="usuario in usuarios ?? []" :key="usuario.email">
+                        <div v-for="usuario in usuarios" :key="usuario.email">
                             <UsuarioCard :usuario="usuario" />
 
                             <UButton @click="confirmarBorrarUsuario(usuario)" type="button"
-                                class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
+                                class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors w-full flex justify-center">
                                 Eliminar
                             </UButton>
                         </div>
@@ -166,7 +167,7 @@ function cerrarConfirmBorrar() {
                     </div>
                 </div>
 
-                <aside class="lg:col-span-1">
+                <div class="lg:col-span-1">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                         <h3 class="text-xl font-bold mb-6 text-purple-600">
@@ -188,7 +189,7 @@ function cerrarConfirmBorrar() {
 
                             <UFormField name="email" label="Email">
                                 <UInput v-model="formUsuario.email" placeholder="example@gmail.com" color="neutral"
-                                    variant="outline" class="w-full" />
+                                    type="email" variant="outline" class="w-full" />
                             </UFormField>
 
                             <UFormField name="contraseña" label="Contraseña">
@@ -202,27 +203,26 @@ function cerrarConfirmBorrar() {
                             </UFormField>
 
                             <UButton type="submit" :loading="guardarUsuario"
-                                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors">
                                 Agregar
                             </UButton>
 
                         </UForm>
 
                     </UCard>
-                </aside>
+                </div>
 
             </div>
 
             <BaseModal v-model:open="mostrarConfirmBorrar" title="Eliminar staff"
-                description="¿Seguro que desea eliminar este usuario?"
-                :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-red-500' }">
+                description="¿Desea eliminarlo definitivamente?" :ui="{ background: 'bg-slate-900' }">
                 <div class="space-y-5">
 
                     <p class="text-gray-300">
                         Se eliminará a:
-                        <strong>
+                        <span>
                             {{ usuarioBorrar?.nombre }} {{ usuarioBorrar?.apellido }}
-                        </strong>
+                        </span>
                     </p>
 
                     <p class="text-gray-400 text-sm">
@@ -231,10 +231,11 @@ function cerrarConfirmBorrar() {
 
                     <div class="flex justify-between gap-3">
                         <UButton color="error" :loading="borrandoUsuario" @click="borrarUsuario">
-                            Sí, eliminar
+                            si, eliminar
                         </UButton>
 
-                        <UButton type="button" @click="cerrarConfirmBorrar">
+                        <UButton class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5
+                        transition-colors" type="button" @click="cerrarConfirmBorrar">
                             Cancelar
                         </UButton>
                     </div>

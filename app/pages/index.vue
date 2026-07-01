@@ -228,10 +228,10 @@ function cerrarMisInscripciones() {
                         Eventos disponibles
                     </h3>
 
-                    <button type="button" @click="abrirMisInscripciones"
+                    <UButton type="button" @click="abrirMisInscripciones"
                         class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
                         Ver mis Inscripciones
-                    </button>
+                    </UButton>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -289,6 +289,7 @@ function cerrarMisInscripciones() {
                     class="w-full" />
 
                 <div v-if="eventosDelUsuario.length > 0" class="space-y-3">
+
                     <div v-for="evento in eventosDelUsuario" :key="evento.id" class="bg-gray-800 rounded-lg p-3">
                         <p class="font-bold text-purple-400">
                             {{ evento.titulo }}
@@ -298,13 +299,15 @@ function cerrarMisInscripciones() {
                         <p>Hora: {{ formatHora(evento.fecha) }}</p>
                         <p>Lugar: {{ evento.lugar }}</p>
                     </div>
+
                 </div>
 
                 <p v-else-if="emailConsulta" class="text-gray-400">
                     No hay inscripciones registradas con este email.
                 </p>
 
-                <UButton @click="cerrarMisInscripciones">
+                <UButton @click="cerrarMisInscripciones" type="button"
+                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
                     Cerrar
                 </UButton>
 
