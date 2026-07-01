@@ -5,13 +5,11 @@ import type { Evento } from '~/types/evento';
 import type { Usuario } from '~/types/usuario';
 import { z } from 'zod'
 
-// Validacion con zod, esta instalado
 const schemaInicioSesion = z.object({
     email: z.email({ message: 'Debe ingresar un correo válido.' }),
     password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.')
 })
 
-// Validacion formInscripciones
 const schemaInscripciones = z.object({
     email: z.email({ message: 'Debe ingresar un correo válido.' }),
     nombre: z.string().min(3, 'El nombre debe tener un minimo de 3 caracteres.').max(100, 'El nombre debe tener un maximo de 100 caracteres'),
@@ -21,36 +19,34 @@ const schemaInscripciones = z.object({
 const { data: usuario, pending, error, refresh: refreshUsuarios } = await useFetch<Usuario[]>('/api/usuarios')
 const { data: eventos, refresh: refreshEventos } = await useFetch<Evento[]>('/api/eventos')
 
-// Formulario de iniciar sesion
 const mostrarFormInicio = ref(false)
-const errorFormInicio = ref()
+const errorFormInicio = ref('')
 const guardarFormInicio = ref(false)
 
-const form = reactive({
+const formInicio = reactive({
     email: '',
     password: ''
 })
 
-function resetFormInicio() {
-    form.email = ''
-    form.password = ''
+function reiniciarFormInicio() {
+    formInicio.email = ''
+    formInicio.password = ''
     errorFormInicio.value = ''
 }
 
 function abrirFormInicio() {
-    resetFormInicio()
+    reiniciarFormInicio()
     mostrarFormInicio.value = true
 }
 
 function cerrarFormInicio() {
     mostrarFormInicio.value = false
-    resetFormInicio()
+    reiniciarFormInicio()
 }
 
-// Funcion del login, verifica usuario en la BD
 const { fetch: fetchSession } = useUserSession()
 
-async function login() {
+async function guardarInicio() {
     guardarFormInicio.value = true
     errorFormInicio.value = ''
 
@@ -58,8 +54,8 @@ async function login() {
         await $fetch('/api/auth/login', {
             method: 'POST',
             body: {
-                email: form.email,
-                password: form.password
+                email: formInicio.email,
+                password: formInicio.password
             }
         })
 
@@ -68,7 +64,6 @@ async function login() {
         await navigateTo('/administrarEventos')
     }
     catch (err: any) {
-        // Use la funcion del profe a ver si funciona 
         errorFormInicio.value = getApiErrorMessage(err, 'Error, no se logro iniciar sesion  debido a que no es')
     }
     finally {
@@ -76,12 +71,10 @@ async function login() {
     }
 }
 
-// Formluario de inscripciones
 const guardarFormInscipciones = ref(false)
 const errorFormInscripciones = ref('')
 const mostrarFormInscripciones = ref(false)
 
-// =========================CAMBIAR ESTO =======================
 const formInscripciones = reactive({
     email: '',
     nombre: '',
@@ -98,11 +91,8 @@ function resetFormInscripciones() {
 }
 
 function abrirFormInscripciones(evento: Evento) {
-
     resetFormInscripciones()
-
     formInscripciones.eventoId = evento.id
-
     mostrarFormInscripciones.value = true
 }
 
@@ -111,7 +101,6 @@ function cerrarFormInscripciones() {
     resetFormInscripciones()
 }
 
-// Funcion para la inscripcion
 async function guardarEvento() {
     guardarFormInscipciones.value = true
     errorFormInscripciones.value = ''
@@ -161,38 +150,37 @@ async function guardarEvento() {
             </nav>
         </header>
 
-        <!-- Inicio de sesion -->
-
         <BaseModal v-model:open="mostrarFormInicio" title="Inicio de Sesion" description="Ingrese sus datos para inicar"
-            :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
-            <UForm class="space-y-5" :state="form" @submit="login" :schema="schemaInicioSesion">
+            :ui="{ background: 'bg-slate-900' }">
+            <UForm class="space-y-5" :state="formInicio" @submit="guardarInicio" :schema="schemaInicioSesion">
+
                 <UFormField name="email" label="Email" type="email">
-                    <UInput v-model="form.email" placeholder="example@gmail.com" color="neutral" variant="outline"
+                    <UInput v-model="formInicio.email" placeholder="ejemplo@gmail.com" color="neutral" variant="outline"
                         class="w-full">
                     </UInput>
                 </UFormField>
 
                 <UFormField name="contraseña" label="Contraseña" type="password">
-                    <UInput v-model="form.password" placeholder="Contraseña" color="neutral" variant="outline"
+                    <UInput v-model="formInicio.password" placeholder="Contraseña" color="neutral" variant="outline"
                         class="w-full">
                     </UInput>
                 </UFormField>
+
                 <div class="flex justify-between items-center">
 
                     <UButton type="submit" :loading="guardarFormInicio"
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors">
                         Ingresar
                     </UButton>
 
                     <UButton @click="cerrarFormInicio" type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors">
                         Cancelar
                     </UButton>
                 </div>
             </UForm>
         </BaseModal>
 
-        <!-- Parte de la informacion de la pagina -->
         <div
             class="flex flex-col items-center justify-center min-h-100 p-8 text-center bg-linear-to-br from-purple-600 to-gray-500">
 
@@ -210,8 +198,6 @@ async function guardarEvento() {
 
         </div>
 
-
-        <!-- eventos disponibles -->
         <section class="py-12 bg-gray-900">
             <div class="max-w-6xl mx-auto px-4">
 
@@ -221,7 +207,7 @@ async function guardarEvento() {
                     </h3>
 
                     <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
+                        class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors text-xl">
                         Ver mis Inscripciones
                     </button>
                 </div>
@@ -236,10 +222,8 @@ async function guardarEvento() {
             </div>
         </section>
 
-        <!-- Modal de inscripciones -->
         <BaseModal v-model:open="mostrarFormInscripciones" title="Inscribirse a eventos"
-            description="Ingrese sus datos para inscribirse al evento"
-            :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
+            description="Ingrese sus datos para inscribirse al evento" :ui="{ background: 'bg-slate-900' }">
             <UForm class="space-y-5" @submit="guardarEvento" :schema="schemaInscripciones" :state="formInscripciones">
 
                 <UFormField name="email" label="Email" type="email">
