@@ -291,15 +291,8 @@ function cerrarMisInscripciones() {
                     class="w-full" />
 
                 <div v-if="eventosDelUsuario.length > 0" class="space-y-3">
-                    <div v-for="evento in eventosDelUsuario" :key="evento.id" class="bg-gray-800 rounded-lg p-3">
-                        <p class="font-bold text-purple-400">
-                            {{ evento.titulo }}
-                        </p>
 
-                        <p>Fecha: {{ formatFecha(evento.fecha) }}</p>
-                        <p>Hora: {{ formatHora(evento.fecha) }}</p>
-                        <p>Lugar: {{ evento.lugar }}</p>
-                    </div>
+                    <EventoCard v-for="evento in eventos" :key="evento.id" :evento="evento" />
                 </div>
 
                 <p v-else-if="emailConsulta" class="text-gray-400">
