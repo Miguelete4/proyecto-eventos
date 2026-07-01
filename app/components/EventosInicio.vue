@@ -34,7 +34,7 @@ const horaFormateada = computed(() => formatHora(props.evento.fecha))
         <div class="mt-auto flex justify-center pt-6">
 
             <UButton
-                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none w-full justify-center text-xl"
+                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors w-full justify-center text-xl"
                 @click="emit('inscribirse', evento)">
                 Inscribirse
             </UButton>

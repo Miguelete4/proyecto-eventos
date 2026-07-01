@@ -242,10 +242,15 @@ function cerrarMisInscripciones() {
                         Eventos disponibles
                     </h3>
 
+<<<<<<< HEAD
                   <button type="button" @click="abrirMisInscripciones"
                         class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors text-xl">
+=======
+                    <UButton type="button" @click="abrirMisInscripciones"
+                        class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
+>>>>>>> a911fc238b5a0ce64eae5f071f1abb7d194bae56
                         Ver mis Inscripciones
-                    </button>
+                    </UButton>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -296,12 +301,16 @@ function cerrarMisInscripciones() {
             </UForm>
         </BaseModal>
 
+<<<<<<< HEAD
         <!-- VER MIS INSCRIPCIONES -->
+=======
+        <!-- VER INSCRIPCIONES -->
+>>>>>>> a911fc238b5a0ce64eae5f071f1abb7d194bae56
         <BaseModal v-model:open="mostrarMisInscripciones" title="Mis inscripciones"
             description="Ingrese su email para ver sus eventos" :ui="{ background: 'bg-slate-900' }">
             <div class="space-y-5">
 
-                <UInput v-model="emailConsulta" placeholder="example@gmail.com" color="neutral" variant="outline"
+                <UInput v-model="emailConsulta" placeholder="ejemplo@gmail.com" color="neutral" variant="outline"
                     class="w-full" />
 
                 <div v-if="eventosDelUsuario.length > 0" class="space-y-3">
@@ -322,8 +331,13 @@ function cerrarMisInscripciones() {
                     No hay inscripciones registradas con este email.
                 </p>
 
+<<<<<<< HEAD
                 <UButton @click="cerrarMisInscripciones"
                     class="rounded-2xl bg-purple-600 text-white hover:bg-purple-700">
+=======
+                <UButton @click="cerrarMisInscripciones" type="button"
+                    class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+>>>>>>> a911fc238b5a0ce64eae5f071f1abb7d194bae56
                     Cerrar
                 </UButton>
 

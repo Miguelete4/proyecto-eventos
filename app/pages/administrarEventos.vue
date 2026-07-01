@@ -4,9 +4,8 @@ import { z } from 'zod'
 
 const route = useRoute()
 
-const isActive = (to: String) => route.path === to
-
 const schemaEventos = z.object({
+    titulo: z.string().min(3, 'El titulo debe tener minimo 3 caracteres').max(100, 'El titulo debe tener como máximo 100 caracteres.'),
     lugar: z.string().min(3, 'El lugar debe tener minimo 3 caracteres').max(100, 'El lugar debe tener como máximo 100 caracteres.'),
     valor: z.int().min(1000, 'El valor debe ser desde 1000 en adelante').max(90000, 'El valor debe ser maximo 90.000')
 })
@@ -34,7 +33,7 @@ import type { Evento } from '~/types/evento'
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
 
 async function agregarEvento() {
-    guardando.value = true
+    guardandoEvento.value = true
 
     try {
         const datos = new FormData()
@@ -58,14 +57,14 @@ async function agregarEvento() {
         limpiarFormulario()
 
     } catch (error) {
-        console.error(error)
+        errorFormularioEvento.value = getApiErrorMessage(error, 'No se pudo agregar el evento. Intente nuevamente.')
     } finally {
-        guardando.value = false
+        guardandoEvento.value = false
     }
 }
 
-const guardando = ref(false)
-const errorFormulario = ref('')
+const guardandoEvento = ref(false)
+const errorFormularioEvento = ref('')
 
 const formEvento = reactive({
     titulo: '',
@@ -84,19 +83,14 @@ function limpiarFormulario() {
     imagen.value = null
     formEvento.valor = undefined
     formEvento.inscritos = undefined
-    errorFormulario.value = ''
+    errorFormularioEvento.value = ''
 }
 
 const imagen = ref<File | null>(null)
 
-
 const idEliminar = ref<number | null>(null)
 
 async function eliminarEvento() {
-    if (!idEliminar.value) {
-        alert('Ingrese un ID válido')
-        return
-    }
 
     try {
         await $fetch('/api/eventos/id', {
@@ -105,13 +99,11 @@ async function eliminarEvento() {
                 id: idEliminar.value
             }
         })
-
         await refresh()
         idEliminar.value = null
 
     } catch (error) {
-        console.error(error)
-        alert('No se pudo eliminar el evento')
+        errorFormularioEvento.value = getApiErrorMessage(error, 'No se pudo eliminar el evento. Intente nuevamente.')
     }
 }
 
@@ -176,7 +168,11 @@ const eventoSeleccionado = computed(() => {
                 </div>
 
                 <!-- PANEL DE LA DERECHA -->
+<<<<<<< HEAD
                 <div class="w-full lg:w-80 shrink-0">
+=======
+                <div class="w-full lg:w-80">
+>>>>>>> a911fc238b5a0ce64eae5f071f1abb7d194bae56
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                         <h2 class="text-2xl font-bold mb-6 text-purple-600">
@@ -215,8 +211,6 @@ const eventoSeleccionado = computed(() => {
 
                         </UForm>
 
-                        <UDivider class="my-5" />
-
                         <h3 class="text-xl font-semibold mb-3">
                             Eliminar evento
                         </h3>
@@ -229,15 +223,14 @@ const eventoSeleccionado = computed(() => {
                             </UButton>
                         </div>
 
-                        <UDivider class="my-5" />
-
-                        <h3 class="text-xl font-semibold mb-3">
+                        <!-- <h3 class="text-xl font-semibold mb-3">
                             Ver inscritos
                         </h3>
 
                         <div class="space-y-3">
                             <UInput v-model="idVerInscritos" type="number" placeholder="ID del evento" class="w-full" />
 
+<<<<<<< HEAD
                             <div v-if="eventoSeleccionado" class="space-y-3 mt-4">
 
                                 <h4 class="font-bold text-purple-400">
@@ -255,9 +248,23 @@ const eventoSeleccionado = computed(() => {
                                 <p v-else class="text-gray-400">
                                     Este evento no tiene inscritos.
                                 </p>
+=======
+                            <h4 v-if="eventoSeleccionado" class="font-bold text-purple-400">
+                                Inscritos en: {{ eventoSeleccionado.titulo }}
+                            </h4>
+>>>>>>> a911fc238b5a0ce64eae5f071f1abb7d194bae56
 
+                            <div v-for="persona in eventoSeleccionado?.inscrito ?? []" :key="persona.id"
+                                class="bg-gray-800 rounded-lg p-3 text-sm">
+                                <p>{{ persona.nombre }} {{ persona.apellido }}</p>
+                                <p>{{ persona.email }}</p>
                             </div>
-                        </div>
+
+                            <p v-if="eventoSeleccionado && eventoSeleccionado.inscrito.length === 0"
+                                class="text-gray-400">
+                                Este evento no tiene inscritos.
+                            </p>
+                        </div> -->
 
                     </UCard>
                 </div>
