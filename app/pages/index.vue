@@ -228,13 +228,8 @@ function cerrarMisInscripciones() {
                         Eventos disponibles
                     </h3>
 
-<<<<<<< HEAD
                     <button type="button" @click="abrirMisInscripciones"
                         class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
-=======
-                    <button type="button"
-                        class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors text-xl">
->>>>>>> 28d3857edd8916c875d42b60d6599f80b5756d8d
                         Ver mis Inscripciones
                     </button>
                 </div>
@@ -285,14 +280,12 @@ function cerrarMisInscripciones() {
             </UForm>
         </BaseModal>
 
-
         <!-- VER INSCRIPCIONES -->
         <BaseModal v-model:open="mostrarMisInscripciones" title="Mis inscripciones"
-            description="Ingrese su email para ver sus eventos"
-            :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
+            description="Ingrese su email para ver sus eventos" :ui="{ background: 'bg-slate-900' }">
             <div class="space-y-5">
 
-                <UInput v-model="emailConsulta" placeholder="example@gmail.com" color="neutral" variant="outline"
+                <UInput v-model="emailConsulta" placeholder="ejemplo@gmail.com" color="neutral" variant="outline"
                     class="w-full" />
 
                 <div v-if="eventosDelUsuario.length > 0" class="space-y-3">
