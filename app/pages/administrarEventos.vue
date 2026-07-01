@@ -151,7 +151,7 @@ const eventoSeleccionado = computed(() => {
                     </span>
 
                     <UButton
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors"
                         @click="cerrarSesion">
                         Cerrar Sesion
                     </UButton>
@@ -176,7 +176,7 @@ const eventoSeleccionado = computed(() => {
                 </div>
 
                 <!-- PANEL DE LA DERECHA -->
-                <aside class="w-full lg:w-80 shrink-0">
+                <div class="w-full lg:w-80 shrink-0">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                         <h2 class="text-2xl font-bold mb-6 text-purple-600">
@@ -247,8 +247,8 @@ const eventoSeleccionado = computed(() => {
                                 <div v-if="eventoSeleccionado.inscrito.length > 0" class="space-y-2">
                                     <div v-for="persona in eventoSeleccionado.inscrito" :key="persona.id"
                                         class="bg-gray-800 rounded-lg p-3 text-sm">
-                                        <p><strong>Nombre:</strong> {{ persona.nombre }} {{ persona.apellido }}</p>
-                                        <p><strong>Email:</strong> {{ persona.email }}</p>
+                                        <p>Nombre: {{ persona.nombre }} {{ persona.apellido }}</p>
+                                        <p>Email: {{ persona.email }}</p>
                                     </div>
                                 </div>
 
@@ -260,7 +260,7 @@ const eventoSeleccionado = computed(() => {
                         </div>
 
                     </UCard>
-                </aside>
+                </div>
 
             </div>
         </main>

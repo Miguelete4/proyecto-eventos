@@ -132,7 +132,7 @@ function cerrarConfirmBorrar() {
                     </span>
 
                     <UButton
-                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none"
+                        class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors"
                         @click="cerrarSesion">
                         Cerrar Sesion
                     </UButton>
@@ -158,7 +158,7 @@ function cerrarConfirmBorrar() {
                             <UsuarioCard :usuario="usuario" />
 
                             <UButton @click="confirmarBorrarUsuario(usuario)" type="button"
-                                class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors border-none w-full flex justify-center">
+                                class="mt-3 rounded-2xl bg-red-500 text-white font-sans hover:bg-red-700 shadow-md px-5 py-2.5 transition-colors w-full flex justify-center">
                                 Eliminar
                             </UButton>
                         </div>
@@ -166,7 +166,7 @@ function cerrarConfirmBorrar() {
                     </div>
                 </div>
 
-                <aside class="lg:col-span-1">
+                <div> class="lg:col-span-1">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
                         <h3 class="text-xl font-bold mb-6 text-purple-600">
@@ -202,27 +202,26 @@ function cerrarConfirmBorrar() {
                             </UFormField>
 
                             <UButton type="submit" :loading="guardarUsuario"
-                                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none">
+                                class="rounded-2xl bg-purple-600 text-white font-sans hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors">
                                 Agregar
                             </UButton>
 
                         </UForm>
 
                     </UCard>
-                </aside>
+                </div>
 
             </div>
 
             <BaseModal v-model:open="mostrarConfirmBorrar" title="Eliminar staff"
-                description="¿Seguro que desea eliminar este usuario?"
-                :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-red-500' }">
+                description="¿Seguro que desea eliminar este usuario?" :ui="{ background: 'bg-slate-900' }">
                 <div class="space-y-5">
 
                     <p class="text-gray-300">
                         Se eliminará a:
-                        <strong>
+                        <span>
                             {{ usuarioBorrar?.nombre }} {{ usuarioBorrar?.apellido }}
-                        </strong>
+                        </span>
                     </p>
 
                     <p class="text-gray-400 text-sm">
