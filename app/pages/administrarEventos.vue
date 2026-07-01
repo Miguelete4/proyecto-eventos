@@ -6,18 +6,15 @@ const route = useRoute()
 
 const isActive = (to: String) => route.path === to
 
-// Validacion con zod, esta instalado
 const schemaEventos = z.object({
     lugar: z.string().min(3, 'El lugar debe tener minimo 3 caracteres').max(100, 'El lugar debe tener como máximo 100 caracteres.'),
     valor: z.int().min(1000, 'El valor debe ser desde 1000 en adelante').max(90000, 'El valor debe ser maximo 90.000')
 })
 
-// Validacion de si es administrador o no en la pagina
 definePageMeta({
     middleware: ['admin']
 })
 
-//DATOS PARA EL INICIO DE SESION
 const navigationItems = [
     { label: 'Administrar Staff', to: '/gestionStaff' },
 ]
@@ -29,16 +26,13 @@ async function cerrarSesion() {
 
     await navigateTo('/')
 }
-//esto es para obtener los datos del usuario (su nombre y apellido)
+
 const { user } = useUserSession()
 
-
-// CONST PARA MOSTRAR EVENTOS
 import type { Evento } from '~/types/evento'
 
 const { data: eventos, pending, error, refresh } = await useFetch<Evento[]>('/api/eventos')
 
-// FUNCION PARA INGRESAR EVENTOS (e imagenes, por eso esta asi de raro)
 async function agregarEvento() {
     guardando.value = true
 
@@ -73,8 +67,6 @@ async function agregarEvento() {
 const guardando = ref(false)
 const errorFormulario = ref('')
 
-// datos para los cards
-
 const formEvento = reactive({
     titulo: '',
     fecha: '',
@@ -95,11 +87,9 @@ function limpiarFormulario() {
     errorFormulario.value = ''
 }
 
-// PARA LAS IMAGENES DE LOS CARDS
 const imagen = ref<File | null>(null)
 
 
-//FUNCION PARA ELIMINAR EVENTOS
 const idEliminar = ref<number | null>(null)
 
 async function eliminarEvento() {
@@ -130,7 +120,6 @@ const idVerInscritos = ref<number | null>(null)
 
 const eventoSeleccionado = computed(() => {
     return eventos.value?.find(evento => evento.id === idVerInscritos.value)
-    // Busca dentro de todos los eventos el que tenga el ID escrito. luego muestra los que estan en ese id
 })
 
 </script>

@@ -2,19 +2,16 @@
 import type { Usuario } from '~/types/usuario'
 import { z } from 'zod'
 
-// Navegacion entre paginas
 const route = useRoute()
 
 const navigationItems = [
     { label: 'Administrar Eventos', to: '/administrarEventos' },
 ]
 
-// Validacion de si es administrador o no en la pagina
 definePageMeta({
     middleware: ['admin']
 })
 
-// Validacion con zod, esta instalado
 const schemaNuevoUsuario = z.object({
     nombre: z.string().min(3, 'El nombre debe tener como minimo 3 caracteres').max(100, 'El nombre debe tener como máximo 100 caracteres.'),
     apellido: z.string().min(3, 'El nombre debe tener como minimo 3 caracteres').max(100, 'El apellido debe tener como máximo 100 letras.'),
@@ -22,7 +19,6 @@ const schemaNuevoUsuario = z.object({
     password: z.string().min(8, 'La contraseña debe tener como mínimo 8 caracteres.'),
 })
 
-//esto es para obtener los datos del usuario (su nombre y apellido)
 const { user } = useUserSession()
 
 async function cerrarSesion() {
@@ -35,7 +31,6 @@ async function cerrarSesion() {
 
 const { data: usuarios, error, refresh, pending } = await useFetch<Usuario[]>('/api/usuarios')
 
-/* AGREGAR USUARIO */
 const roles = ['Administrador', 'Usuario']
 const errorFormAgregar = ref('')
 const guardarUsuario = ref(false)
@@ -81,7 +76,6 @@ async function agregarUsuario() {
     }
 }
 
-/* ***** BORRAR USUARIO ***** */
 const mostrarConfirmBorrar = ref(false)
 const borrandoUsuario = ref(false)
 const usuarioBorrar = ref<Usuario | null>(null)
@@ -172,7 +166,6 @@ function cerrarConfirmBorrar() {
                     </div>
                 </div>
 
-                <!-- Lado derecho: Creacion de staff -->
                 <aside class="lg:col-span-1">
                     <UCard class="bg-gray-900 border border-gray-800 h-fit">
 
@@ -220,7 +213,6 @@ function cerrarConfirmBorrar() {
 
             </div>
 
-            <!-- MODAL CONFIRMAR BORRADO -->
             <BaseModal v-model:open="mostrarConfirmBorrar" title="Eliminar staff"
                 description="¿Seguro que desea eliminar este usuario?"
                 :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-red-500' }">
