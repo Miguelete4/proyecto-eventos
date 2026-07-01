@@ -134,6 +134,28 @@ async function guardarEvento() {
         guardarFormInscipciones.value = false
     }
 }
+
+
+// VER INSCRIPCIONES USUARIO
+// Ver mis inscripciones
+const mostrarMisInscripciones = ref(false)
+const emailConsulta = ref('')
+
+const eventosDelUsuario = computed(() => {
+    return eventos.value?.filter(evento =>
+        evento.inscrito?.some(persona => persona.email === emailConsulta.value)
+    ) ?? []
+})
+
+function abrirMisInscripciones() {
+    emailConsulta.value = ''
+    mostrarMisInscripciones.value = true
+}
+
+function cerrarMisInscripciones() {
+    mostrarMisInscripciones.value = false
+    emailConsulta.value = ''
+}
 </script>
 
 <template>
@@ -220,7 +242,7 @@ async function guardarEvento() {
                         Eventos disponibles
                     </h3>
 
-                    <button type="button"
+                    <button type="button" @click="abrirMisInscripciones"
                         class="rounded-2xl bg-purple-600 text-white font-bold hover:bg-purple-700 shadow-md px-5 py-2.5 transition-colors border-none text-xl">
                         Ver mis Inscripciones
                     </button>
@@ -272,6 +294,39 @@ async function guardarEvento() {
                     </UButton>
                 </div>
             </UForm>
+        </BaseModal>
+
+
+        <!-- VER INSCRIPCIONES -->
+        <BaseModal v-model:open="mostrarMisInscripciones" title="Mis inscripciones"
+            description="Ingrese su email para ver sus eventos"
+            :ui="{ background: 'bg-slate-900', ring: 'ring-1 ring-purple-500' }">
+            <div class="space-y-5">
+
+                <UInput v-model="emailConsulta" placeholder="example@gmail.com" color="neutral" variant="outline"
+                    class="w-full" />
+
+                <div v-if="eventosDelUsuario.length > 0" class="space-y-3">
+                    <div v-for="evento in eventosDelUsuario" :key="evento.id" class="bg-gray-800 rounded-lg p-3">
+                        <p class="font-bold text-purple-400">
+                            {{ evento.titulo }}
+                        </p>
+
+                        <p>Fecha: {{ formatFecha(evento.fecha) }}</p>
+                        <p>Hora: {{ formatHora(evento.fecha) }}</p>
+                        <p>Lugar: {{ evento.lugar }}</p>
+                    </div>
+                </div>
+
+                <p v-else-if="emailConsulta" class="text-gray-400">
+                    No hay inscripciones registradas con este email.
+                </p>
+
+                <UButton @click="cerrarMisInscripciones">
+                    Cerrar
+                </UButton>
+
+            </div>
         </BaseModal>
 
     </div>
